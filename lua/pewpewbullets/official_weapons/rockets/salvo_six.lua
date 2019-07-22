@@ -8,7 +8,7 @@ BULLET.Version = 2
 -- General Information
 BULLET.Name = "Salvo Six"
 BULLET.Author = "Hexwolf (Base by Divran)"
-BULLET.Description = "Rapidly fires a spectacle of up to six light explosive partial tracking missiles."
+BULLET.Description = "Rapidly fires a spectacle of up to six agile light explosive partial tracking missiles."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
 
@@ -97,3 +97,54 @@ function BULLET:Initialize()
 	-- Lifetime
 	self.Lifetime = CurTime() + self.Bullet.Lifetime[2]
 	self.Thrust = CurTime() + self.Bullet.Lifetime[1]
+
+	local trail = ents.Create("env_fire_trail")
+	trail:SetPos( self.Entity:GetPos() - self.Entity:GetUp() * 20 )
+	trail:Spawn()
+	trail:SetParent( self.Entity )
+end
+
+-- Think
+function BULLET:Think()
+	-- Make it fly
+	self.Entity:SetPos( self.Entity:GetPos() + self.FlightDirection * self.Bullet.Speed )
+	if (self.Cannon and self.Cannon:IsValid() and self.Cannon.TargetPos and CurTime() < self.Thrust) then 
+		self.FlightDirection = self.FlightDirection + (self.TargetDir-self.FlightDirection) / 20
+		self.FlightDirection = self.FlightDirection:GetNormalized()
+
+		self.TargetDir = (self.Cannon.TargetPos-self:GetPos()):GetNormalized()
+	end
+	self.Entity:SetAngles( self.FlightDirection:Angle() + Angle(90,0,0) )
+	
+	-- Lifetime
+	if (self.Lifetime) then
+		if (CurTime() > self.Lifetime) then
+			if (self.Bullet.ExplodeAfterDeath) then
+				local trace = pewpew:Trace(self:GetPos() - self.FlightDirection * self.Bullet.Speed, self.FlightDirection * self.Bullet.Speed, self)
+				self:Explode( trace )
+			else
+				self.Entity:Remove()
+			end
+		end
+	end
+	
+	if (CurTime() > self.TraceDelay) then
+		-- Check if it hit something
+		local trace = pewpew:Trace(self:GetPos() - self.FlightDirection * self.Bullet.Speed, self.FlightDirection * self.Bullet.Speed, self)
+		
+		if (trace.Hit and !self.Exploded) then	
+			self.Exploded = true
+			self:Explode( trace )
+		else			
+			-- Run more often!
+			self.Entity:NextThink( CurTime() )
+			return true
+		end
+	else			
+		-- Run more often!
+		self.Entity:NextThink( CurTime() )
+		return true
+	end
+end
+
+pewpew:AddWeapon( BULLET )
