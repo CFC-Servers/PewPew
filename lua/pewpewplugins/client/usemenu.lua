@@ -42,10 +42,11 @@ local function SetTable( Bullet )
 	list[12] = 	{"Gravity", 			tostring(Bullet._Gravity) .. " units per second, or " .. tostring(Bullet.Gravity or 600) .. " units per tick"}
 	list[13] =	{"RecoilForce", 		Bullet.RecoilForce}
 	list[14] = 	{"Spread",				Bullet.Spread}
-	list[15] = 	{"Reloadtime", 			Bullet.Reloadtime}
-	list[16] = 	{"Ammo", 				Bullet.Ammo}
-	list[17] = 	{"AmmoReloadtime", 		Bullet.AmmoReloadtime}
-	list[18] = 	{"EnergyPerShot",		Bullet.EnergyPerShot}
+	list[15] = 	{"ShotCount",			Bullet.ShotCount}
+	list[16] = 	{"Reloadtime", 			Bullet.Reloadtime}
+	list[17] = 	{"Ammo", 				Bullet.Ammo}
+	list[18] = 	{"AmmoReloadtime", 		Bullet.AmmoReloadtime}
+	list[19] = 	{"EnergyPerShot",		Bullet.EnergyPerShot}
 end
 
 local function OpenUseMenu( bulletname )

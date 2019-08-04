@@ -167,7 +167,8 @@ else
 					[10]={Txt = "Speed",					Default = "70", 			Desc = "", Type="Number"},
 					[11]={Txt = "Gravity",					Default = "0.1", 			Desc = "", Type="Number"},
 					[12]={Txt = "RecoilForce",				Default = "1000", 			Desc = "", Type="Number"},
-					[13]={Txt = "Spread",					Default = "0.1", 			Desc = "", Type="Number"} }
+					[13]={Txt = "Spread",					Default = "0.1", 			Desc = "", Type="Number"},
+					[14]={Txt = "ShotCount",				Default = "1", 			    Desc = "WIP Doesnt work!", Type="Number"} }
 	
 	local Tbl2 = { 	[1]={Txt = "Reloadtime", 				Default = "1", 				Desc = "", Type="Number"},
 					[2]={Txt = "Ammo", 						Default = "0", 				Desc = "If you set this to 0, it will have infinite ammo", Type="Number"},

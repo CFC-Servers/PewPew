@@ -29,6 +29,7 @@ BULLET.Gravity = 0
 BULLET.RecoilForce = 800
 BULLET.Spread = 1.5
 BULLET.AffectedBySBGravity = true
+BULLET.ShotCount = 30
 
 -- Damage
 BULLET.DamageType = "PointDamage" -- Look in gcombat_damagecontrol.lua for available damage types
@@ -36,8 +37,8 @@ BULLET.Damage = 20
 
 -- Reloading/Ammo
 BULLET.Reloadtime = 0
-BULLET.Ammo = 30
-BULLET.AmmoReloadtime = 12
+BULLET.Ammo = 1
+BULLET.AmmoReloadtime = 1
 
 BULLET.EnergyPerShot = 14000
 
