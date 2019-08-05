@@ -210,7 +210,7 @@ function ENT:NewSystem_FireBullet()
 	local Dir, Pos = pewpew:GetFireDirection( self.Direction, self, ent )
 	local num = self.Bullet.Spread or 0
     if self.ShotCount then
-        for i=0, self.ShotCount do
+        for i=1, self.ShotCount do
         	if (num and num != 0) then
         		local randomang = Angle( math.Rand(-num,num), math.Rand(-num,num), math.Rand(-num,num) )
         		Dir:Rotate(randomang)
