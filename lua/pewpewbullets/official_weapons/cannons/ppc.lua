@@ -15,12 +15,12 @@ BULLET.SuperAdminOnly = false
 -- Appearance
 BULLET.Model = "models/combatmodels/tankshell_230mm.mdl"
 BULLET.Material = nil
-BULLET.Color = Color(0,191,255,255)
+BULLET.Color = Color(0,255,255,255)
 BULLET.Trail = { StartSize = 10,
 				 EndSize = 2,
-				 Length = 4,
+				 Length = 20,
 				 Texture = "trails/smoke.vmt",
-				 Color = Color( 0,191,255, 255 ) }
+				 Color = Color( 0,255,255, 255 ) }
 
 -- Effects / Sounds
 BULLET.FireSound = {"col32/bomb3.wav"}
@@ -29,11 +29,11 @@ BULLET.FireEffect = "muzzleflash"
 BULLET.ExplosionEffect = "HEATsplode"
 
 -- Movement
-BULLET.Speed = 50
+BULLET.Speed = 100
 BULLET.RecoilForce = 500
 BULLET.Spread = 0
 --BULLET.Gravity = 0
-BULLET.AffectedBySBGravity = true
+BULLET.AffectedBySBGravity = false
 
 -- Damage
 BULLET.DamageType = "EMPDamage"
