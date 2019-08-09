@@ -12,5 +12,5 @@ ENT.Author			= "Divran"
 ENT.Contact			= ""  
 ENT.Purpose			= ""  
 ENT.Instructions	= ""  
-ENT.Spawnable			= false
+ENT.Spawnable			= true
 ENT.AdminSpawnable		= false
