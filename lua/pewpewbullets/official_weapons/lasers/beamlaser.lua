@@ -7,7 +7,7 @@ BULLET.Version = 2
 
 -- General Information
 BULLET.Name = "Beam laser"
-BULLET.Author = "Divran"
+BULLET.Author = "Hexwolf (base by Divran)"
 BULLET.Description = "Fires a constant laser beam."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
