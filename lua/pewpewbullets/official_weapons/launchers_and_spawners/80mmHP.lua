@@ -40,7 +40,7 @@ BULLET.Damage = 750
 BULLET.Radius = 750
 BULLET.RangeDamageMul = 2.6
 BULLET.PlayerDamage = 300
-BULLET.PlayerDamageRadius = 500
+BULLET.PlayerDamageRadius = 499
 
 -- Reloading/Ammo
 BULLET.Reloadtime = 8
