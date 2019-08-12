@@ -30,9 +30,9 @@ BULLET.ExplosionEffect = "pewpew_smokepuff"
 BULLET.EmptyMagSound = nil
 
 -- Movement
-BULLET.Speed = 60
+BULLET.Speed = 75
 BULLET.RecoilForce = 100
-BULLET.Spread = 3
+BULLET.Spread = 10
 
 -- Damage
 BULLET.DamageType = "BlastDamage"
@@ -43,12 +43,12 @@ BULLET.PlayerDamage = 100
 BULLET.PlayerDamageRadius = 425
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 0.02
+BULLET.Reloadtime = 0.3
 BULLET.Ammo = 5
 BULLET.AmmoReloadtime = 8
 
 -- Other
-BULLET.Lifetime = {1.25,1.25}
+BULLET.Lifetime = {0.95,1}
 BULLET.ExplodeAfterDeath = true
 BULLET.EnergyPerShot = 4000
 
