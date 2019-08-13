@@ -4,38 +4,41 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Brimstorm"
+BULLET.Name = "Plasmastorm"
 BULLET.Author = "Hexwolf"
-BULLET.Description = "Rain hellfire down on your foes, aim high and cover a wide area with a shower of bullets. "
+BULLET.Description = "Shower an area in hot plasma which can melt through props."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
 
 -- Appearance
-BULLET.Model = "models/combatmodels/tankshell.mdl"
-BULLET.Color = Color(255,150,0)
+BULLET.Model = "models/combatmodels/tankshell_120mm.mdl"
+BULLET.Material = nil
+BULLET.Color = Color( 0, 255, 255 )
+BULLET.Trail = { StartSize = 40,
+				 EndSize = 35,
+				 Length = 1,
+				 Texture = "trails/laser.vmt",
+				 Color = Color( 0, 255, 255, 255 ) }
 
 -- Effects / Sounds
-BULLET.FireSound = {"arty/mg42.wav"}
+BULLET.FireSound = {"LightDemon/Railgun.wav"}
 BULLET.ExplosionSound = nil
-BULLET.FireEffect = "muzzleflash"
-BULLET.ExplosionEffect = "mghit"
+BULLET.FireEffect = nil
+BULLET.ExplosionEffect = "railgun"
 
 -- Movement
-BULLET.Speed = 30
+BULLET.Speed = 25
 --BULLET.Gravity = 7
 BULLET.RecoilForce = 35
 BULLET.Spread = 3
 BULLET.AffectedBySBGravity = true
 
 -- Damage
-BULLET.DamageType = "BlastDamage"
-BULLET.Damage = 25
-BULLET.Radius = 150
-BULLET.RangeDamageMul = 2.6
-BULLET.NumberOfSlices = nil
-BULLET.SliceDistance = nil
-BULLET.PlayerDamage = 75
-BULLET.PlayerDamageRadius = 150
+BULLET.DamageType = "SliceDamage"
+BULLET.Damage = 200
+BULLET.NumberOfSlices = 1
+BULLET.SliceDistance = 300
+BULLET.ReducedDamagePerSlice = 25
 
 -- Reloading/Ammo
 BULLET.Reloadtime = 0.1
