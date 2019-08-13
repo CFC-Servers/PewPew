@@ -6,9 +6,9 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Modifiable Artillery"
-BULLET.Author = "Divran"
-BULLET.Description = "An artillery with a modifiable speed."
+BULLET.Name = "[Modifiable] 155mm Artillery (HE)"
+BULLET.Author = "Hexwolf (Base by Divran)"
+BULLET.Description = "An 155mm artillery piece barrage with a modifiable speed."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
 
@@ -29,24 +29,23 @@ BULLET.EmptyMagSound = nil
 BULLET.Speed = "?"
 BULLET.Gravity = 0.5
 BULLET.RecoilForce = 500
-BULLET.Spread = 0
+BULLET.Spread = 0.25
 BULLET.AffectedBySBGravity = true
 
 -- Damage
-BULLET.DamageType = "BlastDamage"
-BULLET.Damage = 175
-BULLET.Radius = 150
-BULLET.RangeDamageMul = 2.6
+BULLET.DamageType = "BlastDamage" -- Look in gcombat_damagecontrol.lua for available damage types
+BULLET.Damage = 600
+BULLET.Radius = 750
+BULLET.RangeDamageMul = 2.2
 BULLET.NumberOfSlices = nil
 BULLET.SliceDistance = nil
-BULLET.Duration = nil
 BULLET.PlayerDamage = 110
-BULLET.PlayerDamageRadius = 150
+BULLET.PlayerDamageRadius = 600
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 2
-BULLET.Ammo = 0
-BULLET.AmmoReloadtime = 0
+BULLET.Reloadtime = 0.03
+BULLET.Ammo = 3
+BULLET.AmmoReloadtime = 40
 
 -- Other
 BULLET.Lifetime = nil
