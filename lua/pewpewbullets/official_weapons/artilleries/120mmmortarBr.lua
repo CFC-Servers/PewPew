@@ -33,7 +33,7 @@ BULLET.EmptyMagSound = nil
 BULLET.Speed = 30
 BULLET.Gravity = 0.2
 BULLET.RecoilForce = 500
-BULLET.Spread = 3
+BULLET.Spread = 1.5
 BULLET.AffectedBySBGravity = true
 
 -- Damage
@@ -47,7 +47,7 @@ BULLET.PlayerDamage = 110
 BULLET.PlayerDamageRadius = 450
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 0.06
+BULLET.Reloadtime = 0.2
 BULLET.Ammo = 5
 BULLET.AmmoReloadtime = 60
 
