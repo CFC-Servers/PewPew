@@ -6,14 +6,14 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "60mm Mortar Barrage (HE)"
+BULLET.Name = "120mm Mortar Barrage (HE)"
 BULLET.Author = "Hexwolf (Base by Divran)"
 BULLET.Description = "A 60mm mortar which fires in a heavy arch."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
 
 -- Appearance
-BULLET.Model = "models/combatmodels/tankshell.mdl"
+BULLET.Model = "models/aamissile.mdl"
 BULLET.Material = "phoenix_storms/gear"
 BULLET.Color = nil
 BULLET.Trail = { StartSize = 7,
@@ -31,9 +31,9 @@ BULLET.EmptyMagSound = nil
 
 -- Movement
 BULLET.Speed = 30
-BULLET.Gravity = 0.45
+BULLET.Gravity = 0.2
 BULLET.RecoilForce = 500
-BULLET.Spread = 0.15
+BULLET.Spread = 3
 BULLET.AffectedBySBGravity = true
 
 -- Damage

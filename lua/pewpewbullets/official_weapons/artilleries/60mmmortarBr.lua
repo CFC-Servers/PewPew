@@ -13,7 +13,7 @@ BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
 
 -- Appearance
-BULLET.Model = "models/combatmodels/tankshell.mdl"
+BULLET.Model = "models/aamissile.mdl"
 BULLET.Material = "phoenix_storms/gear"
 BULLET.Color = nil
 BULLET.Trail = { StartSize = 7,
@@ -31,9 +31,9 @@ BULLET.EmptyMagSound = nil
 
 -- Movement
 BULLET.Speed = 40
-BULLET.Gravity = 0.4
+BULLET.Gravity = 0.1
 BULLET.RecoilForce = 500
-BULLET.Spread = 0.1
+BULLET.Spread = 2
 BULLET.AffectedBySBGravity = true
 
 -- Damage
