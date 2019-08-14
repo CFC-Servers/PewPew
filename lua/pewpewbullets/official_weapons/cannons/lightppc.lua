@@ -15,12 +15,12 @@ BULLET.SuperAdminOnly = false
 -- Appearance
 BULLET.Model = "models/combatmodels/tankshell_230mm.mdl"
 BULLET.Material = nil
-BULLET.Color = Color(0,255,255,255)
-BULLET.Trail = { StartSize = 10,
+BULLET.Color = Color( 0, 191, 255 )
+BULLET.Trail = { StartSize = 9,
 				 EndSize = 0,
-				 Length = 0.6,
+				 Length = 10,
 				 Texture = "trails/smoke.vmt",
-				 Color = Color( 0,255,255, 255 ) }
+				 Color = Color( 0, 191, 255, 255 ) }
 
 -- Effects / Sounds
 BULLET.FireSound = {"col32/bomb3.wav"}
