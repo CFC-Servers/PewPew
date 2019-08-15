@@ -6,9 +6,9 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Bomb Rack"
-BULLET.Author = "Divran"
-BULLET.Description = "Drops several bombs straight down onto your enemy."
+BULLET.Name = "R4CK 24 (HE)"
+BULLET.Author = "Hexwolf (Base by Divran)"
+BULLET.Description = "Drops up to 24 bombs straight down."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
 
@@ -31,13 +31,13 @@ BULLET.Radius = 250
 BULLET.RangeDamageMul = 2.2
 BULLET.NumberOfSlices = nil
 BULLET.SliceDistance = nil
-BULLET.PlayerDamage = 75
+BULLET.PlayerDamage = 110
 BULLET.PlayerDamageRadius = 200
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 0.8
-BULLET.Ammo = 5
-BULLET.AmmoReloadtime = 8
+BULLET.Reloadtime = 0.5
+BULLET.Ammo = 24
+BULLET.AmmoReloadtime = 40
 
 BULLET.EnergyPerShot = 2000
 
