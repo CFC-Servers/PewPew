@@ -16,9 +16,9 @@ BULLET.SuperAdminOnly = false
 BULLET.Model = "models/combatmodels/tankshell_230mm.mdl"
 BULLET.Material = nil
 BULLET.Color = Color( 0, 191, 255 )
-BULLET.Trail = { StartSize = 9,
+BULLET.Trail = { StartSize = 7,
 				 EndSize = 0,
-				 Length = 10,
+				 Length = 0.6,
 				 Texture = "trails/smoke.vmt",
 				 Color = Color( 0, 191, 255, 255 ) }
 
