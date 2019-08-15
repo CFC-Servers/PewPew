@@ -1,17 +1,19 @@
+-- Bomb Rack
+
 local BULLET = {}
 
 -- Important Information
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Carpet Bomber"
-BULLET.Author = "Divran"
-BULLET.Description = "Drops dozens of small bombs."
+BULLET.Name = "Tombstone 1000lb (HE)"
+BULLET.Author = "Hexwolf (Base by Divran)"
+BULLET.Description = "Drops one massive bomb."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
 
 -- Appearance
-BULLET.Model = "models/props_phx/ww2bomb.mdl"
+BULLET.Model = "models/props_phx/mk-82.mdl"
 BULLET.Material = nil
 BULLET.Color = nil
 BULLET.Trail = nil
@@ -20,29 +22,30 @@ BULLET.Trail = nil
 BULLET.FireSound = {"npc/attack_helicopter/aheli_mine_drop1.wav"}
 BULLET.ExplosionSound = {"weapons/explode3.wav","weapons/explode4.wav","weapons/explode5.wav"}
 BULLET.FireEffect = nil
-BULLET.ExplosionEffect = "gcombat_explosion"
+BULLET.ExplosionEffect = "big_splosion"
 
 -- Damage
 BULLET.DamageType = "BlastDamage"
-BULLET.Damage = 100
-BULLET.Radius = 100
+BULLET.Damage = 2500
+BULLET.Radius = 1000
 BULLET.RangeDamageMul = 2.2
 BULLET.NumberOfSlices = nil
 BULLET.SliceDistance = nil
-BULLET.PlayerDamage = 10
-BULLET.PlayerDamageRadius = 150
+BULLET.PlayerDamage = 250
+BULLET.PlayerDamageRadius = 600
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 0.2
-BULLET.Ammo = 15
-BULLET.AmmoReloadtime = 15
+BULLET.Reloadtime = 190
+BULLET.Ammo = 0
+BULLET.AmmoReloadtime = 0
 
-BULLET.EnergyPerShot = 300
+BULLET.EnergyPerShot = 2000
 
 BULLET.UseOldSystem = true
 
 -- Custom Functions 
 -- (If you set the override var to true, the cannon/bullet will run these instead. Use these functions to do stuff which is not possible with the above variables)
+
 
 -- Initialize (Is called when the entity initializes)
 function BULLET:Initialize()
@@ -50,20 +53,15 @@ function BULLET:Initialize()
 	self.Entity:SetMoveType(MOVETYPE_VPHYSICS)
 	self.Entity:SetSolid(SOLID_VPHYSICS)
 	
-	self.Entity:SetMaterial("models/props_canal/canal_bridge_railing_01c") // temp fix
-	
 	
 	constraint.NoCollide(self.Entity, self.Cannon.Entity, 0, 0)
 	
-	local V = VectorRand() * 50
-	V.z = 0
-	
-	self.Entity:SetPos( self.Entity:GetPos() + self.Entity:GetUp() * 60 + V )
+	self.Entity:SetPos( self.Entity:GetPos() + self.Entity:GetUp() * 40 )
 	self.Entity:NextThink(CurTime())
 	
 	local phys = self.Entity:GetPhysicsObject()
 	if (phys:IsValid()) then
-		phys:SetVelocity(self.Cannon:GetVelocity()+self.Cannon:GetUp()*50+V*3)
+		phys:SetVelocity(self.Cannon:GetVelocity()+self.Cannon:GetUp()*50)
 	end
 	
 	self.Timer = CurTime() + 50
@@ -73,13 +71,13 @@ end
 -- Think (Is called a lot of times :p)
 function BULLET:Think()
 	local vel = self:GetVelocity() -- For some reason setting the angle every tick makes it move REALLY slowly, so I used this hacky method of angling it
-	self:SetAngles( vel:Angle() )
+	self:SetAngles( vel:GetNormal():Angle() )
 	self.Entity:GetPhysicsObject():SetVelocity( vel )
 	if (self.Collided == true or CurTime() > self.Timer) then
 		if (pewpew:GetConVar( "Damage" )) then
 			pewpew:PlayerBlastDamage(self.Entity, self.Entity, self.Entity:GetPos(), self.Bullet.Damage, self.Bullet.Radius)
 		end
-		pewpew:BlastDamage(self:GetPos(), self.Bullet.Radius, self.Bullet.Damage, self.Bullet.RangeDamageMul, nil, self)
+		pewpew:BlastDamage(self:GetPos(), self.Bullet.Radius, self.Bullet.Damage, self.Bullet.RangeDamageMul, nil, self )
 		
 		if (self.Bullet.ExplosionEffect) then
 			local effectdata = EffectData()
@@ -103,7 +101,6 @@ function BULLET:Think()
 		self:Remove()
 	end
 end
-
 -- This is called when the bullet collides (Advanced users only. It only works if you first override initialize and change it to vphysics)
 function BULLET:PhysicsCollide(CollisionData, PhysObj)
 	if (self.Collided == false) then
