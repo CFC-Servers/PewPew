@@ -6,7 +6,7 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "[Modifiable] 155mm Artillery (HE)"
+BULLET.Name = "[Modifiable] 155mm Artillery Barrage(HE)"
 BULLET.Author = "Hexwolf (Base by Divran)"
 BULLET.Description = "An 155mm artillery piece barrage with a modifiable speed."
 BULLET.AdminOnly = false
