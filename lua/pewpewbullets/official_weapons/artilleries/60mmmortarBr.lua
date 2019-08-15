@@ -30,7 +30,7 @@ BULLET.ExplosionEffect = "HEATsplode"
 BULLET.EmptyMagSound = nil
 
 -- Movement
-BULLET.Speed = 40
+BULLET.Speed = 35
 BULLET.Gravity = 0.1
 BULLET.RecoilForce = 500
 BULLET.Spread = 1
@@ -47,9 +47,9 @@ BULLET.PlayerDamage = 110
 BULLET.PlayerDamageRadius = 400
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 0.1
+BULLET.Reloadtime = 0.2
 BULLET.Ammo = 5
-BULLET.AmmoReloadtime = 30
+BULLET.AmmoReloadtime = 25
 
 -- Other
 BULLET.Lifetime = nil
