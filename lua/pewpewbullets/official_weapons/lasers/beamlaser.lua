@@ -19,7 +19,7 @@ BULLET.ExplosionEffect = "pewpew_laserbeam"
 
 -- Damage
 BULLET.DamageType = "PointDamage"
-BULLET.Damage = 4
+BULLET.Damage = 15
 
 -- Reloading/Ammo
 BULLET.Reloadtime = 0.01

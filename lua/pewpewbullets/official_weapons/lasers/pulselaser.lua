@@ -6,7 +6,7 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Medium Laser"
+BULLET.Name = "Pulse Laser"
 BULLET.Author = "Colonel Thirty Two"
 BULLET.Description = "Laser weapon with medium rate of fire. Does not slice through entities."
 BULLET.AdminOnly = false
