@@ -11,14 +11,14 @@ BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
 
 -- Appearance
-BULLET.Model = "models/props_interiors/toilet_b.mdl"
+BULLET.Model = "models/props_interiors/toilet.mdl"
 BULLET.Color = nil
 
 -- Effects / Sounds
-BULLET.FireSound = {"Flesh_Bloody.ImpactHard"}
+BULLET.FireSound = {"SlipperySlime.StepLeft"}
 BULLET.ExplosionSound = {"physics/surfaces/underwater_impact_bullet3.wav"}
-BULLET.FireEffect = "muzzleflash"
-BULLET.ExplosionEffect = "mghit"
+BULLET.FireEffect = "striderblood_medium"
+BULLET.ExplosionEffect = "striderblood_small"
 
 -- Movement
 BULLET.Speed = 25
@@ -79,7 +79,7 @@ end
 
 -- Cannon Think (Is run on: Cannon)
 function BULLET:CannonThink()
-	if (!self.ChargeSound) then self.ChargeSound = CreateSound( self.Entity, "ambient/machines/spin_loop.wav" ) end
+	if (!self.ChargeSound) then self.ChargeSound = CreateSound( self.Entity, "SlipperySlime.StepLeft" ) end
 	if (!self.ChargeUpTime) then self.ChargeUpTime = 0 end
 	if (CurTime() - self.LastFired > self.Bullet.Reloadtime and self.CanFire == false) then -- if you can fire
 		if (self.Ammo <= 0 and self.Bullet.Ammo > 0) then -- check for ammo
