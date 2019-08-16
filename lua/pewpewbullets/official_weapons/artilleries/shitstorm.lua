@@ -17,8 +17,8 @@ BULLET.Color = nil
 -- Effects / Sounds
 BULLET.FireSound = {"SlipperySlime.StepLeft"}
 BULLET.ExplosionSound = {"Flesh_Bloody.ImpactHard"}
-BULLET.FireEffect = "StriderBlood"
-BULLET.ExplosionEffect = "StriderBlood"
+BULLET.FireEffect = "AntlionGib"
+BULLET.ExplosionEffect = "AntlionGib"
 
 -- Movement
 BULLET.Speed = 25
