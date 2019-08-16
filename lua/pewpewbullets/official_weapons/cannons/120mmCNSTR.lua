@@ -36,9 +36,9 @@ BULLET.DamageType = "PointDamage" -- Look in gcombat_damagecontrol.lua for avail
 BULLET.Damage = 20
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 0
+BULLET.Reloadtime = 9
 BULLET.Ammo = 1
-BULLET.AmmoReloadtime = 1
+BULLET.AmmoReloadtime = 0
 
 BULLET.EnergyPerShot = 14000
 

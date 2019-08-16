@@ -6,7 +6,7 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "120mm AL Cannon (HE)"
+BULLET.Name = "120mm Auto loading Cannon (HE)"
 BULLET.Author = "Chippy"
 BULLET.Description = "Auto Loading 120mm High Explosive tank cannon."
 BULLET.AdminOnly = false
@@ -42,7 +42,7 @@ BULLET.PlayerDamage = 110
 BULLET.PlayerDamageRadius = 500
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 8
+BULLET.Reloadtime = 7
 BULLET.Ammo = 5
 BULLET.AmmoReloadtime = 45
 

@@ -17,7 +17,7 @@ BULLET.Model = "models/combatmodels/tankshell_25mm.mdl"
 BULLET.FireSound = {"arty/25mm.wav"}
 BULLET.ExplosionSound = nil
 BULLET.FireEffect = "cannon_flare"
-BULLET.ExplosionEffect = "gcombat_explosion"
+BULLET.ExplosionEffect = "HEATsplode"
 
 -- Movement
 BULLET.Speed = 150
@@ -27,19 +27,16 @@ BULLET.Spread = 0.3
 BULLET.AffectedBySBGravity = true
 
 -- Damage
-BULLET.DamageType = "BlastDamage"
+BULLET.DamageType = "SliceDamage"
 BULLET.Damage = 200
-BULLET.Radius = 10
-BULLET.RangeDamageMul = 2.8
-BULLET.NumberOfSlices = nil
-BULLET.SliceDistance = nil
-BULLET.PlayerDamageRadius = 110
-BULLET.PlayerDamage = 10
+BULLET.NumberOfSlices = 3
+BULLET.SliceDistance = 250
+BULLET.ReducedDamagePerSlice = 0
 
 -- Reloading/Ammo
 BULLET.Reloadtime = 0.08
 BULLET.Ammo = 25
-BULLET.AmmoReloadtime = 14
+BULLET.AmmoReloadtime = 8
 
 -- Other
 BULLET.EnergyPerShot = 80
