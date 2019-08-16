@@ -6,7 +6,7 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "120mm AL Cannon (AP)"
+BULLET.Name = "120mm Auto loading Cannon (AP)"
 BULLET.Author = "Chippy"
 BULLET.Description = "Auto Loading 120mm Armor Piercing tank cannon."
 BULLET.AdminOnly = false
@@ -32,17 +32,14 @@ BULLET.Spread = 0
 BULLET.AffectedBySBGravity = true
 
 -- Damage
-BULLET.DamageType = "BlastDamage" -- Look in gcombat_damagecontrol.lua for available damage types
+BULLET.DamageType = "SliceDamage" -- Look in gcombat_damagecontrol.lua for available damage types
 BULLET.Damage = 1000
-BULLET.Radius = 200
-BULLET.RangeDamageMul = 2.2
-BULLET.NumberOfSlices = nil
-BULLET.SliceDistance = nil
-BULLET.PlayerDamage = 200
-BULLET.PlayerDamageRadius = 100
+BULLET.NumberOfSlices = 3
+BULLET.SliceDistance = 650
+BULLET.ReducedDamagePerSlice = 0
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 8
+BULLET.Reloadtime = 7
 BULLET.Ammo = 5
 BULLET.AmmoReloadtime = 45
 
