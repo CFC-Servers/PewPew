@@ -16,9 +16,9 @@ BULLET.Color = nil
 
 -- Effects / Sounds
 BULLET.FireSound = {"SlipperySlime.StepLeft"}
-BULLET.ExplosionSound = {"physics/surfaces/underwater_impact_bullet3.wav"}
-BULLET.FireEffect = "striderblood_medium"
-BULLET.ExplosionEffect = "striderblood_small"
+BULLET.ExplosionSound = {"Flesh_Bloody.ImpactHard"}
+BULLET.FireEffect = "StriderBlood"
+BULLET.ExplosionEffect = "StriderBlood"
 
 -- Movement
 BULLET.Speed = 25
