@@ -27,12 +27,12 @@ BULLET.ExplosionEffect = "explosion"
 -- Damage
 BULLET.DamageType = "BlastDamage"
 BULLET.Damage = 300
-BULLET.Radius = 250
+BULLET.Radius = 275
 BULLET.RangeDamageMul = 2.2
 BULLET.NumberOfSlices = nil
 BULLET.SliceDistance = nil
 BULLET.PlayerDamage = 110
-BULLET.PlayerDamageRadius = 200
+BULLET.PlayerDamageRadius = 225
 
 -- Reloading/Ammo
 BULLET.Reloadtime = 0.5

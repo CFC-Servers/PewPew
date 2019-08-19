@@ -4,7 +4,7 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Shitstorm"
+BULLET.Name = "Septicstorm"
 BULLET.Author = "Hexwolf"
 BULLET.Description = "When it hits he fan..."
 BULLET.AdminOnly = false
