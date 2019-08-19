@@ -6,7 +6,7 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Homing Missile (HE)"
+BULLET.Name = "Seeker Missile (HE)"
 BULLET.Author = "Divran"
 BULLET.Description = "Fires a very slow, long lasting homing missile."
 BULLET.AdminOnly = false
@@ -25,14 +25,14 @@ BULLET.FireEffect = nil
 BULLET.ExplosionEffect = "v2splode"
 
 -- Movement
-BULLET.Speed = 45
+BULLET.Speed = 20
 BULLET.Gravity = 0
 BULLET.RecoilForce = 60
 BULLET.Spread = 0
 
 -- Damage
 BULLET.DamageType = "BlastDamage"
-BULLET.Damage = 350
+BULLET.Damage = 400
 BULLET.Radius = 150
 BULLET.RangeDamageMul = 2
 BULLET.NumberOfSlices = nil
@@ -45,7 +45,7 @@ BULLET.Reloadtime = 4
 BULLET.Ammo = 0
 BULLET.AmmoReloadtime = 0
 
-BULLET.Lifetime = {15,15}
+BULLET.Lifetime = {50,50}
 BULLET.ExplodeAfterDeath = true
 BULLET.EnergyPerShot = 4800
 

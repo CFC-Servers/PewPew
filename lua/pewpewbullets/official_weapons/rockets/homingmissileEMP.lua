@@ -6,7 +6,7 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Seeker Missile (EMP)"
+BULLET.Name = "Homing Missile (EMP)"
 BULLET.Author = "Divran"
 BULLET.Description = "Fires a very slow, long lasting homing missile. Equipped with an EMP warhead."
 BULLET.AdminOnly = false
@@ -25,7 +25,7 @@ BULLET.FireEffect = nil
 BULLET.ExplosionEffect = "v2splode"
 
 -- Movement
-BULLET.Speed = 20
+BULLET.Speed = 45
 BULLET.Gravity = 0
 BULLET.RecoilForce = 60
 BULLET.Spread = 0
@@ -46,7 +46,7 @@ BULLET.Reloadtime = 4
 BULLET.Ammo = 0
 BULLET.AmmoReloadtime = 0
 
-BULLET.Lifetime = {50,50}
+BULLET.Lifetime = {15,15}
 BULLET.ExplodeAfterDeath = true
 BULLET.EnergyPerShot = 4800
 
