@@ -11,14 +11,19 @@ BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
 
 -- Appearance
-BULLET.Model = "models/props_interiors/toilet.mdl"
+BULLET.Model = "models/props_phx/misc/potato.mdl"
 BULLET.Color = nil
+BULLET.Trail = { StartSize = 7,
+				 EndSize = 0,
+				 Length = 0.6,
+				 Texture = "trails/smoke.vmt",
+				 Color = Color( 165, 42, 42, 255 ) }
 
 -- Effects / Sounds
 BULLET.FireSound = {"SlipperySlime.StepLeft"}
 BULLET.ExplosionSound = {"Flesh_Bloody.ImpactHard"}
-BULLET.FireEffect = "AntlionGib"
-BULLET.ExplosionEffect = "AntlionGib"
+BULLET.FireEffect = "watersplash"
+BULLET.ExplosionEffect = "watersplash"
 
 -- Movement
 BULLET.Speed = 25
