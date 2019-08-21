@@ -6,8 +6,8 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Homing Missile (HE)"
-BULLET.Author = "Divran"
+BULLET.Name = "[Homing] Homing Missile (HE)"
+BULLET.Author = "Hexwolf (Base by Divran)"
 BULLET.Description = "Fires a very slow, long lasting homing missile."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
@@ -33,19 +33,19 @@ BULLET.Spread = 0
 -- Damage
 BULLET.DamageType = "BlastDamage"
 BULLET.Damage = 350
-BULLET.Radius = 150
+BULLET.Radius = 300
 BULLET.RangeDamageMul = 2
 BULLET.NumberOfSlices = nil
 BULLET.SliceDistance = nil
 BULLET.PlayerDamage = 110
-BULLET.PlayerDamageRadius = 200
+BULLET.PlayerDamageRadius = 300
 
 -- Reloading/Ammo
 BULLET.Reloadtime = 4
 BULLET.Ammo = 0
 BULLET.AmmoReloadtime = 0
 
-BULLET.Lifetime = {15,15}
+BULLET.Lifetime = {10,10}
 BULLET.ExplodeAfterDeath = true
 BULLET.EnergyPerShot = 4800
 

@@ -6,9 +6,9 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "[Homing] Homing Missile (EMP)"
-BULLET.Author = "Hexwolf (Base by Divran)"
-BULLET.Description = "Fires a very slow, long lasting homing missile. Equipped with an EMP warhead."
+BULLET.Name = "[Homing] Starstreak (AP)"
+BULLET.Author = "Hexwolf (Base by Zio Matrix)"
+BULLET.Description = "Fires 3 high speed rocket powered tungsten penetrators."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
 
@@ -22,31 +22,27 @@ BULLET.Trail = nil
 BULLET.FireSound = {"arty/rocket.wav"}
 BULLET.ExplosionSound = {"weapons/explode3.wav","weapons/explode4.wav","weapons/explode5.wav"}
 BULLET.FireEffect = nil
-BULLET.ExplosionEffect = "v2splode"
+BULLET.ExplosionEffect = "HEATsplode"
 
 -- Movement
-BULLET.Speed = 45
+BULLET.Speed = 150
 BULLET.Gravity = 0
 BULLET.RecoilForce = 60
-BULLET.Spread = 0
+BULLET.Spread = 1
 
 -- Damage
-BULLET.DamageType = "EMPDamage"
-BULLET.Damage = nil
-BULLET.Radius = 300
-BULLET.RangeDamageMul = nil
-BULLET.NumberOfSlices = nil
-BULLET.SliceDistance = nil
-BULLET.Duration = 10
-BULLET.PlayerDamage = nil
-BULLET.PlayerDamageRadius = nil
+BULLET.DamageType = "SliceDamage" -- Look in gcombat_damagecontrol.lua for available damage types
+BULLET.Damage = 500
+BULLET.NumberOfSlices = 5
+BULLET.SliceDistance = 500
+BULLET.ReducedDamagePerSlice = 0
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 4
-BULLET.Ammo = 0
-BULLET.AmmoReloadtime = 0
+BULLET.Reloadtime = 0.01
+BULLET.Ammo = 3
+BULLET.AmmoReloadtime = 12
 
-BULLET.Lifetime = {10,10}
+BULLET.Lifetime = {15,15}
 BULLET.ExplodeAfterDeath = true
 BULLET.EnergyPerShot = 4800
 
@@ -120,7 +116,7 @@ function BULLET:Think()
 	-- Make it fly
 	self.Entity:SetPos( self.Entity:GetPos() + self.FlightDirection * self.Bullet.Speed )
 	if (self.Cannon and self.Cannon:IsValid() and self.Cannon.TargetPos) then
-		self.FlightDirection = self.FlightDirection + (self.TargetDir-self.FlightDirection) / 20
+		self.FlightDirection = self.FlightDirection + (self.TargetDir-self.FlightDirection) / 10
 		self.FlightDirection = self.FlightDirection:GetNormalized()
 
 		self.TargetDir = (self.Cannon.TargetPos-self:GetPos()):GetNormalized()
