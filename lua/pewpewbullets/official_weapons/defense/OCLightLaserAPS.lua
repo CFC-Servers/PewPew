@@ -6,9 +6,9 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Laser A.P.S."
+BULLET.Name = "Over Clocked Light Laser A.P.S."
 BULLET.Author = "Hexwolf (Base by Divran)"
-BULLET.Description = "The Laser A.P.S will target PewPew bullets and destroy them after hitting them 4 times. Has unlimited ammo."
+BULLET.Description = "The Over Clocked Light Laser A.P.S will target PewPew bullets in a 75 degree cone and destroy them after hitting them 5 times, Has improved stats but will need to recharge after 100 shots"
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
 
@@ -18,14 +18,14 @@ BULLET.FireEffect = "pewpew_defensebeam"
 
 -- Damage
 BULLET.DamageType = "DefenseDamage"
-BULLET.Damage = 25
-BULLET.Radius = 1000
-BULLET.Degrees = 75
+BULLET.Damage = 20
+BULLET.Radius = 1800
+BULLET.Degrees = 90
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 0.05
-BULLET.Ammo = 0
-BULLET.AmmoReloadtime = 0
+BULLET.Reloadtime = 0.009
+BULLET.Ammo = 100
+BULLET.AmmoReloadtime = 20
 
 -- Other
 BULLET.ExplodeAfterDeath = false

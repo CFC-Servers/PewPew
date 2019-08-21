@@ -1,4 +1,4 @@
--- Manual Defense
+-- Automatic Defense
 
 local BULLET = {}
 
@@ -6,9 +6,9 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "M.P.S."
-BULLET.Author = "Divran"
-BULLET.Description = "The Manual Protection Sytem or M.P.S. will target incoming projectiles and shoot them down within a 75 degree cone in front of it."
+BULLET.Name = "Extended Range Laser A.P.S."
+BULLET.Author = "Hexwolf (Base by Divran)"
+BULLET.Description = "The Extended Range Laser A.P.S will target PewPew bullets in a 75 degree cone and destroy them after hitting them 4 times. Has improved range but less coverage. Has unlimited ammo."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
 
@@ -18,8 +18,9 @@ BULLET.FireEffect = "pewpew_defensebeam"
 
 -- Damage
 BULLET.DamageType = "DefenseDamage"
-BULLET.Damage = 50
-BULLET.Radius = 1500
+BULLET.Damage = 25
+BULLET.Radius = 2500
+BULLET.Degrees = 33
 
 -- Reloading/Ammo
 BULLET.Reloadtime = 0.05
@@ -28,72 +29,73 @@ BULLET.AmmoReloadtime = 0
 
 -- Other
 BULLET.ExplodeAfterDeath = false
-BULLET.EnergyPerShot = 5000
+BULLET.EnergyPerShot = 2000
 
 BULLET.Gravity = 0
 
-BULLET.CustomInputs = { "Fire", "Target [VECTOR]" }
+BULLET.CustomInputs = { "Fire" }
+BULLET.CustomOutputs = { }
 
 -- Custom Functions (Only for adv users)
 -- (If you set the override var to true, the cannon/bullet will run these instead. Use these functions to do stuff which is not possible with the above variables)
 
--- Wire Input (This is called whenever a wire input is changed)
-function BULLET:WireInput( inputname, value )
-	if (inputname == "Target") then
-		self.Target = value
-	else
-		self:InputChange( inputname, value )
-	end
+local function isInCone( vPos, Pos, Dir, cosDegrees )
+	return Dir:Dot( (vPos - Pos):GetNormalized() ) > cosDegrees
 end
 
-
-local function findNearestNewSystem( Pos, Radius )
+-- FindInCone (Note: copied from E2 then edited)
+local function getClosestInCone( Entities, Pos, Dir, Degrees )
+	if #Entities == 0 then return end
+	local cosDegrees = math.cos(math.rad(Degrees))
+	
 	local closest
-	local closestDistance = Radius+0.01
+	local closestDist = 0
 	local closestPos
-	for i=1,#pewpew.Bullets do
-		local pos = pewpew.Bullets[i].Pos
-		local dist = pos:Distance( Pos )
-		if dist < closestDistance then
-			closest = pewpew.Bullets[i]
-			closestDistance = dist
-			closestPos = pos
+	if Entities[1].GetPos then -- It's an array of entities
+		for i=1,#Entities do
+			local ent = Entities[i]
+			local vPos = ent:GetPos()
+			if isInCone( vPos, Pos, Dir, cosDegrees ) then
+				local dist = vPos:Distance( Pos )
+				if closest == nil or closestDist > dist then
+					closest = ent
+					closestDist = dist
+					closestPos = vPos
+				end
+			end
 		end
-	end
-	
-	return closest, closestDistance, closestPos
-end
-
-local function findNearestOldSystem( Pos, Radius )
-	local temp1 = {}
-	local temp2 = ents.FindInSphere( Pos, Radius )
-	
-	local closest
-	local closestDistance = Radius+0.01
-	local closestPos
-	for i=1,#temp2 do
-		if temp2[i]:GetClass() == "pewpew_base_bullet" then
-			local pos = temp2[i]:GetPos()
-			local dist = pos:Distance( Pos )
-			if dist < closestDistance then
-				closest = temp2[i]
-				closestDistance = dist
-				closestPos = pos
+	else -- It's an array of pewpew bullets
+		for i=1,#Entities do
+			local ent = Entities[i]
+			local vPos = ent.Pos
+			if isInCone( vPos, Pos, Dir, cosDegrees ) then
+				local dist = vPos:Distance( Pos )
+				if closest == nil or closestDist > dist then
+					closest = ent
+					closestDist = dist
+					closestPos = vPos
+				end
 			end
 		end
 	end
 	
-	return closest, closestDistance, closestPos
+	return closest, closestDist, closestPos
 end
 
 -- Fire (Is called before the cannon is about to fire)
 function BULLET:Fire()
 	local dir, startpos = pewpew:GetFireDirection( self.Direction, self )
-	if startpos:Distance( self.Target ) > self.Bullet.Radius then return end
 	
-	local found1, distance1, pos1 = findNearestNewSystem( self.Target, 120 )
-	local found2, distance2, pos2 = findNearestOldSystem( self.Target, 120 )
+	
+	local temp1 = {}
+	local temp2 = ents.FindInSphere( startpos, self.Bullet.Radius )
+	for i=1,#temp2 do
+		if temp2[i]:GetClass() == "pewpew_base_bullet" then temp1[#temp1+1] = temp2[i] end
+	end
 
+	local found1, distance1, pos1 = getClosestInCone( pewpew.Bullets, startpos, dir, self.Bullet.Degrees )
+	local found2, distance2, pos2 = getClosestInCone( temp1, startpos, dir, self.Bullet.Degrees )
+	
 	local finalFound, finalPos
 	if found1 and found2 then
 		finalFound = (distance1 < distance2) and found1 or found2
@@ -102,7 +104,7 @@ function BULLET:Fire()
 		finalFound = found1 or found2
 		finalPos = (finalFound == found1) and pos1 or pos2
 	end
-
+	
 	if finalFound ~= nil then
 		local tr = {start = startpos, endpos = pos, filter = self}
 		local trace = util.TraceLine( tr )
