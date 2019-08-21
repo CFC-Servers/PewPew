@@ -6,9 +6,9 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "A.P.S."
-BULLET.Author = "Divran"
-BULLET.Description = "The Active Protection System, or A.P.S. will automatically target and destroy projectiles in a 75 degree cone infront of it."
+BULLET.Name = "Laser A.P.S."
+BULLET.Author = "Hexwolf (Base by Divran)"
+BULLET.Description = "The Laser A.P.S will target PewPew bullets and destroy them after hitting them 4 times. Has unlimited ammo."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
 
@@ -23,7 +23,7 @@ BULLET.Radius = 1000
 BULLET.Degrees = 75
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 0.09
+BULLET.Reloadtime = 0.05
 BULLET.Ammo = 0
 BULLET.AmmoReloadtime = 0
 

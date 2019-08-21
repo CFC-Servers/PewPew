@@ -6,8 +6,8 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Homing Missile (HEAT)"
-BULLET.Author = "Divran"
+BULLET.Name = "[Homing] Homing Missile (HEAT)"
+BULLET.Author = "Hexwolf (Base by Divran)"
 BULLET.Description = "Fires a very slow, long lasting homing missile Equipped with a HEAT warhead."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
@@ -42,7 +42,7 @@ BULLET.Reloadtime = 4
 BULLET.Ammo = 0
 BULLET.AmmoReloadtime = 0
 
-BULLET.Lifetime = {15,15}
+BULLET.Lifetime = {10,10}
 BULLET.ExplodeAfterDeath = true
 BULLET.EnergyPerShot = 4800
 

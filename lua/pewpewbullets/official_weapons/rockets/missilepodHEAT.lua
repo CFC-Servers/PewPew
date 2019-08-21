@@ -6,7 +6,7 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Rocket Launcher (HEAT)"
+BULLET.Name = "Missile Pod (HEAT)"
 BULLET.Author = "Hexwolf (Base by Divran)"
 BULLET.Description = "Rocket launcher with 6 rockets. Equipped with a HEAT warhead."
 BULLET.AdminOnly = false

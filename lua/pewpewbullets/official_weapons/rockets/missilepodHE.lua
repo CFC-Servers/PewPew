@@ -6,9 +6,9 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Rocket Launcher (EMP)"
+BULLET.Name = "Missile Pod (HE)"
 BULLET.Author = "Hexwolf (Base by Divran)"
-BULLET.Description = "Rocket launcher with 6 rockets. Equipped with an EMP warhead."
+BULLET.Description = "Rocket launcher with 6 rockets."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
 
@@ -35,15 +35,14 @@ BULLET.RecoilForce = 20
 BULLET.Spread = 1.5
 
 -- Damage
-BULLET.DamageType = "EMPDamage"
-BULLET.Damage = nil
-BULLET.Radius = 300
-BULLET.RangeDamageMul = nil
+BULLET.DamageType = "BlastDamage"
+BULLET.Damage = 350
+BULLET.Radius = 150
+BULLET.RangeDamageMul = 2
 BULLET.NumberOfSlices = nil
 BULLET.SliceDistance = nil
-BULLET.Duration = 3
-BULLET.PlayerDamage = nil
-BULLET.PlayerDamageRadius = nil
+BULLET.PlayerDamage = 125
+BULLET.PlayerDamageRadius = 300
 
 -- Reloading/Ammo
 BULLET.Reloadtime = 0.5
