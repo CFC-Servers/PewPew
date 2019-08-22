@@ -6,8 +6,8 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "37mm Cannon (HE)"
-BULLET.Author = "Divran"
+BULLET.Name = "37mm Auto Cannon (HE)"
+BULLET.Author = "Hexwolf (Base by Divran)"
 BULLET.Description = "Rapid fire, low damage."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
@@ -26,7 +26,7 @@ BULLET.ExplosionEffect = "HEATsplode"
 
 -- Movement
 BULLET.Speed = 125
---BULLET.Gravity = 0.1
+BULLET.Gravity = 0.1
 BULLET.RecoilForce = 100
 BULLET.Spread = 0
 BULLET.AffectedBySBGravity = true
@@ -42,9 +42,9 @@ BULLET.PlayerDamage = 110
 BULLET.PlayerDamageRadius = 175
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 2
-BULLET.Ammo = 0
-BULLET.AmmoReloadtime = 0
+BULLET.Reloadtime = 1
+BULLET.Ammo = 15
+BULLET.AmmoReloadtime = 3
 
 BULLET.EnergyPerShot = 2500
 
