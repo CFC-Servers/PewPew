@@ -6,7 +6,7 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "35mm Grenade Launcher"
+BULLET.Name = "35mm Low Velocity Grenade Launcher"
 BULLET.Author = "Hexwolf (Base by Divran)"
 BULLET.Description = "Fires a timed grenade."
 BULLET.AdminOnly = false
@@ -30,7 +30,7 @@ BULLET.ExplosionEffect = "HEATsplode"
 BULLET.EmptyMagSound = nil
 
 -- Movement
-BULLET.Speed = 70
+BULLET.Speed = 50
 BULLET.RecoilForce = 100
 BULLET.Spread = 0
 

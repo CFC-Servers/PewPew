@@ -22,8 +22,8 @@ BULLET.Trail = { StartSize = 5,
 -- Effects / Sounds
 BULLET.FireSound = {"SlipperySlime.StepLeft"}
 BULLET.ExplosionSound = {"Flesh_Bloody.ImpactHard"}
-BULLET.FireEffect = "antlion_gib_02_gas"
-BULLET.ExplosionEffect = "antlion_gib_02_gas"
+BULLET.FireEffect = "WheelDust"
+BULLET.ExplosionEffect = "WheelDust"
 
 -- Movement
 BULLET.Speed = 25
