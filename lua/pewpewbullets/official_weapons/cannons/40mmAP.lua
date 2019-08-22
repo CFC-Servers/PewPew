@@ -6,8 +6,8 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "40mm Cannon (AP)"
-BULLET.Author = "Divran"
+BULLET.Name = "40mm Auto Cannon (AP)"
+BULLET.Author = "Hexwolf (Base by Divran)"
 BULLET.Description = "Rapid fire, low damage."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
@@ -26,7 +26,7 @@ BULLET.ExplosionEffect = "HEATsplode"
 
 -- Movement
 BULLET.Speed = 170
---BULLET.Gravity = 0.1
+BULLET.Gravity = 0.1
 BULLET.RecoilForce = 120
 BULLET.Spread = 0
 BULLET.AffectedBySBGravity = true
@@ -39,9 +39,9 @@ BULLET.SliceDistance = 350
 BULLET.ReducedDamagePerSlice = 0
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 2.5
-BULLET.Ammo = 0
-BULLET.AmmoReloadtime = 0
+BULLET.Reloadtime = 1.5
+BULLET.Ammo = 15
+BULLET.AmmoReloadtime = 4
 
 BULLET.EnergyPerShot = 3400
 
