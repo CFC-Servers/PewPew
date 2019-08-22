@@ -13,7 +13,7 @@ BULLET.SuperAdminOnly = false
 -- Appearance
 BULLET.Model = "models/props_phx/misc/potato.mdl"
 BULLET.Color = nil
-BULLET.Trail = { StartSize = 7,
+BULLET.Trail = { StartSize = 5,
 				 EndSize = 0,
 				 Length = 0.6,
 				 Texture = "trails/smoke.vmt",
@@ -22,8 +22,8 @@ BULLET.Trail = { StartSize = 7,
 -- Effects / Sounds
 BULLET.FireSound = {"SlipperySlime.StepLeft"}
 BULLET.ExplosionSound = {"Flesh_Bloody.ImpactHard"}
-BULLET.FireEffect = "watersplash"
-BULLET.ExplosionEffect = "watersplash"
+BULLET.FireEffect = "antlion_gib_02_gas"
+BULLET.ExplosionEffect = "antlion_gib_02_gas"
 
 -- Movement
 BULLET.Speed = 25

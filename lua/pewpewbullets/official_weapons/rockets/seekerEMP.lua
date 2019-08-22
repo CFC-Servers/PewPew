@@ -6,8 +6,8 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Seeker Missile (EMP)"
-BULLET.Author = "Divran"
+BULLET.Name = "[Homing] Seeker Missile (EMP)"
+BULLET.Author = "Hexwolf (Base by Divran)"
 BULLET.Description = "Fires a very slow, long lasting homing missile. Equipped with an EMP warhead."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false

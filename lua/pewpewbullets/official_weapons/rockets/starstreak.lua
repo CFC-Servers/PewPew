@@ -28,7 +28,7 @@ BULLET.ExplosionEffect = "HEATsplode"
 BULLET.Speed = 150
 BULLET.Gravity = 0
 BULLET.RecoilForce = 60
-BULLET.Spread = 1
+BULLET.Spread = 3
 
 -- Damage
 BULLET.DamageType = "SliceDamage" -- Look in gcombat_damagecontrol.lua for available damage types
