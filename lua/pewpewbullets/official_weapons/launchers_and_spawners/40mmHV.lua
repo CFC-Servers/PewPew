@@ -6,7 +6,7 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "35mm Grenade Launcher"
+BULLET.Name = "40mm High Velocity Grenade Launcher"
 BULLET.Author = "Hexwolf (Base by Divran)"
 BULLET.Description = "Fires a timed grenade."
 BULLET.AdminOnly = false
@@ -36,14 +36,14 @@ BULLET.Spread = 0
 
 -- Damage
 BULLET.DamageType = "BlastDamage"
-BULLET.Damage = 225
-BULLET.Radius = 225
+BULLET.Damage = 375
+BULLET.Radius = 375
 BULLET.RangeDamageMul = 2.6
-BULLET.PlayerDamage = 150
-BULLET.PlayerDamageRadius = 200
+BULLET.PlayerDamage = 200
+BULLET.PlayerDamageRadius = 425
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 1
+BULLET.Reloadtime = 2
 BULLET.Ammo = 0
 BULLET.AmmoReloadtime = 0
 
