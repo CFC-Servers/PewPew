@@ -23,7 +23,7 @@ BULLET.Radius = 750
 BULLET.Degrees = 180
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 0.08
+BULLET.Reloadtime = 0.15
 BULLET.Ammo = 0
 BULLET.AmmoReloadtime = 0
 
