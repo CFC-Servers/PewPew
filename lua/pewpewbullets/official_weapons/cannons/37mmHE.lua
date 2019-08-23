@@ -26,9 +26,9 @@ BULLET.ExplosionEffect = "HEATsplode"
 
 -- Movement
 BULLET.Speed = 125
-BULLET.Gravity = 0.1
+BULLET.Gravity = 0.3
 BULLET.RecoilForce = 100
-BULLET.Spread = 0
+BULLET.Spread = 0.2
 BULLET.AffectedBySBGravity = true
 
 -- Damage
@@ -42,7 +42,7 @@ BULLET.PlayerDamage = 110
 BULLET.PlayerDamageRadius = 175
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 0.1
+BULLET.Reloadtime = 0.11
 BULLET.Ammo = 15
 BULLET.AmmoReloadtime = 3
 
