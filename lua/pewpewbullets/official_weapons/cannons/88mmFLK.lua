@@ -8,8 +8,8 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "88mm Flak Cannon"
-BULLET.Author = "Divran"
+BULLET.Name = "[Modifiable] 88mm Flak Cannon"
+BULLET.Author = "Hexwolf (Base by Divran)"
 BULLET.Description = "Shoots bullets which explode in midair, making it easier to shoot down airplanes."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
@@ -41,7 +41,7 @@ BULLET.RangeDamageMul = 2
 BULLET.NumberOfSlices = nil
 BULLET.SliceDistance = nil
 BULLET.PlayerDamage = 100
-BULLET.PlayerDamageRadius = 450
+BULLET.PlayerDamageRadius = 250
 
 -- Reloading/Ammo
 BULLET.Reloadtime = 3.5

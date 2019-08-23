@@ -7,8 +7,8 @@ BULLET.Version = 2
 
 -- General Information
 BULLET.Name = "Warhead"
-BULLET.Author = "Divran"
-BULLET.Description = "Warhead. Low damage, high radius."
+BULLET.Author = "Hexwolf (Base by Divran)"
+BULLET.Description = "Activate and impact whatever you want to explode."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
 
