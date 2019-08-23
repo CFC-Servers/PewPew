@@ -35,7 +35,7 @@ BULLET.ReducedDamagePerSlice = 0
 
 -- Reloading/Ammo
 BULLET.Reloadtime = 0.1
-BULLET.Ammo = 20
+BULLET.Ammo = 30
 BULLET.AmmoReloadtime = 8
 
 -- Other
