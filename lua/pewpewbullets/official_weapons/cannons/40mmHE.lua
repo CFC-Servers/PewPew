@@ -25,8 +25,8 @@ BULLET.FireEffect = "cannon_flare"
 BULLET.ExplosionEffect = "HEATsplode"
 
 -- Movement
-BULLET.Speed = 120
-BULLET.Gravity = 0.4
+BULLET.Speed = 100
+BULLET.Gravity = 6
 BULLET.RecoilForce = 120
 BULLET.Spread = 0.3
 BULLET.AffectedBySBGravity = true
