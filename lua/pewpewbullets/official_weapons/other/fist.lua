@@ -58,7 +58,7 @@ function BULLET:CannonPhysicsCollide( Data, PhysObj )
 			local SelfVel = Data.OurOldVelocity
 			local Vel = (TargetVel - SelfVel):Length()
 			
-			local Damage = math.Clamp(Vel ^ 2 / 250,1,2500)
+			local Damage = math.Clamp(Vel ^ 2 / 250,1,500)
 
 			pewpew:PointDamage( Target, Damage, self )
 			

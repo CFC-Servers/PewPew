@@ -6,8 +6,8 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "40mm Cannon (HE)"
-BULLET.Author = "Divran"
+BULLET.Name = "40mm Auto Cannon (HE)"
+BULLET.Author = "Hexwolf (Base by Divran)"
 BULLET.Description = "Rapid fire, low damage."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
@@ -20,29 +20,29 @@ BULLET.Trail = nil
 
 -- Effects / Sounds
 BULLET.FireSound = {"arty/40mm.wav"}
-BULLET.ExplosionSound = {"weapons/explode1.wav","weapons/explode2.wav"}
+BULLET.ExplosionSound = nil
 BULLET.FireEffect = "cannon_flare"
-BULLET.ExplosionEffect = "HEATsplode"
+BULLET.ExplosionEffect = "gcombat_explosion"
 
 -- Movement
-BULLET.Speed = 120
---BULLET.Gravity = 0.1
+BULLET.Speed = 100
+BULLET.Gravity = 6
 BULLET.RecoilForce = 120
-BULLET.Spread = 0
+BULLET.Spread = 0.3
 BULLET.AffectedBySBGravity = true
 
 -- Damage
 BULLET.DamageType = "BlastDamage"
 BULLET.Damage = 200
-BULLET.Radius = 200
+BULLET.Radius = 225
 BULLET.RangeDamageMul = 2.2
 BULLET.PlayerDamage = 110
-BULLET.PlayerDamageRadius = 200
+BULLET.PlayerDamageRadius = 225
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 3
-BULLET.Ammo = 0
-BULLET.AmmoReloadtime = 0
+BULLET.Reloadtime = 0.3
+BULLET.Ammo = 15
+BULLET.AmmoReloadtime = 5
 
 BULLET.EnergyPerShot = 3400
 

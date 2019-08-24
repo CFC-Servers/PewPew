@@ -6,8 +6,8 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "37mm Cannon (AP)"
-BULLET.Author = "Divran"
+BULLET.Name = "37mm Auto Cannon (AP)"
+BULLET.Author = "Hexwolf (Base by Divran)"
 BULLET.Description = "Rapid fire, low damage."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
@@ -20,28 +20,28 @@ BULLET.Trail = nil
 
 -- Effects / Sounds
 BULLET.FireSound = {"arty/37mm.wav"}
-BULLET.ExplosionSound = {"weapons/explode1.wav","weapons/explode2.wav"}
+BULLET.ExplosionSound = nil
 BULLET.FireEffect = "cannon_flare"
-BULLET.ExplosionEffect = "HEATsplode"
+BULLET.ExplosionEffect = "gcombat_explosion"
 
 -- Movement
 BULLET.Speed = 175
---BULLET.Gravity = 0.1
+BULLET.Gravity = 5
 BULLET.RecoilForce = 100
-BULLET.Spread = 0
+BULLET.Spread = 0.2
 BULLET.AffectedBySBGravity = true
 
 -- Damage
 BULLET.DamageType = "SliceDamage"
-BULLET.Damage = 300
+BULLET.Damage = 275
 BULLET.NumberOfSlices = 3
 BULLET.SliceDistance = 300
 BULLET.ReducedDamagePerSlice = 0
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 2.5
-BULLET.Ammo = 0
-BULLET.AmmoReloadtime = 0
+BULLET.Reloadtime = 0.2
+BULLET.Ammo = 15
+BULLET.AmmoReloadtime = 5
 
 BULLET.EnergyPerShot = 2500
 

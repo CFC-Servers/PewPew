@@ -6,9 +6,9 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "A.P.S."
-BULLET.Author = "Divran"
-BULLET.Description = "The Active Protection System, or A.P.S. will automatically target and destroy projectiles in a 75 degree cone infront of it."
+BULLET.Name = "Extended Range Laser A.P.S."
+BULLET.Author = "Hexwolf (Base by Divran)"
+BULLET.Description = "The Extended Range Laser A.P.S will target PewPew bullets in a 75 degree cone and destroy them after hitting them 4 times. Has improved range but less coverage. Has unlimited ammo."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
 
@@ -19,11 +19,11 @@ BULLET.FireEffect = "pewpew_defensebeam"
 -- Damage
 BULLET.DamageType = "DefenseDamage"
 BULLET.Damage = 25
-BULLET.Radius = 1000
-BULLET.Degrees = 75
+BULLET.Radius = 2500
+BULLET.Degrees = 33
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 0.09
+BULLET.Reloadtime = 0.1
 BULLET.Ammo = 0
 BULLET.AmmoReloadtime = 0
 

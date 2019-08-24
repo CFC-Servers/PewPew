@@ -17,7 +17,7 @@ BULLET.Model = "models/combatmodels/tankshell_25mm.mdl"
 BULLET.FireSound = {"arty/25mm.wav"}
 BULLET.ExplosionSound = nil
 BULLET.FireEffect = "cannon_flare"
-BULLET.ExplosionEffect = "HEATsplode"
+BULLET.ExplosionEffect = "gcombat_explosion"
 
 -- Movement
 BULLET.Speed = 150
@@ -35,8 +35,8 @@ BULLET.ReducedDamagePerSlice = 0
 
 -- Reloading/Ammo
 BULLET.Reloadtime = 0.08
-BULLET.Ammo = 25
-BULLET.AmmoReloadtime = 8
+BULLET.Ammo = 30
+BULLET.AmmoReloadtime = 7
 
 -- Other
 BULLET.EnergyPerShot = 80

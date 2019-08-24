@@ -6,8 +6,8 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Seeker Missile (HEAT)"
-BULLET.Author = "Divran"
+BULLET.Name = "[Homing] Homing Missile (HEAT)"
+BULLET.Author = "Hexwolf (Base by Divran)"
 BULLET.Description = "Fires a very slow, long lasting homing missile Equipped with a HEAT warhead."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
@@ -25,14 +25,14 @@ BULLET.FireEffect = nil
 BULLET.ExplosionEffect = "v2splode"
 
 -- Movement
-BULLET.Speed = 20
+BULLET.Speed = 45
 BULLET.Gravity = 0
 BULLET.RecoilForce = 60
 BULLET.Spread = 0
 
 -- Damage
 BULLET.DamageType = "SliceDamage" -- Look in gcombat_damagecontrol.lua for available damage types
-BULLET.Damage = 1500
+BULLET.Damage = 1250
 BULLET.NumberOfSlices = 5
 BULLET.SliceDistance = 500
 BULLET.ReducedDamagePerSlice = 0
@@ -42,7 +42,7 @@ BULLET.Reloadtime = 4
 BULLET.Ammo = 0
 BULLET.AmmoReloadtime = 0
 
-BULLET.Lifetime = {50,50}
+BULLET.Lifetime = {10,10}
 BULLET.ExplodeAfterDeath = true
 BULLET.EnergyPerShot = 4800
 

@@ -25,12 +25,12 @@ BULLET.ExplosionEffect = "gcombat_explosion"
 -- Damage
 BULLET.DamageType = "BlastDamage"
 BULLET.Damage = 1000
-BULLET.Radius = 600
+BULLET.Radius = 625
 BULLET.RangeDamageMul = 2.2
 BULLET.NumberOfSlices = nil
 BULLET.SliceDistance = nil
 BULLET.PlayerDamage = 150
-BULLET.PlayerDamageRadius = 400
+BULLET.PlayerDamageRadius = 425
 
 -- Reloading/Ammo
 BULLET.Reloadtime = 0.01

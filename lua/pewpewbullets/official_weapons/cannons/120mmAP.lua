@@ -22,7 +22,7 @@ BULLET.Trail = nil
 BULLET.FireSound = {"chippy/120mm.wav"}
 BULLET.ExplosionSound = {"weapons/explode1.wav","weapons/explode2.wav"}
 BULLET.FireEffect = "cannon_flare"
-BULLET.ExplosionEffect = "HEATsplode"
+BULLET.ExplosionEffect = "gcombat_explosion"
 
 -- Movement
 BULLET.Speed = 140
@@ -39,7 +39,7 @@ BULLET.SliceDistance = 650
 BULLET.ReducedDamagePerSlice = 0
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 9
+BULLET.Reloadtime = 8
 BULLET.Ammo = 0
 BULLET.AmmoReloadtime = 0
 
