@@ -1,4 +1,4 @@
--- Missile Nuke
+-- Homing Missile
 
 local BULLET = {}
 
@@ -6,10 +6,10 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Missile Nuke"
-BULLET.Author = "Divran"
-BULLET.Description = "BLAAAAAARGH"
-BULLET.AdminOnly = true
+BULLET.Name = "Missile-Homing [Debug]"
+BULLET.Author = "Hexwolf (Base by Divran)"
+BULLET.Description = "Fires a very slow, long lasting homing missile. Equipped with an EMP warhead."
+BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
 
 -- Appearance
@@ -20,32 +20,35 @@ BULLET.Trail = nil
 
 -- Effects / Sounds
 BULLET.FireSound = {"arty/rocket.wav"}
-BULLET.ExplosionSound = { "ambient/explosions/citadel_end_explosion1.wav", "ambient/explosions/citadel_end_explosion2.wav" }
+BULLET.ExplosionSound = {"weapons/explode3.wav","weapons/explode4.wav","weapons/explode5.wav"}
 BULLET.FireEffect = nil
-BULLET.ExplosionEffect = "breachsplode"
+BULLET.ExplosionEffect = "v2splode"
 
 -- Movement
-BULLET.Speed = 50
+BULLET.Speed = 45
 BULLET.Gravity = 0
-BULLET.RecoilForce = 0
+BULLET.RecoilForce = 60
 BULLET.Spread = 0
 
 -- Damage
-BULLET.DamageType = "BlastDamage" -- Look in gcombat_damagecontrol.lua for available damage types
-BULLET.Damage = 100000
-BULLET.Radius = 7000
-BULLET.RangeDamageMul = 2.2
+BULLET.DamageType = "EMPDamage"
+BULLET.Damage = nil
+BULLET.Radius = 300
+BULLET.RangeDamageMul = nil
 BULLET.NumberOfSlices = nil
 BULLET.SliceDistance = nil
-BULLET.PlayerDamage = 5000
-BULLET.PlayerDamageRadius = 5000
+BULLET.Duration = 10
+BULLET.PlayerDamage = nil
+BULLET.PlayerDamageRadius = nil
 
--- Reload/Ammo
-BULLET.Reloadtime = 11
+-- Reloading/Ammo
+BULLET.Reloadtime = 4
 BULLET.Ammo = 0
 BULLET.AmmoReloadtime = 0
 
-BULLET.EnergyPerShot = 11000000
+BULLET.Lifetime = {10,10}
+BULLET.ExplodeAfterDeath = true
+BULLET.EnergyPerShot = 4800
 
 BULLET.UseOldSystem = true
 
