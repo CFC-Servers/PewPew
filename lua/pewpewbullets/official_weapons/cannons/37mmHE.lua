@@ -20,7 +20,7 @@ BULLET.Trail = nil
 
 -- Effects / Sounds
 BULLET.FireSound = {"arty/37mm.wav"}
-BULLET.ExplosionSound = {"weapons/explode1.wav","weapons/explode2.wav"}
+BULLET.ExplosionSound = nil
 BULLET.FireEffect = "cannon_flare"
 BULLET.ExplosionEffect = "gcombat_explosion"
 
@@ -33,7 +33,7 @@ BULLET.AffectedBySBGravity = true
 
 -- Damage
 BULLET.DamageType = "BlastDamage"
-BULLET.Damage = 150
+BULLET.Damage = 175
 BULLET.Radius = 175
 BULLET.RangeDamageMul = 2.2
 BULLET.NumberOfSlices = nil
