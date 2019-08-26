@@ -4,7 +4,7 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Carpet Bomber (HE)"
+BULLET.Name = "Carpet Bomber [Impact] (HE)"
 BULLET.Author = "Hexwolf (Base by Divran)"
 BULLET.Description = "Rapidly drops several small bombs in a wide area."
 BULLET.AdminOnly = false
