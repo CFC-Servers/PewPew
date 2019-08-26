@@ -6,7 +6,7 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "EMP Bomb"
+BULLET.Name = "EMP Bomb [Impact] (EMP)"
 BULLET.Author = "Divran"
 BULLET.Description = "EMP Bomb. No damage, but disables wiring for 15 seconds."
 BULLET.AdminOnly = false

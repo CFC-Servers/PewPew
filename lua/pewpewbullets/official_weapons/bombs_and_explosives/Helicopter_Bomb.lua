@@ -6,7 +6,7 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Helicopter Bomb"
+BULLET.Name = "Helicopter Bomb [Contact] (HE)"
 BULLET.Author = "Divran"
 BULLET.Description = "Drops a bomb very much like the one the attack helicopter drops in HL2."
 BULLET.AdminOnly = false

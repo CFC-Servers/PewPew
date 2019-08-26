@@ -6,7 +6,7 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Warhead"
+BULLET.Name = "Warhead [Impact] (HE)"
 BULLET.Author = "Hexwolf (Base by Divran)"
 BULLET.Description = "Activate and impact whatever you want to explode."
 BULLET.AdminOnly = false
@@ -14,7 +14,7 @@ BULLET.SuperAdminOnly = false
 
 -- Effects / Sounds
 BULLET.FireSound = {"weapons/explode1.wav","weapons/explode2.wav"}
-BULLET.FireEffect = "scud_splosion"
+BULLET.FireEffect = "gcombat_explosion"
 
 -- Damage
 BULLET.DamageType = "BlastDamage" -- Look in gcombat_damagecontrol.lua for available damage types

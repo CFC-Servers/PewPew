@@ -4,7 +4,7 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "500lb bombs (HE)"
+BULLET.Name = "500lb bombs [Impact](HE)"
 BULLET.Author = "Hexwolf (Base by Divran)"
 BULLET.Description = "Drops 2 500lb bombs."
 BULLET.AdminOnly = false
