@@ -69,6 +69,8 @@ function BULLET:Initialize()
 	self.Entity:SetAngles( self.Entity:GetUp():Angle() )
 	local phys = self.Entity:GetPhysicsObject()
 	phys:SetMass(10000)
+	phys:ApplyForceCenter( self.Entity:GetForward() * phys:GetMass() * self.Bullet.Speed * 0 )
+
 end
 
 function BULLET:Think()
