@@ -70,10 +70,6 @@ function ENT:SetOptions( BULLET, ply, firekey, reloadkey, FireDirection )
 	if (!self.Ammo) then
 		self.Ammo = self.Bullet.Ammo
 	end
-
-    if (!self.ShotCount) then
-        self.ShotCount = self.Bullet.ShotCount or 1
-    end
 	
 	-- Too much ammo?
 	if (self.Ammo) then
@@ -209,15 +205,11 @@ end
 function ENT:NewSystem_FireBullet()
 	local Dir, Pos = pewpew:GetFireDirection( self.Direction, self, ent )
 	local num = self.Bullet.Spread or 0
-    if self.ShotCount then
-        for i=1, self.ShotCount do
-        	if (num and num != 0) then
-        		local randomang = Angle( math.Rand(-num,num), math.Rand(-num,num), math.Rand(-num,num) )
-        		Dir:Rotate(randomang)
-        	end
-            pewpew:FireBullet( Pos, Dir, self.Owner, self.Bullet, self, self.Direction )
-        end
-    end
+	if (num and num != 0) then
+		local randomang = Angle( math.Rand(-num,num), math.Rand(-num,num), math.Rand(-num,num) )
+		Dir:Rotate(randomang)
+	end
+	pewpew:FireBullet( Pos, Dir, self.Owner, self.Bullet, self, self.Direction )
 	
 	local Dir, Pos = pewpew:GetFireDirection( self.Direction, self, ent )
 		
