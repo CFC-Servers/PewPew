@@ -6,14 +6,14 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Tombstone 1000lb [5s](TNT)"
+BULLET.Name = "500lb bombs [4s](HE)"
 BULLET.Author = "Hexwolf (Base by Divran)"
-BULLET.Description = "Drops one massive bomb with a 5 second fuse."
+BULLET.Description = "Drops 2 500lb bombs with a 4 second fuse."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
 
 -- Appearance
-BULLET.Model = "models/props_phx/mk-82.mdl"
+BULLET.Model = "models/props_phx/ww2bomb.mdl"
 BULLET.Material = nil
 BULLET.Color = nil
 BULLET.Trail = { StartSize = 10,
@@ -23,11 +23,10 @@ BULLET.Trail = { StartSize = 10,
 				 Color = Color( 200, 200, 200, 255 ) }
 
 -- Effects / Sounds
-BULLET.FireSound = {"weapons/mortar/mortar_fire1.wav"}
-BULLET.ExplosionSound = {"weapons/explode1.wav","weapons/explode2.wav"} -- the sound is included in the effect
+BULLET.FireSound = {"npc/attack_helicopter/aheli_mine_drop1.wav"}
+BULLET.ExplosionSound = {"weapons/explode3.wav","weapons/explode4.wav","weapons/explode5.wav"}
 BULLET.FireEffect = nil
-BULLET.ExplosionEffect = "big_splosion"
-BULLET.EmptyMagSound = nil
+BULLET.ExplosionEffect = "gcombat_explosion"
 
 -- Movement
 BULLET.Speed = 0
@@ -36,21 +35,21 @@ BULLET.Spread = 0
 
 -- Damage
 BULLET.DamageType = "BlastDamage"
-BULLET.Damage = 2500
-BULLET.Radius = 800
+BULLET.Damage = 1000
+BULLET.Radius = 625
 BULLET.RangeDamageMul = 2.2
 BULLET.NumberOfSlices = nil
 BULLET.SliceDistance = nil
-BULLET.PlayerDamage = 250
-BULLET.PlayerDamageRadius = 600
+BULLET.PlayerDamage = 150
+BULLET.PlayerDamageRadius = 425
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 190
-BULLET.Ammo = 0
-BULLET.AmmoReloadtime = 0
+BULLET.Reloadtime = 0.01
+BULLET.Ammo = 2
+BULLET.AmmoReloadtime = 20
 
 -- Other
-BULLET.Lifetime = {5,5}
+BULLET.Lifetime = {4,4}
 BULLET.ExplodeAfterDeath = true
 BULLET.EnergyPerShot = 4000
 
@@ -68,9 +67,7 @@ function BULLET:Initialize()
 		
 	self.Entity:SetAngles( self.Entity:GetUp():Angle() )
 	local phys = self.Entity:GetPhysicsObject()
-	phys:SetMass(10000)
-	phys:ApplyForceCenter( self.Entity:GetForward() * phys:GetMass() * self.Bullet.Speed * 0 )
-
+	phys:SetMass(5000)
 end
 
 function BULLET:Think()

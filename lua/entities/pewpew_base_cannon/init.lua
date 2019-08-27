@@ -74,7 +74,7 @@ function ENT:SetOptions( BULLET, ply, firekey, reloadkey, FireDirection )
 	if (!self.ShotCount) then
 		self.ShotCount = self.Bullet.ShotCount or 1
 	end
-	
+  
 	-- Too much ammo?
 	if (self.Ammo) then
 		if (self.Ammo > self.Bullet.Ammo) then self.Ammo = self.Bullet.Ammo end
@@ -218,7 +218,7 @@ function ENT:NewSystem_FireBullet()
 			pewpew:FireBullet( Pos, Dir, self.Owner, self.Bullet, self, self.Direction )
 		end
 	end
-	
+  
 	local Dir, Pos = pewpew:GetFireDirection( self.Direction, self, ent )
 		
 	-- Recoil

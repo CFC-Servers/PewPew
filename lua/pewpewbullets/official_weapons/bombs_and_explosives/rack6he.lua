@@ -6,7 +6,7 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "R4CK 6 (HE)"
+BULLET.Name = "R4CK 6 [Impact] (TNT)"
 BULLET.Author = "Hexwolf (Base by Divran)"
 BULLET.Description = "Drops up to 6 bombs straight down."
 BULLET.AdminOnly = false
