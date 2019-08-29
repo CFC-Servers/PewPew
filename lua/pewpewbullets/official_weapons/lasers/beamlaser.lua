@@ -7,8 +7,8 @@ BULLET.Version = 2
 
 -- General Information
 BULLET.Name = "Beam laser"
-BULLET.Author = "Divran"
-BULLET.Description = "Fires a constant laser beam."
+BULLET.Author = "Hexwolf (Base by Divran)"
+BULLET.Description = "Light weight anti-infantry laser beam."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
 
@@ -19,10 +19,10 @@ BULLET.ExplosionEffect = "pewpew_laserbeam"
 
 -- Damage
 BULLET.DamageType = "PointDamage"
-BULLET.Damage = 1
+BULLET.Damage = 5
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 0.01
+BULLET.Reloadtime = 0.05
 BULLET.Ammo = 0
 BULLET.AmmoReloadtime = 0
 
