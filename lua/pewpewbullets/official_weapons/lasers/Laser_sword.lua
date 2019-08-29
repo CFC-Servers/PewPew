@@ -19,7 +19,7 @@ BULLET.FireEffect = "pewpew_swordeffect"
 BULLET.DamageType = "SliceDamage"
 BULLET.Damage = 50
 BULLET.NumberOfSlices = 3
-BULLET.SliceDistance = 200
+BULLET.SliceDistance = 500
 BULLET.ReducedDamagePerSlice = 0
 
 -- Reloading/Ammo
