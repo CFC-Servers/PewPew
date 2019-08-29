@@ -7,8 +7,8 @@ BULLET.Version = 2
 
 -- General Information
 BULLET.Name = "Pulse Laser"
-BULLET.Author = "Colonel Thirty Two"
-BULLET.Description = "Laser weapon with medium rate of fire. Does not slice through entities."
+BULLET.Author = "Hexwolf (Base by Colonel Thirty Two)"
+BULLET.Description = "Medium size laser, pulses high damage beams."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
 
@@ -18,10 +18,10 @@ BULLET.ExplosionEffect = "MedLaser"
 
 -- Damage
 BULLET.DamageType = "PointDamage"
-BULLET.Damage = 75
+BULLET.Damage = 90
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 0.5
+BULLET.Reloadtime = 0.3
 BULLET.Ammo = 0
 BULLET.AmmoReloadtime = 0
 
