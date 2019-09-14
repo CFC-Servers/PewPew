@@ -28,7 +28,7 @@ BULLET.AffectedBySBGravity = true
 
 -- Damage
 BULLET.DamageType = "BlastDamage"
-BULLET.Damage = 100
+BULLET.Damage = 10
 BULLET.Radius = 125
 BULLET.RangeDamageMul = 2.8
 BULLET.NumberOfSlices = nil

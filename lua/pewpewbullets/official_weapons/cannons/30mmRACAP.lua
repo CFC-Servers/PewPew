@@ -28,7 +28,7 @@ BULLET.AffectedBySBGravity = true
 
 -- Damage
 BULLET.DamageType = "SliceDamage"
-BULLET.Damage = 250
+BULLET.Damage = 35
 BULLET.NumberOfSlices = 3
 BULLET.SliceDistance = 250
 BULLET.ReducedDamagePerSlice = 0
