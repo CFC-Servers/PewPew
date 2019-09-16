@@ -207,6 +207,86 @@ function pewpew:SliceDamage( StartPos, Direction, Damage, NumberOfSlices, MaxRan
 	return ret or HitPos or StartPos + Direction * MaxRange
 end
 
+
+
+-- Slice damage - (Deals damage to a number of entities in a line. It is stopped by the world)
+function pewpew:APHEDamage( StartPos, Direction, Damage, NumberOfSlices, MaxRange, ReducedDamagePerSlice, DamageDealer, radius, RangeDamageMul )
+	-- First trace
+	local tr = {}
+	tr.start = StartPos
+	tr.endpos = StartPos + Direction * MaxRange
+	local trace = util.TraceLine( tr )
+	local Hit = trace.Hit
+	local HitWorld = trace.HitWorld
+	local HitPos = trace.HitPos
+	local HitEnt = trace.Entity
+	
+	-- Check dmg
+	if (!self:GetConVar( "Damage" )) then
+		if (Hit) then
+			return HitPos
+		else
+			return StartPos + Direction * MaxRange
+		end
+	end
+	
+	-- Maybe an addon thinks there is no use to even start the loop?
+	if (self:CallHookBool("PewPew_InitSliceDamage",StartPos,Direction,Damage,NumberOfSlices,MaxRange,ReducedDamagePerSlice,DamageDealer) == false) then 	
+		if (Hit) then
+			return HitPos
+		else
+			return StartPos + Direction * MaxRange
+		end 
+	end
+	
+	local ret = HitPos
+	for I=1, NumberOfSlices do
+		if (HitEnt and HitEnt:IsValid()) then -- if the trace hit an entity
+			if (StartPos:Distance(HitPos) > MaxRange) then -- check distance
+				return StartPos + Direction * MaxRange
+			else
+				if (self:CallHookBool("PewPew_ShouldDoSliceDamage",HitEnt,StartPos,Direction,Damage,NumberOfSlices,MaxRange,ReducedDamagePerSlice,DamageDealer)) then
+					if (HitEnt:IsPlayer()) or (HitEnt:IsNPC()) then
+						HitEnt:TakeDamage( Damage, DamageDealer ) -- deal damage to players
+					elseif (self:CheckValid( HitEnt )) then
+						self:DealDamageBase( HitEnt, Damage, DamageDealer ) -- Deal damage to entities
+					end
+				end
+                if (NumberOfSlices == I) then
+                    pewpew:BlastDamage( HitPos, radius, Damage, RangeDamageMul, nil, DamageDealer )
+                    pewpew:PlayerBlastDamage( DamageDealer, DamageDealer, HitPos, radius, Damage )
+                    return HitPos
+                end
+				-- Reduce damage after hit
+				if (ReducedDamagePerSlice != 0) then
+					Damage = Damage - ReducedDamagePerSlice
+					if (Damage <= 0) then return HitPos end
+				end
+				
+				-- new trace
+				local tr = {}
+				tr.start = HitPos
+				tr.endpos = HitPos + Direction * MaxRange
+				tr.filter = HitEnt
+				ret = HitPos
+				local trace = util.TraceLine( tr )
+				Hit = trace.Hit
+				HitWorld = trace.HitWorld
+				HitPos = trace.HitPos
+				HitEnt = trace.Entity
+			end
+		elseif (HitWorld) then-- if the trace hit the world
+            pewpew:BlastDamage( HitPos, radius, Damage, RangeDamageMul, nil, DamageDealer )
+            pewpew:PlayerBlastDamage( DamageDealer, DamageDealer, HitPos, radius, Damage )
+            return HitPos
+		elseif (!Hit) then -- if the trace hit nothing
+			return StartPos + Direction * MaxRange
+		end
+	end
+	return ret or HitPos or StartPos + Direction * MaxRange
+end
+
+
 -- EMPDamage - (Electro Magnetic Pulse. Disables all wiring within the radius for the duration)
 pewpew.EMPAffected = {}
 

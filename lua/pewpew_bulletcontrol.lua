@@ -415,8 +415,10 @@ function pewpew:DefaultExplodeBullet( Index, Bullet, trace, SendToClient )
 		elseif (damagetyp == "DefenseDamage") then
 			self:DefenseDamage( trace.Entity, D.Damage )
 		elseif (damagetype == "FireDamage") then
-			pewpew:FireDamage( trace.Entity, D.DPS, D.Duration, damagedealer )
-		end
+			pewpew:FireDamage( trace.Entity, D.DPS, D.Duration, damagedealer )	
+        elseif (damagetype == "APHEDamage") then
+            pewpew:APHEDamage( trace.HitPos, Bullet.Vel, D.Damage, D.NumberOfSlices or 1, D.SliceDistance or 50, D.ReducedDamagePerSlice or 0, damagedealer, D.Radius, D.RangeDamageMul)
+        end
 	end
 	
 	-- Stargate shield damage
