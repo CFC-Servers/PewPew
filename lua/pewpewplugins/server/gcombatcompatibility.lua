@@ -1,10 +1,10 @@
 -- pewpew_gcombatcompatibility
 -- These functions take care of GCombat compatibility
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
 COMBATDAMAGEENGINE = 1
 gcombat = {}
 
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
 -- Blast Damage GCombat compatibility
 
 function gcombat.hcgexplode( position, radius, damage, pierce )
@@ -17,7 +17,7 @@ function gcombat.nrgexplode( position, radius, damage, pierce )
 end
 cbt_nrgexplode = gcombat.nrgexplode
 
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
 -- Point Damage GCombat compatibility
 
 function gcombat.devhit( entity, damage, pierce )
@@ -54,7 +54,7 @@ function gcombat.hcghit( entity, damage, pierce, src, dest )
 	
 	-- fix for Gau-8
 	if ( type( src ) != "Vector" ) then src = entity:GetPos() end
-	if ( type( dest ) != "Vector" ) then dest = entity:GetPos() + Vector( 0,0,1 ) end
+	if ( type( dest ) != "Vector" ) then dest = entity:GetPos() + Vector( 0, 0, 1 ) end
 	
 	if ( attack == 2 ) then
 		local effectdata1 = EffectData()
@@ -120,7 +120,7 @@ function gcombat.nrghit( entity, damage, pierce, src, dest )
 end
 cbt_dealnrghit = gcombat.nrghit
 
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
 -- Useless heat functions ...
 function gcombat.applyheat( ent, temp ) end
 cbt_applyheat = gcombat.applyheat
@@ -128,7 +128,7 @@ cbt_applyheat = gcombat.applyheat
 function gcombat.emitheat( position, radius, temp, own ) end
 cbt_emitheat = gcombat.emitheat
 
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
 -- The GCombat Death ray didn't like it when these didn't exist:
 local gcbt_p_ent = {}
 propent = {}
@@ -159,7 +159,7 @@ function propent.canmakemore( id )
 	return ( gcbt_p_ent[id].entl0 < gcbt_p_ent[id].maxents )
 end
 
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
 -- Other
 function gcombat.registerent( ent, health, armor ) end
 function gcombat.validate( ent ) return pewpew:CheckValid( ent ) end

@@ -6,7 +6,7 @@ BULLET.Version = 2
 -- General Information
 BULLET.Name = "12.7mm Burstfire machinegun"
 BULLET.Author = "Hexwolf ( Base by Divran )"
-BULLET.Description = "Burstfire 12.7mm machinegun. Bursts fire faster than the standard version, with more accuracy.."
+BULLET.Description = "Burstfire 12.7mm machinegun. Bursts fire faster than the standard version, with more accuracy .. "
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
 

@@ -16,8 +16,8 @@ BULLET.UseOldSystem = true
 -- Appearance
 BULLET.Model = "models/combatmodels/tankshell.mdl"
 BULLET.Material = nil
-BULLET.Color = Color( 255,150,0 )
-BULLET.Trail = {StartSize = 30, EndSize = 0, Length = 0.2, Texture = "trails/smoke.vmt", Color = Color( 125,125,125 )}
+BULLET.Color = Color( 255, 150, 0 )
+BULLET.Trail = {StartSize = 30, EndSize = 0, Length = 0.2, Texture = "trails/smoke.vmt", Color = Color( 125, 125, 125 )}
 
 -- Effects / Sounds
 BULLET.FireSound = {"ambient/fire/gascan_ignite1.wav"}
@@ -57,7 +57,7 @@ function BULLET:Explode( trace )
 	pewpew:PlayerBlastDamage( self.Entity, self.Entity, Pos+Norm*10, self.Bullet.Damage, self.Bullet.Radius )
 	pewpew:BlastDamage( Pos, self.Bullet.Radius, self.Bullet.Damage, self.Bullet.RangeDamageMul, self )
 	
-	local vOffset = Pos+Vector( 0,0,2 )
+	local vOffset = Pos+Vector( 0, 0, 2 )
 
 	self.Entity:EmitSound( "ambient/fire/ignite.wav", 90, 100 )
 	self.Entity:EmitSound( "ambient/explosions/explode_4.wav", 80, 100 )
@@ -71,9 +71,9 @@ function BULLET:Explode( trace )
 	//Set things on fire!
 	local EIS = ents.FindInSphere( self.Entity:GetPos(), self.Bullet.Radius*1.5 )
 	
-	for _,t in pairs( EIS ) do
+	for _, t in pairs( EIS ) do
 		if ( t:GetClass() == "prop_physics" || t:IsPlayer() || t:IsNPC() && t ~= self.Entity && ( not t:IsOnFire() ) ) then
-			t:Ignite( math.Rand( 1,5 ),0 ) //Might make a check to stop huge things being ignited
+			t:Ignite( math.Rand( 1, 5 ), 0 ) //Might make a check to stop huge things being ignited
 		end
 	end
 

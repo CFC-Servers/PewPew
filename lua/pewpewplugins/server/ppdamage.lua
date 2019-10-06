@@ -19,7 +19,7 @@ function pewpew:PropProtDamage( TargetEntity, Damage, DamageDealer )
 		if ( TargetEntityOwner == WeaponOwner ) then
 			Found = true
 		else
-			for k,v in pairs( Friends ) do
+			for k, v in pairs( Friends ) do
 				if ( v == WeaponOwner ) then
 					Found = true
 					break
@@ -29,4 +29,4 @@ function pewpew:PropProtDamage( TargetEntity, Damage, DamageDealer )
 		if ( !Found ) then return false end
 	end
 end
-hook.Add( "PewPew_ShouldDamage","PewPew_PropProtectionDamage",pewpew.PropProtDamage )
+hook.Add( "PewPew_ShouldDamage", "PewPew_PropProtectionDamage", pewpew.PropProtDamage )

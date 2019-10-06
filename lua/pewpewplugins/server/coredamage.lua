@@ -1,4 +1,4 @@
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
 -- Core
 
 pewpew:CreateConVar( "CoreDamageMul", "float", 1 )
@@ -27,7 +27,7 @@ function pewpew:DamageCore( ent, Damage )
 	if ( !ent.pewpew ) then ent.pewpew = {} end
 	if ( ent:GetClass() != "pewpew_core" ) then return end
 	ent.pewpew.CoreHealth = ent.pewpew.CoreHealth - math.abs( Damage ) * self:GetConVar( "CoreDamageMul" )
-	ent:SetNWInt( "pewpewHealth",ent.pewpew.CoreHealth )
+	ent:SetNWInt( "pewpewHealth", ent.pewpew.CoreHealth )
 	-- Wire Output
 	if WireLib then
 		WireLib.TriggerOutput( ent, "Health", ent.pewpew.CoreHealth or 0 )
@@ -45,8 +45,8 @@ function pewpew:RepairCoreHealth( ent, amount )
 	if ( !ent.pewpew.CoreHealth or !ent.pewpew.CoreMaxHealth or ent.pewpew.CoreHealth == ent.pewpew.CoreMaxHealth ) then return end
 	if ( !amount or amount == 0 ) then return end
 	-- Add health
-	ent.pewpew.CoreHealth = math.Clamp( ent.pewpew.CoreHealth+math.abs( amount ),0,ent.pewpew.CoreMaxHealth )
-	ent:SetNWInt( "pewpewHealth",ent.pewpew.CoreHealth or 0 )
+	ent.pewpew.CoreHealth = math.Clamp( ent.pewpew.CoreHealth+math.abs( amount ), 0, ent.pewpew.CoreMaxHealth )
+	ent:SetNWInt( "pewpewHealth", ent.pewpew.CoreHealth or 0 )
 		-- Wire Output
 	WireLib.TriggerOutput( ent, "Health", ent.pewpew.CoreHealth or 0 )
 end

@@ -24,7 +24,7 @@ BULLET.Trail = { StartSize = 4,
 
 -- Effects / Sounds
 BULLET.FireSound = {"weapons/mortar/mortar_fire1.wav"}
-BULLET.ExplosionSound = {"weapons/explode1.wav","weapons/explode2.wav"} -- the sound is included in the effect
+BULLET.ExplosionSound = {"weapons/explode1.wav", "weapons/explode2.wav"} -- the sound is included in the effect
 BULLET.FireEffect = nil
 BULLET.ExplosionEffect = "HEATsplode"
 BULLET.EmptyMagSound = nil
@@ -48,7 +48,7 @@ BULLET.Ammo = 15
 BULLET.AmmoReloadtime = 6
 
 -- Other
-BULLET.Lifetime = {3,3}
+BULLET.Lifetime = {3, 3}
 BULLET.ExplodeAfterDeath = true
 BULLET.EnergyPerShot = 4000
 
@@ -77,7 +77,7 @@ function BULLET:Think()
 			if ( self.Bullet.ExplodeAfterDeath ) then
 				local tr = {}
 				tr.start = self.Entity:GetPos()
-				tr.endpos = self.Entity:GetPos()-Vector( 0,0,10 )
+				tr.endpos = self.Entity:GetPos()-Vector( 0, 0, 10 )
 				tr.filter = self.Entity
 				local trace = util.TraceLine( tr )
 				self:Explode( trace )

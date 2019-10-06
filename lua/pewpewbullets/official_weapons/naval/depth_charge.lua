@@ -20,7 +20,7 @@ BULLET.Trail = nil
 
 -- Effects / Sounds
 BULLET.FireSound = {"weapons/grenade_launcher1.wav"}
-BULLET.ExplosionSound = {"weapons/explode3.wav", "weapons/explode4.wav","weapons/explode5.wav"}
+BULLET.ExplosionSound = {"weapons/explode3.wav", "weapons/explode4.wav", "weapons/explode5.wav"}
 BULLET.FireEffect = nil
 BULLET.ExplosionEffect = "pewpew_c4_explosion"
 BULLET.EmptyMagSound = nil
@@ -62,7 +62,7 @@ function BULLET:Initialize()
 	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )
 	self.Entity:SetSolid( SOLID_VPHYSICS )
 	self.FlightDirection = self.Entity:GetUp()
-	self.Entity:SetAngles( self.FlightDirection:Angle() + Angle( 0,0,90 ) )
+	self.Entity:SetAngles( self.FlightDirection:Angle() + Angle( 0, 0, 90 ) )
 	
 	local phys = self.Entity:GetPhysicsObject()
 	phys:Wake()
@@ -99,7 +99,7 @@ function BULLET:Think()
 		self.Grav = 1.7
 		self.Delay = 0
 		self.Sink = true
-		self.Entity:SetPos( self.Entity:GetPos() - Vector( 0,0,self.Grav ) )
+		self.Entity:SetPos( self.Entity:GetPos() - Vector( 0, 0, self.Grav ) )
 	end
 	
 	if ( self.Sink and not self.SinkCheck ) then
@@ -110,7 +110,7 @@ function BULLET:Think()
 	local pos = self.Entity:GetPos()
 	local tracedata = {}
 	tracedata.start = pos
-	tracedata.endpos = self.Entity:GetPos() - Vector( 0,0,50 )
+	tracedata.endpos = self.Entity:GetPos() - Vector( 0, 0, 50 )
 	tracedata.filter = self
 	local trace = util.TraceLine( tracedata )		
 	

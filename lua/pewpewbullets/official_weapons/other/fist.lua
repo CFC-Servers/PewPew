@@ -48,7 +48,7 @@ function BULLET:CannonPhysicsCollide( Data, PhysObj )
 			if ( constraint.HasConstraints( Target ) and constraint.HasConstraints( Ent ) ) then
 				local const = constraint.GetAllConstrainedEntities( Target )
 				if ( table.Count( const ) ) then
-					for k,v in pairs( const ) do
+					for k, v in pairs( const ) do
 						if ( v == Ent ) then return false end
 					end
 				end
@@ -58,7 +58,7 @@ function BULLET:CannonPhysicsCollide( Data, PhysObj )
 			local SelfVel = Data.OurOldVelocity
 			local Vel = ( TargetVel - SelfVel ):Length()
 			
-			local Damage = math.Clamp( Vel ^ 2 / 250,1,500 )
+			local Damage = math.Clamp( Vel ^ 2 / 250, 1, 500 )
 
 			pewpew:PointDamage( Target, Damage, self )
 			

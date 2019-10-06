@@ -1,9 +1,9 @@
 -- Made by Divran
 
 EFFECT.Mat = Material( "cable/redlaser" )
-/*-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+/*-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
    Init( data table )
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -*/
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -*/
 function EFFECT:Init( data )
 	self.StartPos 	= data:GetStart()	
 	self.EndPos 	= data:GetOrigin()
@@ -21,9 +21,9 @@ function EFFECT:Init( data )
 	self.Entity:SetRenderBoundsWS( self.StartPos, self.EndPos )
 end
 
-/*-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+/*-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
    THINK
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -*/
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -*/
 function EFFECT:Think( )
 
 	if self.DieTime and ( CurTime() > self.DieTime ) then
@@ -34,9 +34,9 @@ function EFFECT:Think( )
 
 end
 
-/*-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+/*-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
    Draw the effect
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -*/
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -*/
 function EFFECT:Render( )
 	local Pos = self.StartPos
 	local EPos = self.EndPos

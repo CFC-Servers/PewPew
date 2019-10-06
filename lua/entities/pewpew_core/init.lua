@@ -21,7 +21,7 @@ function ENT:Initialize()
 	if WireLib then
 		WireLib.TriggerOutput( self.Entity, "Health", self.pewpew.CoreHealth or 0 )
 		WireLib.TriggerOutput( self.Entity, "Total Health", self.pewpew.CoreMaxHealth or 0 )
-		WireLib.TriggerOutput( self.Entity, "Health Percent", math.floor( (self.pewpew.CoreHealth/self.pewpew.CoreMaxHealth )*100 ) or 0 )
+		WireLib.TriggerOutput( self.Entity, "Health Percent", math.floor( ( self.pewpew.CoreHealth/self.pewpew.CoreMaxHealth )*100 ) or 0 )
 	end
 	
 	self.Entity:NextThink( CurTime() + 1 )
@@ -95,7 +95,7 @@ function ENT:Think()
 	if WireLib then
 		WireLib.TriggerOutput( self.Entity, "Health", self.pewpew.CoreHealth or 0 )
 		WireLib.TriggerOutput( self.Entity, "Total Health", self.pewpew.CoreMaxHealth or 0 )
-		WireLib.TriggerOutput( self.Entity, "Health Percent", math.floor( (self.pewpew.CoreHealth/self.pewpew.CoreMaxHealth )*100 ) or 0 )
+		WireLib.TriggerOutput( self.Entity, "Health Percent", math.floor( ( self.pewpew.CoreHealth/self.pewpew.CoreMaxHealth )*100 ) or 0 )
 	end
 	
 	-- Run again in 5 seconds
@@ -122,11 +122,11 @@ function ENT:RemoveAllProps()
 		end
 		
 		-- Random Explosions
-		timer.Create( "PewPew_CoreDeathEffect_"..tostring( self )..CurTime(),math.Clamp( 1/( nr/10 ),0.05,1 ),math.Clamp( nr*10,2,59 ),function()
+		timer.Create( "PewPew_CoreDeathEffect_" .. tostring( self ) .. CurTime(), math.Clamp( 1/( nr/10 ), 0.05, 1 ), math.Clamp( nr*10, 2, 59 ), function()
 			if not props or type( props )! = "table" then return end
 			local ent = table.Random( props )
 			if ( ent and ent:IsValid() ) then
-				ent:EmitSound( "weapons/explode" .. math.random( 3,5 ) .. ".wav" )
+				ent:EmitSound( "weapons/explode" .. math.random( 3, 5 ) .. ".wav" )
 				local effect = EffectData()
 				local pos = ent:GetPos() + VectorRand() * ( ent:OBBMaxs()-ent:OBBMins() )
 				effect:SetOrigin( pos )
@@ -137,7 +137,7 @@ function ENT:RemoveAllProps()
 				ent.pewpew.CoreExplosions = ent.pewpew.CoreExplosions + 1
 				if ( ent.pewpew.CoreExplosions >= 4 ) then
 					local num = 0
-					for k,v in pairs( props ) do
+					for k, v in pairs( props ) do
 						num = num+1
 						if ( v == ent ) then
 							table.remove( props, num )
@@ -158,7 +158,7 @@ function ENT:RemoveAllProps()
 		end
 		
 		-- Remove them all
-		timer.Create( "PewPew_CoreDeathEffect_Remove_"..tostring( self )..CurTime(),math.Clamp( nr,2,60 ),1,function()
+		timer.Create( "PewPew_CoreDeathEffect_Remove_" .. tostring( self ) .. CurTime(), math.Clamp( nr, 2, 60 ), 1, function()
 			if props and table.Count( props ) > 0 then
 				for _, ent in pairs( props ) do
 					if ( ent and ent:IsValid() ) then

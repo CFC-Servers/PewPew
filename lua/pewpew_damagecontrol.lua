@@ -1,8 +1,8 @@
 -- PewPew Damage Control
 -- These functions take care of damage.
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
 
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
 -- Whitelist/Blacklist
 
 -- Entities in the Never Ever list will NEVER EVER take damage by PewPew weaponry.
@@ -12,12 +12,12 @@ pewpew.DamageBlacklist = { "gmod_wire" }
 -- Entity types in the whitelist will ALWAYS be harmed by PewPew weaponry, even if they are in the blacklist as well.
 pewpew.DamageWhitelist = { "gmod_wire_turret", "gmod_wire_forcer", "gmod_wire_grabber" }
 
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
 -- Hook calling:
 function pewpew:CallHookBool( HookName, ... )
-	local ret = {hook.Call( HookName,nil,self,... )}
+	local ret = {hook.Call( HookName, nil, self, ... )}
 	if ( ret and table.Count( ret ) >0 ) then
-		for k,v in pairs( ret ) do
+		for k, v in pairs( ret ) do
 			if ( v == false ) then
 				return false
 			end
@@ -27,16 +27,16 @@ function pewpew:CallHookBool( HookName, ... )
 end
 
 function pewpew:CallHookNum( HookName, ... )
-	local ret = {hook.Call( HookName,nil,self,... )}
+	local ret = {hook.Call( HookName, nil, self, ... )}
 	if ( ret and table.Count( ret ) >0 ) then
-		for k,v in pairs( ret ) do
+		for k, v in pairs( ret ) do
 			if ( type( v ) == "number" ) then return v end
 		end
 	end
 	return nil
 end
 
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
 -- Damage Types:
 
 -- Blast Damage ( A normal explosion )  ( The damage formula is " ( 1-( Distance/Radius )^RangeDamageMul ) )" )
@@ -48,7 +48,7 @@ function pewpew:BlastDamage( Position, Radius, Damage, RangeDamageMul, IgnoreEnt
 	if ( !targets or #targets == 0 ) then return end
 	
 	-- Maybe an addon thinks there is no use to even start the loop?
-	if ( self:CallHookBool( "PewPew_InitBlastDamage",Position,Radius,Damage,RangeDamageMul,IgnoreEnt,DamageDealer ) == false ) then return end
+	if ( self:CallHookBool( "PewPew_InitBlastDamage", Position, Radius, Damage, RangeDamageMul, IgnoreEnt, DamageDealer ) == false ) then return end
 	
 	local tr = {}
 	tr.start = Position
@@ -58,12 +58,12 @@ function pewpew:BlastDamage( Position, Radius, Damage, RangeDamageMul, IgnoreEnt
 	for _, ent in ipairs( targets ) do
 		if IgnoreEnt == nil or ( IgnoreEnt ~= nil and IsValid( IgnoreEnt ) and ent ~= IgnoreEnt ) then
 			-- Do any other addons or scripts in this addon have anything to say about this?
-			if ( self:CallHookBool( "PewPew_ShouldDoBlastDamage",ent,Position,Radius,Damage,RangeDamageMul,IgnoreEnt,DamageDealer ) ) then
+			if ( self:CallHookBool( "PewPew_ShouldDoBlastDamage", ent, Position, Radius, Damage, RangeDamageMul, IgnoreEnt, DamageDealer ) ) then
 				tr.endpos = ent:LocalToWorld( ent:OBBCenter() )
 				local trace = util.TraceLine( tr )
 				local Distance = Position:Distance( ent:NearestPoint( Position ) )
 				
-				if ( (!trace.Hit ) or -- If the entity has a hole in its center ( stargates? ),
+				if ( ( !trace.Hit ) or -- If the entity has a hole in its center ( stargates? ),
 					( trace.Hit and trace.Entity and trace.Entity == ent ) and -- or if the trace hit the entity,
 					( Distance < Radius ) ) then
 					local Mul = 1-( Distance/Radius )^RangeDamageMul
@@ -101,7 +101,7 @@ function pewpew:PlayerBlastDamage( Inflictor, Attacker, Pos, Radius, Damage )
 	local disablegod = {}
 	
 	local plys = ents.FindInSphere( Pos, Radius )
-	for k,v in pairs( plys ) do
+	for k, v in pairs( plys ) do
 		if ( v:IsPlayer() and !v.PewPew_God ) then
 			if ( !pewpew:CallHookBool( "PewPew_ShouldDamage", v, Damage, Inflictor ) ) then
 				v:GodEnable()
@@ -112,7 +112,7 @@ function pewpew:PlayerBlastDamage( Inflictor, Attacker, Pos, Radius, Damage )
 	
 	util.BlastDamage( Inflictor, Attacker, Pos, Radius, Damage )
 	
-	for k,v in ipairs( disablegod ) do
+	for k, v in ipairs( disablegod ) do
 		v:GodDisable()
 	end
 end
@@ -122,12 +122,12 @@ function pewpew:PointDamage( TargetEntity, Damage, DamageDealer )
 	if ( !self:GetConVar( "Damage" ) ) then return end
 	if ( TargetEntity:IsPlayer() ) or ( TargetEntity:IsNPC() ) then
 		if ( DamageDealer and DamageDealer:IsValid() ) then
-			if ( self:CallHookBool( "PewPew_ShouldDoPointDamage",TargetEntity,Damage,DamageDealer ) ) then
+			if ( self:CallHookBool( "PewPew_ShouldDoPointDamage", TargetEntity, Damage, DamageDealer ) ) then
 				TargetEntity:TakeDamage( Damage, DamageDealer )
 			end
 		end
 	else
-		if ( self:CallHookBool( "PewPew_ShouldDoPointDamage",TargetEntity,Damage,DamageDealer ) ) then
+		if ( self:CallHookBool( "PewPew_ShouldDoPointDamage", TargetEntity, Damage, DamageDealer ) ) then
 			self:DealDamageBase( TargetEntity, Damage, DamageDealer )
 		end
 	end
@@ -155,7 +155,7 @@ function pewpew:SliceDamage( StartPos, Direction, Damage, NumberOfSlices, MaxRan
 	end
 	
 	-- Maybe an addon thinks there is no use to even start the loop?
-	if ( self:CallHookBool( "PewPew_InitSliceDamage",StartPos,Direction,Damage,NumberOfSlices,MaxRange,ReducedDamagePerSlice,DamageDealer ) == false ) then 	
+	if ( self:CallHookBool( "PewPew_InitSliceDamage", StartPos, Direction, Damage, NumberOfSlices, MaxRange, ReducedDamagePerSlice, DamageDealer ) == false ) then 	
 		if ( Hit ) then
 			return HitPos
 		else
@@ -169,7 +169,7 @@ function pewpew:SliceDamage( StartPos, Direction, Damage, NumberOfSlices, MaxRan
 			if ( StartPos:Distance( HitPos ) > MaxRange ) then -- check distance
 				return StartPos + Direction * MaxRange
 			else
-				if ( self:CallHookBool( "PewPew_ShouldDoSliceDamage",HitEnt,StartPos,Direction,Damage,NumberOfSlices,MaxRange,ReducedDamagePerSlice,DamageDealer ) ) then
+				if ( self:CallHookBool( "PewPew_ShouldDoSliceDamage", HitEnt, StartPos, Direction, Damage, NumberOfSlices, MaxRange, ReducedDamagePerSlice, DamageDealer ) ) then
 					if ( HitEnt:IsPlayer() ) or ( HitEnt:IsNPC() ) then
 						HitEnt:TakeDamage( Damage, DamageDealer ) -- deal damage to players
 					elseif ( self:CheckValid( HitEnt ) ) then
@@ -240,7 +240,7 @@ function pewpew:EMPDamage( Position, Radius, Duration, DamageDealer )
 	-- Loop through all found entities
 	for _, ent in pairs( ents ) do
 		if ( ent.TriggerInput ) then
-			if ( self:CallHookBool( "PewPew_ShouldDoEMPDamage",ent,Position,Radius,Duration,DamageDealer ) ) then
+			if ( self:CallHookBool( "PewPew_ShouldDoEMPDamage", ent, Position, Radius, Duration, DamageDealer ) ) then
 				if ( !self.EMPAffected[ent:EntIndex()] ) then self.EMPAffected[ent:EntIndex()] = {} end
 				if ( self.EMPAffected[ent:EntIndex()][1] ) then -- if it is already affected
 					self.EMPAffected[ent:EntIndex()][2] = CurTime() + Duration -- edit the duration
@@ -261,7 +261,7 @@ function pewpew:FireDamage( TargetEntity, DPS, Duration, DamageDealer )
 	if ( !TargetEntity or !self:CheckValid( TargetEntity ) or !DPS or !Duration ) then return end
 	
 	-- See if any other addon/plugin wants to stop this damage
-	if ( self:CallHookBool( "PewPew_ShouldDoFireDamage",TargetEntity,DPS,Duration,DamageDealer ) == false ) then return end
+	if ( self:CallHookBool( "PewPew_ShouldDoFireDamage", TargetEntity, DPS, Duration, DamageDealer ) == false ) then return end
 	
 	-- Effect
 	TargetEntity:Ignite( Duration )
@@ -270,7 +270,7 @@ function pewpew:FireDamage( TargetEntity, DPS, Duration, DamageDealer )
 	self:DealDamageBase( TargetEntity, DPS/10 )
 	
 	-- Start a timer
-	local timername = "pewpew_firedamage_"..TargetEntity:EntIndex()..CurTime()
+	local timername = "pewpew_firedamage_" .. TargetEntity:EntIndex() .. CurTime()
 	timer.Create( timername, 0.1, Duration*10, function()
 		-- Damage
 		pewpew:DealDamageBase( TargetEntity, DPS/10, DamageDealer )
@@ -283,7 +283,7 @@ function pewpew:DefenseDamageOldSystem( TargetEntity, Damage )
 	-- Check for errors
 	if ( !TargetEntity or TargetEntity:GetClass() != "pewpew_base_bullet" or !Damage or Damage == 0 or !TargetEntity.Bullet ) then return end
 
-	if ( self:CallHookBool( "PewPew_ShouldDoDefenseDamage",TargetEntity,Damage ) == false ) then return end
+	if ( self:CallHookBool( "PewPew_ShouldDoDefenseDamage", TargetEntity, Damage ) == false ) then return end
 	
 	-- Does it have health?
 	if ( !TargetEntity.pewpew ) then TargetEntity.pewpew = {} end
@@ -305,7 +305,7 @@ end
 function pewpew:DefenseDamage( TargetEntity, Damage )
 	if type( TargetEntity ) == "Entity" then return self:DefenseDamageOldSystem( TargetEntity, Damage ) end
 	
-	if ( self:CallHookBool( "PewPew_ShouldDoDefenseDamage",TargetEntity,Damage ) == false ) then return end
+	if ( self:CallHookBool( "PewPew_ShouldDoDefenseDamage", TargetEntity, Damage ) == false ) then return end
 	
 	-- Does it have health?
 	if ( !TargetEntity.defenseDamageHealth ) then TargetEntity.defenseDamageHealth = 100 end
@@ -316,7 +316,7 @@ function pewpew:DefenseDamage( TargetEntity, Damage )
 	-- Did it die?
 	if ( TargetEntity.defenseDamageHealth <= 0 ) then
 		local Index = 0
-		for i = 1,#pewpew.Bullets do
+		for i = 1, #pewpew.Bullets do
 			if pewpew.Bullets[i] == TargetEntity then Index = i break end
 		end
 	
@@ -328,7 +328,7 @@ function pewpew:DefenseDamage( TargetEntity, Damage )
 	end
 end
 
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
 -- Base Code
 
 -- Base code for dealing damage
@@ -369,14 +369,14 @@ function pewpew:DealDamageBase( TargetEntity, Damage, DamageDealer )
 	
 	-- Deal damage
 	TargetEntity.pewpew.Health = TargetEntity.pewpew.Health - math.abs( Damage )
-	TargetEntity:SetNWInt( "pewpewHealth",TargetEntity.pewpew.Health )
+	TargetEntity:SetNWInt( "pewpewHealth", TargetEntity.pewpew.Health )
 	self:CheckIfDead( TargetEntity )
 	
 	-- Allow others to hook
-	self:CallHookBool( "PewPew_Damage",TargetEntity,Damage,DamageDealer )
+	self:CallHookBool( "PewPew_Damage", TargetEntity, Damage, DamageDealer )
 end
 
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
 -- Health
 
 -- Set the health of a spawned entity
@@ -389,8 +389,8 @@ function pewpew:SetHealth( ent )
 	local mass = phys:GetMass() or 0
 	ent.pewpew.Health = health
 	ent.pewpew.MaxMass = mass
-	ent:SetNWInt( "pewpewHealth",health )
-	ent:SetNWInt( "pewpewMaxHealth",health )
+	ent:SetNWInt( "pewpewHealth", health )
+	ent:SetNWInt( "pewpewMaxHealth", health )
 end
 
 -- Repairs the entity by the set amount
@@ -404,14 +404,14 @@ function pewpew:RepairHealth( ent, amount )
 	-- Get the max allowed health
 	local maxhealth = self:GetMaxHealth( ent )
 	-- Add health
-	ent.pewpew.Health = math.Clamp( ent.pewpew.Health+math.abs( amount ),0,maxhealth )
+	ent.pewpew.Health = math.Clamp( ent.pewpew.Health+math.abs( amount ), 0, maxhealth )
 	-- Make the health changeable again with weight tool
 	if ( ent.pewpew.Health == maxhealth ) then
 		ent.pewpew.Health = nil
 		ent.pewpew.MaxMass = nil
 	end
-	ent:SetNWInt( "pewpewHealth",ent.pewpew.Health or 0 )
-	ent:SetNWInt( "pewpewMaxHealth",maxhealth or 0 )
+	ent:SetNWInt( "pewpewHealth", ent.pewpew.Health or 0 )
+	ent:SetNWInt( "pewpewMaxHealth", maxhealth or 0 )
 end
 
 -- Returns the health of the entity without setting it
@@ -464,12 +464,12 @@ function pewpew:ReduceHealth( ent )
 	local maxhp = self:GetMaxHealth( ent )
 	if ( ent.pewpew.Health > maxhp ) then
 		ent.pewpew.Health = maxhp
-		ent:SetNWInt( "pewpewHealth",ent.pewpew.Health or 0 )
-		ent:SetNWInt( "pewpewMaxHealth",maxhp or 0 )
+		ent:SetNWInt( "pewpewHealth", ent.pewpew.Health or 0 )
+		ent:SetNWInt( "pewpewMaxHealth", maxhp or 0 )
 	end
 end
 
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
 -- Checks
 
 -- Check if the entity should be removed

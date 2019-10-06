@@ -7,11 +7,11 @@ local sqrt = math.sqrt
 
 local function RaySphereIntersection( Start, Dir, Pos, Radius ) -- Thanks to Feha
 	local A = 2 * Length( Dir )^2
-	local B = 2 * Dot( Dir,Start - Pos )
-	local C = Length( Pos )^2 + Length( Start )^2 - 2 * Dot( Pos,Start ) - Radius^2
+	local B = 2 * Dot( Dir, Start - Pos )
+	local C = Length( Pos )^2 + Length( Start )^2 - 2 * Dot( Pos, Start ) - Radius^2
 	local BAC4 = B^2-( 2*A*C )
 	if ( BAC4 >= 0 and B < 0 ) then
-		return Start + ( (-sqrt( BAC4 ) - B ) / A )*Dir
+		return Start + ( ( -sqrt( BAC4 ) - B ) / A )*Dir
 	end
 end
 
@@ -52,7 +52,7 @@ function pewpew:Trace( pos, dir, filter, Bullet ) -- Bullet arg is only necessar
 			
 			if ( trace.Hit and trace.Entity and trace.Entity:IsValid() ) then
 				if ( trace.Entity:GetClass() == "shield" ) then
-					local HitPos = RaySphereIntersection( trace.HitPos, dir, trace.Entity:GetPos(), trace.Entity:GetNWInt( "size",0 ) )
+					local HitPos = RaySphereIntersection( trace.HitPos, dir, trace.Entity:GetPos(), trace.Entity:GetNWInt( "size", 0 ) )
 					if ( HitPos ) then
 						trace.HitPos = HitPos
 						trace.HitNormal = ( HitPos - trace.Entity:GetPos() ):GetNormal()
@@ -64,7 +64,7 @@ function pewpew:Trace( pos, dir, filter, Bullet ) -- Bullet arg is only necessar
 						return self:Trace( trace.HitPos, dir, filter )
 					end
 				elseif ( trace.Entity:GetClass() == "event_horizon" ) then
-					if ( trace.Entity:GetParent() and string.find( trace.Entity:GetParent():GetClass(),"stargate_" ) and Bullet ) then
+					if ( trace.Entity:GetParent() and string.find( trace.Entity:GetParent():GetClass(), "stargate_" ) and Bullet ) then
 						local newpos, newdir = GetTeleportedVector( trace.Entity, trace.Entity.Target, trace.HitPos, dir:GetNormalized() )
 						if ( Bullet.BulletData and Bullet.BulletData.TraceDelay ) then
 							Bullet.BulletData.TraceDelay = CurTime() + ( Bullet.WeaponData.Speed * Bullet.SpeedOffset ) / ( 1/pewpew.ServerTick ) * pewpew.ServerTick
@@ -85,9 +85,9 @@ function pewpew:Trace( pos, dir, filter, Bullet ) -- Bullet arg is only necessar
 			
 			return trace		
 		else
-			for k,v in ipairs( pewpew.SGShields ) do
-				if ( v and IsValid( v ) and !v:GetNWBool( "depleted", false ) and !v:GetNWBool( "containment",false ) ) then
-					local HitPos = RaySphereIntersection( pos, dir, v:GetPos(), v:GetNWInt( "size",1 ) )
+			for k, v in ipairs( pewpew.SGShields ) do
+				if ( v and IsValid( v ) and !v:GetNWBool( "depleted", false ) and !v:GetNWBool( "containment", false ) ) then
+					local HitPos = RaySphereIntersection( pos, dir, v:GetPos(), v:GetNWInt( "size", 1 ) )
 					if ( HitPos and pos:Distance( HitPos ) <= dir:Length() ) then
 						local ret = {}
 						ret.HitPos = HitPos
@@ -102,7 +102,7 @@ function pewpew:Trace( pos, dir, filter, Bullet ) -- Bullet arg is only necessar
 			-- This doesn't work because there's no reliable way to get the target of a gate client side afaik
 			-- [[ If no SG shield was hit, go on with an EH check...
 			if ( Bullet ) then
-				for k,v in ipairs( pewpew.SGGates ) do
+				for k, v in ipairs( pewpew.SGGates ) do
 					if ( v and IsValid( v ) and v._IsOpen ) then
 						local hit, _ = RayCircleIntersection( pos, dir, v:LocalToWorld( v:OBBCenter() ), v:GetForward(), 103 )
 						if ( hit ) then
@@ -142,14 +142,14 @@ if ( CLIENT ) then
 	pewpew.SGShields = {}
 	-- pewpew.SGGates = {}
 
-	hook.Add( "OnEntityCreated","PewPew_StargateShield_Spawn",function( ent )
+	hook.Add( "OnEntityCreated", "PewPew_StargateShield_Spawn", function( ent )
 		if ( ent and IsValid( ent ) ) then
 			if ( ent:GetClass() == "shield" ) then
 				pewpew.SGShields[#pewpew.SGShields+1] = ent
-			end-- [[elseif ( string.find( ent:GetClass(),"stargate_" ) and ent.IsStargate ) then
+			end-- [[elseif ( string.find( ent:GetClass(), "stargate_" ) and ent.IsStargate ) then
 				pewpew.SGGates[#pewpew.SGGates+1] = ent
 			elseif ( ent:GetClass() == "event_horizon" ) then -- Hacky way of checking if a gate is opening
-				timer.Simple( 0,function( ent )
+				timer.Simple( 0, function( ent )
 					-- Get SG
 					local SG = ent:GetParent()
 					if ( SG and SG:IsValid() and SG.IsStargate ) then
@@ -158,41 +158,41 @@ if ( CLIENT ) then
 						end
 						SG._IsOpen = true
 					end
-				end,ent )
+				end, ent )
 			end]]
 		end
 	end )
 
-	hook.Add( "OnEntityRemoved","PewPew_StargateShield_Remove",function( ent )
+	hook.Add( "OnEntityRemoved", "PewPew_StargateShield_Remove", function( ent )
 		if ( ent:GetClass() == "shield" ) then
-			for k,v in ipairs( pewpew.SGShields ) do
+			for k, v in ipairs( pewpew.SGShields ) do
 				if ( v == ent ) then
 					table.remove( pewpew.SGShields, k )
 					return
 				end
 			end
-		end-- [[elseif ( string.find( ent:GetClass(),"stargate_" ) and ent.IsStargate ) then
-			for k,v in ipairs( pewpew.SGGates ) do
+		end-- [[elseif ( string.find( ent:GetClass(), "stargate_" ) and ent.IsStargate ) then
+			for k, v in ipairs( pewpew.SGGates ) do
 				if ( v == ent ) then
 					table.remove( pewpew.SGGates, k )
 					return
 				end
 			end
 		elseif ( ent:GetClass() == "event_horizon" ) then -- Hacky way of checking if a gate is closing
-			timer.Simple( 0,function( ent )
+			timer.Simple( 0, function( ent )
 				-- Get SG
 				local SG = ent:GetParent()
 				if ( SG and SG:IsValid() and SG.IsStargate ) then
 					SG._IsOpen = nil
 				end
-			end,ent )
+			end, ent )
 		end]]
 	end )
 	-- [[
-	hook.Add( "Initialize","PewPew_StargateInitialize",function()
-		timer.Simple( 10,function()
+	hook.Add( "Initialize", "PewPew_StargateInitialize", function()
+		timer.Simple( 10, function()
 			local e = ents.FindByClass( "stargate_*" )
-			for k,v in ipairs( e ) do
+			for k, v in ipairs( e ) do
 				if ( v.IsStargate ) then
 					pewpew.SGGates[#pewpew.SGGates+1] = v
 				end

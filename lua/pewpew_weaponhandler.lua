@@ -8,7 +8,7 @@ function pewpew:LoadWeapons()
 	
 	self:LoadDirectory( "pewpewbullets" )
 end
-concommand.Add( "PewPew_LoadBullets",function( ply,cmd,args )
+concommand.Add( "PewPew_LoadBullets", function( ply, cmd, args )
 	if not ply:IsValid() or ply:IsSuperAdmin() then
 		pewpew:LoadWeapons()
 	end
@@ -17,7 +17,7 @@ end )
 -- Reloads all weapons on the map ( useful if you've just updated several weapons and done pewpew:LoadWeapons() )
 function pewpew:ReloadWeapons()
 	local weps = ents.FindByClass( "pewpew_base_cannon" )
-	for k,v in ipairs( weps ) do
+	for k, v in ipairs( weps ) do
 		if ( v:IsValid() ) then
 			local name = v.Bullet.Name
 			v.Bullet = table.Copy( self:GetWeapon( name ) )
@@ -25,7 +25,7 @@ function pewpew:ReloadWeapons()
 		end
 	end
 end
-concommand.Add( "PewPew_ReloadWeapons",function( ply,cmd,args )
+concommand.Add( "PewPew_ReloadWeapons", function( ply, cmd, args )
 	if not ply:IsValid() or ply:IsSuperAdmin() then
 		pewpew:ReloadWeapons()
 	end
@@ -42,7 +42,7 @@ function pewpew:LoadDirectory( Dir ) -- Thanks to Jcw87 for fixing this function
 		local Temp = string.Explode( "/", Dir )
 		
 		local Temp2 = self.Categories
-		for k,v in ipairs( Temp ) do
+		for k, v in ipairs( Temp ) do
 			if ( k != 1 ) then
 				if ( !Temp2[v] ) then
 					Temp2[v] = {}
@@ -56,7 +56,7 @@ function pewpew:LoadDirectory( Dir ) -- Thanks to Jcw87 for fixing this function
 		CurrentCategoryTable = self.Categories
 	end
 	
-	local entries,directories = file.Find( Dir .. "/*", "LUA" )
+	local entries, directories = file.Find( Dir .. "/*", "LUA" )
 	for _, entry in ipairs ( entries ) do
 		if ( SERVER ) then
 			AddCSLuaFile( Dir .. "/" .. entry )

@@ -20,7 +20,7 @@ BULLET.Trail = nil
 
 -- Effects / Sounds
 BULLET.FireSound = {"arty/rocket.wav"}
-BULLET.ExplosionSound = {"weapons/explode3.wav","weapons/explode4.wav","weapons/explode5.wav"}
+BULLET.ExplosionSound = {"weapons/explode3.wav", "weapons/explode4.wav", "weapons/explode5.wav"}
 BULLET.FireEffect = nil
 BULLET.ExplosionEffect = "v2splode"
 
@@ -46,7 +46,7 @@ BULLET.Reloadtime = 0.22
 BULLET.Ammo = 6
 BULLET.AmmoReloadtime = 8
 
-BULLET.Lifetime = {1.5,6}
+BULLET.Lifetime = {1.5, 6}
 BULLET.ExplodeAfterDeath = true
 BULLET.EnergyPerShot = 7000
 
@@ -71,13 +71,13 @@ function BULLET:WireInput( inputname, value )
 			self:FireBullet()
 		end
 	elseif ( inputname == "X" ) then
-		if ( !self.TargetPos ) then self.TargetPos = Vector( 0,0,0 ) end
+		if ( !self.TargetPos ) then self.TargetPos = Vector( 0, 0, 0 ) end
 		self.TargetPos.x = value
 	elseif ( inputname == "Y" ) then
-		if ( !self.TargetPos ) then self.TargetPos = Vector( 0,0,0 ) end
+		if ( !self.TargetPos ) then self.TargetPos = Vector( 0, 0, 0 ) end
 		self.TargetPos.y = value
 	elseif ( inputname == "Z" ) then
-		if ( !self.TargetPos ) then self.TargetPos = Vector( 0,0,0 ) end
+		if ( !self.TargetPos ) then self.TargetPos = Vector( 0, 0, 0 ) end
 		self.TargetPos.z = value
 	elseif ( inputname == "XYZ" ) then
 		self.TargetPos = value
@@ -90,7 +90,7 @@ function BULLET:Initialize()
 	
 	self.TargetDir = self.Entity:GetUp()
 	if ( self.Cannon:IsValid() ) then
-		if ( self.Cannon.TargetPos and self.Cannon.TargetPos != Vector( 0,0,0 ) ) then
+		if ( self.Cannon.TargetPos and self.Cannon.TargetPos != Vector( 0, 0, 0 ) ) then
 			self.TargetDir = ( self.Cannon.TargetPos-self:GetPos() ):GetNormalized()
 		end
 	end
@@ -115,7 +115,7 @@ function BULLET:Think()
 
 		self.TargetDir = ( self.Cannon.TargetPos-self:GetPos() ):GetNormalized()
 	end
-	self.Entity:SetAngles( self.FlightDirection:Angle() + Angle( 90,0,0 ) )
+	self.Entity:SetAngles( self.FlightDirection:Angle() + Angle( 90, 0, 0 ) )
 	
 	-- Lifetime
 	if ( self.Lifetime ) then

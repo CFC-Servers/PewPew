@@ -20,7 +20,7 @@ BULLET.Trail = nil
 
 -- Effects / Sounds
 BULLET.FireSound = {"arty/rocket.wav"}
-BULLET.ExplosionSound = {"weapons/explode3.wav","weapons/explode4.wav","weapons/explode5.wav"}
+BULLET.ExplosionSound = {"weapons/explode3.wav", "weapons/explode4.wav", "weapons/explode5.wav"}
 BULLET.FireEffect = nil
 BULLET.ExplosionEffect = "v2splode"
 
@@ -43,7 +43,7 @@ BULLET.Reloadtime = 10
 BULLET.Ammo = 0
 BULLET.AmmoReloadtime = 0
 
-BULLET.Lifetime = {4,4}
+BULLET.Lifetime = {4, 4}
 BULLET.ExplodeAfterDeath = true
 BULLET.EnergyPerShot = 10000
 
@@ -70,13 +70,13 @@ function BULLET:WireInput( inputname, value )
 			self:FireBullet()
 		end
 	elseif ( inputname == "X" ) then
-		if ( !self.TargetPos ) then self.TargetPos = Vector( 0,0,0 ) end
+		if ( !self.TargetPos ) then self.TargetPos = Vector( 0, 0, 0 ) end
 		self.TargetPos.x = value
 	elseif ( inputname == "Y" ) then
-		if ( !self.TargetPos ) then self.TargetPos = Vector( 0,0,0 ) end
+		if ( !self.TargetPos ) then self.TargetPos = Vector( 0, 0, 0 ) end
 		self.TargetPos.y = value
 	elseif ( inputname == "Z" ) then
-		if ( !self.TargetPos ) then self.TargetPos = Vector( 0,0,0 ) end
+		if ( !self.TargetPos ) then self.TargetPos = Vector( 0, 0, 0 ) end
 		self.TargetPos.z = value
 	elseif ( inputname == "XYZ" ) then
 		self.TargetPos = value
@@ -89,7 +89,7 @@ function BULLET:Initialize()
 	self.TargetDir = self.FlightDirection
 	self.MaxZ = self.TargetDir.z
 	if ( self.Cannon:IsValid() ) then
-		if ( self.Cannon.TargetPos and self.Cannon.TargetPos != Vector( 0,0,0 ) ) then
+		if ( self.Cannon.TargetPos and self.Cannon.TargetPos != Vector( 0, 0, 0 ) ) then
 			self.TargetDir = ( self.Cannon.TargetPos-self:GetPos() ):GetNormalized()
 		end
 	end
@@ -113,23 +113,23 @@ function BULLET:Think()
 		if ( self.TargetDir.z < self.MaxZ ) then self.MaxZ = self.TargetDir.z end
 		self.TargetDir.z = math.min( self.TargetDir.z, self.MaxZ )
 	end
-	self.Entity:SetAngles( self.FlightDirection:Angle() + Angle( 90,0,0 ) )
+	self.Entity:SetAngles( self.FlightDirection:Angle() + Angle( 90, 0, 0 ) )
 
 -- [[
 	-- Make it fly
 	self.Entity:SetPos( self.Entity:GetPos() + self.FlightDirection * self.Bullet.Speed )
-	-- if ( self.TargetDir != Vector( 0,0,0 ) ) then
+	-- if ( self.TargetDir != Vector( 0, 0, 0 ) ) then
 		self.FlightDirection = self.FlightDirection + ( self.TargetDir-self.FlightDirection ) / 20
 		self.FlightDirection = self.FlightDirection:GetNormalized()
 	-- end
 	if ( self.Cannon:IsValid() ) then
-		if ( self.Cannon.TargetPos and self.Cannon.TargetPos != Vector( 0,0,0 ) ) then
+		if ( self.Cannon.TargetPos and self.Cannon.TargetPos != Vector( 0, 0, 0 ) ) then
 			self.TargetDir = ( self.Cannon.TargetPos-self:GetPos() ):GetNormalized()
 			if ( self.TargetDir.z < self.MaxZ ) then self.MaxZ = self.TargetDir.z end
 			self.TargetDir.z = math.min( self.TargetDir.z, self.MaxZ )
 		end
 	end
-	self.Entity:SetAngles( self.FlightDirection:Angle() + Angle( 90,0,0 ) )
+	self.Entity:SetAngles( self.FlightDirection:Angle() + Angle( 90, 0, 0 ) )
 ]]
 	
 	-- Lifetime

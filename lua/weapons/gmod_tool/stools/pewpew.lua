@@ -61,7 +61,7 @@ if ( SERVER ) then
 		-- Pos/Model/Angle
 		ent:SetModel( Model )
 		ent:SetPos( trace.HitPos - trace.HitNormal * ent:OBBMins().z )
-		ent:SetAngles( trace.HitNormal:Angle() + Angle( 90,0,0 ) )
+		ent:SetAngles( trace.HitNormal:Angle() + Angle( 90, 0, 0 ) )
 		
 		ent:SetOptions( Bullet, ply, fire, reload, Dir )
 		
@@ -179,7 +179,7 @@ if ( SERVER ) then
 			local ent = self:CreateCannon( ply, trace, model, bullet, fire, reload, self:GetDirection() )
 			if ( !ent ) then return end	
 			
-			ply:AddCount( "pewpew",ent )
+			ply:AddCount( "pewpew", ent )
 			ply:AddCleanup( "pewpew", ent )
 
 			undo.Create( "pewpew" )
@@ -249,7 +249,7 @@ else
 		Directions.Options["Right"] = { pewpew_direction = 4 }
 		Directions.Options["Forward"] = { pewpew_direction = 5 }
 		Directions.Options["Back"] = { pewpew_direction = 6 }
-		CPanel:AddControl( "ComboBox",Directions )
+		CPanel:AddControl( "ComboBox", Directions )
 		
 		local box = vgui.Create( "DButton" )
 		CPanel:AddItem( box )
@@ -263,18 +263,18 @@ else
 		
 		local panel = vgui.Create( "DPanel" )
 		CPanel:AddItem( panel )
-		panel:SetSize( 285,500 )
+		panel:SetSize( 285, 500 )
 		
 		
-		-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --
+		-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - --
 		-- Tree
-		-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --
-		local tree = vgui.Create( "DTree",panel )
+		-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - --
+		local tree = vgui.Create( "DTree", panel )
 		tree:Dock( FILL )
 		
 		local function AddNode( parent, folder, curtbl, curcat )
 			parent = folder
-			for k,v in pairs( curtbl ) do
+			for k, v in pairs( curtbl ) do
 				if ( type( v ) == "string" ) then
 					local wpn = folder:AddNode( string.gsub( v, "_", " " ) )
 					wpn.WeaponName = v
@@ -309,12 +309,12 @@ else
 			end
 		end
 		
-		-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --
+		-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - --
 		-- Category
-		-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --
+		-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - --
 		
 		-- Panel List 1
-		local list1 = vgui.Create( "DPanelList",panel )
+		local list1 = vgui.Create( "DPanelList", panel )
 		list1:SetAutoSize( false )
 		list1:SetSpacing( 1 )
 		list1:EnableHorizontal( false )
@@ -330,13 +330,13 @@ else
 			if ( !categories[v.Category] ) then
 				categories[v.Category] = true
 				-- Create a collapsible category derma item
-				local cat = vgui.Create( "DCollapsibleCategory",list1 )
-				cat:SetSize( 146,50 )
+				local cat = vgui.Create( "DCollapsibleCategory", list1 )
+				cat:SetSize( 146, 50 )
 				cat:SetExpanded( 0 )
 				cat:SetLabel( v.Category )
 				catcontrols[#catcontrols+1] = cat
 				function cat.Header:OnMousePressed()
-					for k,v in ipairs( catcontrols ) do
+					for k, v in ipairs( catcontrols ) do
 						if ( v:GetExpanded() and v.Header != self ) then v:Toggle() end
 						if ( !v:GetExpanded() and v.Header == self ) then v:Toggle() end
 					end
@@ -355,10 +355,10 @@ else
 			
 			-- Add a button for the weapon
 			local btn = vgui.Create( "DButton" )
-			btn:SetSize( 48,20 )
+			btn:SetSize( 48, 20 )
 			btn:SetText( v.Name )
-			function btn:DoClick() RunConsoleCommand( "pewpew_bulletname",v.Name ) end
-			function btn:DoRightClick() RunConsoleCommand( "pewpew_usemenu",v.Name ) end
+			function btn:DoClick() RunConsoleCommand( "pewpew_bulletname", v.Name ) end
+			function btn:DoRightClick() RunConsoleCommand( "pewpew_usemenu", v.Name ) end
 			list2:AddItem( btn )
 		end
 		
@@ -402,7 +402,7 @@ else
 			return
 		end
 		
-		ent:SetAngles( trace.HitNormal:Angle() + Angle( 90,0,0 ) )
+		ent:SetAngles( trace.HitNormal:Angle() + Angle( 90, 0, 0 ) )
 		ent:SetPos( trace.HitPos - trace.HitNormal * ent:OBBMins().z )
 		
 		ent:SetNoDraw( false )
@@ -412,7 +412,7 @@ else
 		local model = self:GetCannonModel()
 		if ( !self.GhostEntity or !self.GhostEntity:IsValid() or self.GhostEntity:GetModel() != model ) then
 			local trace = self:GetOwner():GetEyeTrace()
-			self:MakeGhostEntity( Model( model ), trace.HitPos, trace.HitNormal:Angle() + Angle( 90,0,0 ) )
+			self:MakeGhostEntity( Model( model ), trace.HitPos, trace.HitNormal:Angle() + Angle( 90, 0, 0 ) )
 		end
 		self:UpdateGhostCannon( self.GhostEntity, self:GetOwner() )
 	end

@@ -4,11 +4,11 @@ local tMats = {}
 
 tMats.Glow1 = Material( "sprites/light_glow02" )
 
-for _,mat in pairs( tMats ) do
+for _, mat in pairs( tMats ) do
 
-	mat:SetInt( "$spriterendermode",9 )
-	mat:SetInt( "$ignorez",1 )
-	mat:SetInt( "$illumfactor",18 )
+	mat:SetInt( "$spriterendermode", 9 )
+	mat:SetInt( "$ignorez", 1 )
+	mat:SetInt( "$illumfactor", 18 )
 	
 end
 
@@ -16,10 +16,10 @@ end
 
 EFFECT.Mat = Material( "effects/select_ring" )
 
-/*-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+/*-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
    Initializes the effect. The data is a table of data
    which was passed from the server.
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- */
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - */
 function EFFECT:Init( data )
 	self.Position = data:GetOrigin()
 	self.Position.z = self.Position.z + 4
@@ -71,8 +71,8 @@ function EFFECT:Init( data )
 		end			  
 	end
 	
-	for i = 1,10 do		
-		local eparticle = emitter:Add( "particles/flamelet"..math.Rand( 1, 5 ), vOffset - rVec * 6 * i )
+	for i = 1, 10 do		
+		local eparticle = emitter:Add( "particles/flamelet" .. math.Rand( 1, 5 ), vOffset - rVec * 6 * i )
 		eparticle:SetVelocity( rVec*math.Rand( -55, 55 ) )
 		eparticle:SetDieTime( math.Rand( 1, 3 ) )
 		eparticle:SetStartAlpha( math.Rand( 230, 250 ) )
@@ -86,9 +86,9 @@ function EFFECT:Init( data )
 	emitter:Finish()
 end
 
-/*-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+/*-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
    Think
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -*/
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -*/
 function EFFECT:Think( )
 	local timeleft = self.TimeLeft - CurTime()
 	if timeleft > 0 then
@@ -99,7 +99,7 @@ function EFFECT:Think( )
 		self.GAlpha = self.GAlpha - 85*ftime
 		return true
 	else
-		for __,particle in pairs( self.smokeparticles ) do
+		for __, particle in pairs( self.smokeparticles ) do
 			particle:SetStartAlpha( 20 )
 			particle:SetEndAlpha( 0 )
 		end
@@ -108,9 +108,9 @@ function EFFECT:Think( )
 end
 
 
-/*-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+/*-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
    Draw the effect
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -*/
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -*/
 function EFFECT:Render( )
 	/* -- temmporary solution
 
@@ -118,11 +118,11 @@ function EFFECT:Render( )
 
 	render.SetMaterial( tMats.Glow1 )
 
-	render.DrawSprite( startpos, 2100,1700,Color( 255,75,75,self.GAlpha ) )
-	render.DrawSprite( startpos, 1700,1450,Color( 255,75,75,0.7*self.GAlpha ) )
+	render.DrawSprite( startpos, 2100, 1700, Color( 255, 75, 75, self.GAlpha ) )
+	render.DrawSprite( startpos, 1700, 1450, Color( 255, 75, 75, 0.7*self.GAlpha ) )
 
 	if self.FAlpha > 0 then
-		render.DrawSprite( startpos,3500,2500,Color( 255,155,155,self.FAlpha ) )
+		render.DrawSprite( startpos, 3500, 2500, Color( 255, 155, 155, self.FAlpha ) )
 	end
 
 	*/

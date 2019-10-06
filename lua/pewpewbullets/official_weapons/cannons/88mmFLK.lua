@@ -22,7 +22,7 @@ BULLET.Trail = nil
 
 -- Effects / Sounds
 BULLET.FireSound = {"arty/40mm.wav"}
-BULLET.ExplosionSound = {"weapons/pipe_bomb1.wav","weapons/pipe_bomb2.wav","weapons/pipe_bomb3.wav"}
+BULLET.ExplosionSound = {"weapons/pipe_bomb1.wav", "weapons/pipe_bomb2.wav", "weapons/pipe_bomb3.wav"}
 BULLET.FireEffect = "cannon_flare"
 BULLET.ExplosionEffect = "pewpew_smokepuff"
 
@@ -56,7 +56,7 @@ BULLET.EnergyPerShot = 2000
 BULLET.CustomInputs = { "Fire", "Lifetime" }
 
 if CLIENT then
-	net.Receive( "PewPew-FlakLifetime", function() local n = net.ReadFloat() BULLET.Lifetime = {n,n} end )
+	net.Receive( "PewPew-FlakLifetime", function() local n = net.ReadFloat() BULLET.Lifetime = {n, n} end )
 end
 
 -- Wire Input ( This is called whenever a wire input is changed )

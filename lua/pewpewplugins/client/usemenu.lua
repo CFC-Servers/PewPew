@@ -6,7 +6,7 @@ local pewpew_list
 -- Use Menu
 local function CreateMenu()
 	pewpew_frame = vgui.Create( "DFrame" )
-	pewpew_frame:SetPos( ScrW()/2+100,ScrH()/2-420/2 )
+	pewpew_frame:SetPos( ScrW()/2+100, ScrH()/2-420/2 )
 	pewpew_frame:SetSize( 600, 420 )
 	pewpew_frame:SetTitle( "PewPew Cannon Information" )
 	pewpew_frame:SetVisible( false )
@@ -58,13 +58,13 @@ local function OpenUseMenu( bulletname )
 			pnl:SetSize( 594, 20 )
 			-- function pnl:Paint() return true end
 		
-			local label = vgui.Create( "DLabel",pnl )
+			local label = vgui.Create( "DLabel", pnl )
 			label:SetPos( 4, 4 )
 			label:SetText( value[1] )
-			label:SetColor( Color( 0,0,0 ) )
+			label:SetColor( Color( 0, 0, 0 ) )
 			label:SizeToContents()
 			
-			local box = vgui.Create( "DTextEntry",pnl )
+			local box = vgui.Create( "DTextEntry", pnl )
 			box:SetPos( 135, 0 )
 			box:SetText( tostring( value[2] or "- none -" ) or "- none -" )
 			box:SetWidth( 592 )
@@ -83,6 +83,6 @@ concommand.Add( "PewPew_UseMenu", function( ply, cmd, arg )
 	OpenUseMenu( table.concat( arg, " " ) )
 end )
 
-concommand.Add( "PewPew_CloseUseMenu", function( ply,cmd,arg )
+concommand.Add( "PewPew_CloseUseMenu", function( ply, cmd, arg )
 	pewpew_frame:SetVisible( false )
 end )

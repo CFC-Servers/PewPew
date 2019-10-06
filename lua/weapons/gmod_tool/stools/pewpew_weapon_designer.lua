@@ -56,7 +56,7 @@ if ( SERVER ) then
 		-- Pos/Model/Angle
 		ent:SetModel( Model )
 		ent:SetPos( trace.HitPos - trace.HitNormal * ent:OBBMins().z )
-		ent:SetAngles( trace.HitNormal:Angle() + Angle( 90,0,0 ) )
+		ent:SetAngles( trace.HitNormal:Angle() + Angle( 90, 0, 0 ) )
 		
 		ent:SetOptions( Bullet, ply, fire, reload, Dir )
 		
@@ -177,13 +177,13 @@ else
 					[6] = {Txt = "ExplosionEffect",			Default = "big_splosion", 	Desc = "", Type = "String"},
 					[7] = {Txt = "FireEffect", 				Default = "cannon_flare", 	Desc = "", Type = "String"},
 					[8] = {Txt = "FireSound", 				Default = "arty/37mm.wav", 	Desc = "", Type = "Table", Type2 = "String"},
-					[9] = {Txt = "ExplosionSound", 			Default = "weapons/explode1.wav", 	Desc = "", Type = "Table", Type2 = "String"},}
+					[9] = {Txt = "ExplosionSound", 			Default = "weapons/explode1.wav", 	Desc = "", Type = "Table", Type2 = "String"}, }
 					
 	-- local Tbl3 = { 	1 = {Txt = "Radius",					Desc = ""},
 	
 	local function CreateWeaponDesignerMenu()
 		Menu = vgui.Create( "DFrame" )
-		local w,h = 800, 400
+		local w, h = 800, 400
 		Menu:SetPos( ScrW() / 2 - w / 2, ScrH() / 2 - h / 2 )
 		Menu:SetSize( w, h )
 		Menu:SetTitle( "PewPew Weapon Designer" )
@@ -194,17 +194,17 @@ else
 		Menu:SetScreenLock( true )
 		Menu:MakePopup()
 		
-		local CreateButton = vgui.Create( "DButton",Menu )
+		local CreateButton = vgui.Create( "DButton", Menu )
 		CreateButton:SetPos( w - 80, 2 )
 		CreateButton:SetSize( 50, 20 )
 		CreateButton:SetText( "OK" )
 		function CreateButton:DoClick()
-			for k,v in ipairs( Tbl1 ) do
+			for k, v in ipairs( Tbl1 ) do
 				if ( v.textbox ) then
 					Weapon[v.Txt] = GetVal( v.textbox:GetValue(), v.Type, v.Type2 )
 				end
 			end
-			for k,v in ipairs( Tbl2 ) do
+			for k, v in ipairs( Tbl2 ) do
 				if ( v.textbox ) then
 					Weapon[v.Txt] = GetVal( v.textbox:GetValue(), v.Type, v.Type2 )
 				end
@@ -217,28 +217,28 @@ else
 			Menu:SetVisible( false )
 		end
 		
-		local TabHolder = vgui.Create( "DPropertySheet",Menu )
+		local TabHolder = vgui.Create( "DPropertySheet", Menu )
 		TabHolder:SetPos( 2, 24 )
 		TabHolder:SetSize( w - 4, h - 24 - 2 )
 	
 		local function CreateTextBoxes( TargetTab, TargetTable )
-			local list = vgui.Create( "DPanelList",TargetTab )
+			local list = vgui.Create( "DPanelList", TargetTab )
 			list:SetSize( w - 6, h - 6 )
 			list:SetSpacing( 2 )
 			list:EnableHorizontal( true )
 			list:EnableVerticalScrollbar( true )
 			
-			for k,v in ipairs( TargetTable ) do
+			for k, v in ipairs( TargetTable ) do
 				local pnl = vgui.Create( "DPanel" )
 				pnl:SetSize( w-6, 20 )
 				-- function pnl:Paint() return true end
 			
-				local label = vgui.Create( "DLabel",pnl )
+				local label = vgui.Create( "DLabel", pnl )
 				label:SetPos( 4, 4 )
 				label:SetText( v.Txt )
 				label:SizeToContents()
 				
-				local box = vgui.Create( "DTextEntry",pnl )
+				local box = vgui.Create( "DTextEntry", pnl )
 				box:SetPos( 135, 0 )
 				box:SetWidth( 200 )
 				box:SetText( v.Default )
@@ -252,7 +252,7 @@ else
 				end
 				v.textbox = box
 				
-				local label2 = vgui.Create( "DLabel",pnl )
+				local label2 = vgui.Create( "DLabel", pnl )
 				label2:SetPos( 200 + 135 + 4 + 10, 4 )
 				label2:SetText( v.Desc )
 				label2:SizeToContents()
@@ -261,16 +261,16 @@ else
 			end
 		end
 	
-		local Tab1 = vgui.Create( "DPanel",TabHolder )
+		local Tab1 = vgui.Create( "DPanel", TabHolder )
 		CreateTextBoxes( Tab1, Tbl1 )
 		TabHolder:AddSheet( "Damage & Movement", Tab1, nil, false, false, nil )
 		
-		local Tab2 = vgui.Create( "DPanel",TabHolder )
+		local Tab2 = vgui.Create( "DPanel", TabHolder )
 		CreateTextBoxes( Tab2, Tbl2 )
 		TabHolder:AddSheet( "Appearance, Ammo and Reloading", Tab2, nil, false, false, nil )
 		
 		-- [[
-		local Tab3 = vgui.Create( "DPanel",TabHolder )
+		local Tab3 = vgui.Create( "DPanel", TabHolder )
 		CreateTextBoxes( Tab3, Tbl3 )
 		TabHolder:AddSheet( "Appearance", Tab3, nil, false, false, nil )
 		]]
@@ -280,14 +280,14 @@ else
 	local function OpenWeaponDesignerMenu()
 		Menu:SetVisible( true )
 	end
-	concommand.Add( "PewPew_OpenWeaponDesignerMenu",OpenWeaponDesignerMenu )
+	concommand.Add( "PewPew_OpenWeaponDesignerMenu", OpenWeaponDesignerMenu )
 	
 	function TOOL.RightClick()
 		Menu:SetVisible( true )
 	end
 	
 	function TOOL.BuildCPanel( CPanel )
-		CPanel:AddControl( "Button", {Label = "Weapon Designer Menu",Description = "Open the Weapon Designer Menu",Text = "Weapon Designer Menu",Command = "PewPew_OpenWeaponDesignerMenu"} )
+		CPanel:AddControl( "Button", {Label = "Weapon Designer Menu", Description = "Open the Weapon Designer Menu", Text = "Weapon Designer Menu", Command = "PewPew_OpenWeaponDesignerMenu"} )
 		
 		CPanel:AddControl( "PropSelect", {
 			Label = "#Models ( Or click Reload to select a model )",
@@ -306,7 +306,7 @@ else
 		Directions.Options["Right"] = { pewpew_weapon_designer_direction = 4 }
 		Directions.Options["Forward"] = { pewpew_weapon_designer_direction = 5 }
 		Directions.Options["Back"] = { pewpew_weapon_designer_direction = 6 }
-		CPanel:AddControl( "ComboBox",Directions )
+		CPanel:AddControl( "ComboBox", Directions )
 		
 		CPanel:AddControl( "Numpad", { Label = "#Fire", Command = "pewpew_weapon_designer_fire_key", ButtonSize = 22 } )
 		CPanel:AddControl( "Numpad", { Label = "#Reload", Command = "pewpew_weapon_designer_reload_key", ButtonSize = 22 } )

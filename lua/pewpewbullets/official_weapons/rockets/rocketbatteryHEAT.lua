@@ -34,7 +34,7 @@ BULLET.Speed = 80
 BULLET.Gravity = 0
 BULLET.RecoilForce = 200
 BULLET.Spread = 0.4
-BULLET.AngleOffset = Angle( -90,0,0 )
+BULLET.AngleOffset = Angle( -90, 0, 0 )
 
 -- Damage
 BULLET.DamageType = "SliceDamage" -- Look in gcombat_damagecontrol.lua for available damage types
@@ -49,7 +49,7 @@ BULLET.Ammo = 6
 BULLET.AmmoReloadtime = 8
 
 -- Other
-BULLET.Lifetime = {3,4}
+BULLET.Lifetime = {3, 4}
 BULLET.ExplodeAfterDeath = true
 BULLET.EnergyPerShot = 200
 

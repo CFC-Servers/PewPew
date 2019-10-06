@@ -20,7 +20,7 @@ BULLET.Trail = nil
 
 -- Effects / Sounds
 BULLET.FireSound = {"arty/rocket.wav"}
-BULLET.ExplosionSound = {"weapons/explode3.wav","weapons/explode4.wav","weapons/explode5.wav"}
+BULLET.ExplosionSound = {"weapons/explode3.wav", "weapons/explode4.wav", "weapons/explode5.wav"}
 BULLET.FireEffect = nil
 BULLET.ExplosionEffect = "v2splode"
 
@@ -46,7 +46,7 @@ BULLET.Reloadtime = 4
 BULLET.Ammo = 0
 BULLET.AmmoReloadtime = 0
 
-BULLET.Lifetime = {10,10}
+BULLET.Lifetime = {10, 10}
 BULLET.ExplodeAfterDeath = true
 BULLET.EnergyPerShot = 4800
 
@@ -73,13 +73,13 @@ function BULLET:WireInput( inputname, value )
 			self:FireBullet()
 		end
 	elseif ( inputname == "X" ) then
-		if ( !self.TargetPos ) then self.TargetPos = Vector( 0,0,0 ) end
+		if ( !self.TargetPos ) then self.TargetPos = Vector( 0, 0, 0 ) end
 		self.TargetPos.x = value
 	elseif ( inputname == "Y" ) then
-		if ( !self.TargetPos ) then self.TargetPos = Vector( 0,0,0 ) end
+		if ( !self.TargetPos ) then self.TargetPos = Vector( 0, 0, 0 ) end
 		self.TargetPos.y = value
 	elseif ( inputname == "Z" ) then
-		if ( !self.TargetPos ) then self.TargetPos = Vector( 0,0,0 ) end
+		if ( !self.TargetPos ) then self.TargetPos = Vector( 0, 0, 0 ) end
 		self.TargetPos.z = value
 	elseif ( inputname == "XYZ" ) then
 		self.TargetPos = value
@@ -92,7 +92,7 @@ function BULLET:Initialize()
 	
 	self.TargetDir = self.Entity:GetUp()
 	if ( self.Cannon:IsValid() ) then
-		if ( self.Cannon.TargetPos and self.Cannon.TargetPos != Vector( 0,0,0 ) ) then
+		if ( self.Cannon.TargetPos and self.Cannon.TargetPos != Vector( 0, 0, 0 ) ) then
 			self.TargetDir = ( self.Cannon.TargetPos-self:GetPos() ):GetNormalized()
 		end
 	end
@@ -104,7 +104,7 @@ function BULLET:Initialize()
 			if ( self.Bullet.Lifetime[1] == self.Bullet.Lifetime[2] ) then
 				self.Lifetime = CurTime() + self.Bullet.Lifetime[1]
 			else
-				self.Lifetime = CurTime() + math.Rand( self.Bullet.Lifetime[1],self.Bullet.Lifetime[2] )
+				self.Lifetime = CurTime() + math.Rand( self.Bullet.Lifetime[1], self.Bullet.Lifetime[2] )
 			end
 		end
 	end
@@ -125,7 +125,7 @@ function BULLET:Think()
 
 		self.TargetDir = ( self.Cannon.TargetPos-self:GetPos() ):GetNormalized()
 	end
-	self.Entity:SetAngles( self.FlightDirection:Angle() + Angle( 90,0,0 ) )
+	self.Entity:SetAngles( self.FlightDirection:Angle() + Angle( 90, 0, 0 ) )
 	
 	-- Lifetime
 	if ( self.Lifetime ) then

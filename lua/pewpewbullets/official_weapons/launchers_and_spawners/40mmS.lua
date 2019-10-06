@@ -40,7 +40,7 @@ BULLET.Ammo = 0
 BULLET.AmmoReloadtime = 0
 
 -- Other
-BULLET.Lifetime = {3,3}
+BULLET.Lifetime = {3, 3}
 BULLET.ExplodeAfterDeath = true
 BULLET.EnergyPerShot = 2000
 
@@ -61,7 +61,7 @@ function BULLET:Initialize()
 			if ( self.Bullet.Lifetime[1] == self.Bullet.Lifetime[2] ) then
 				self.Lifetime = CurTime() + self.Bullet.Lifetime[1]
 			else
-				self.Lifetime = CurTime() + math.Rand( self.Bullet.Lifetime[1],self.Bullet.Lifetime[2] )
+				self.Lifetime = CurTime() + math.Rand( self.Bullet.Lifetime[1], self.Bullet.Lifetime[2] )
 			end
 		end
 	end
@@ -92,7 +92,7 @@ function BULLET:Think()
 			if ( self.Bullet.ExplodeAfterDeath ) then
 				local tr = {}
 				tr.start = self.Entity:GetPos()
-				tr.endpos = self.Entity:GetPos()-Vector( 0,0,10 )
+				tr.endpos = self.Entity:GetPos()-Vector( 0, 0, 10 )
 				tr.filter = self.Entity
 				local trace = util.TraceLine( tr )
 				self:Explode( trace )

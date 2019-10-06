@@ -20,7 +20,7 @@ BULLET.Trail = nil
 
 -- Effects / Sounds
 BULLET.FireSound = {"weapons/stickybomblauncher_shoot.wav"}
-BULLET.ExplosionSound = {"ambient/water/water_splash1.wav","ambient/water/water_splash2.wav","ambient/water/water_splash3.wav"}
+BULLET.ExplosionSound = {"ambient/water/water_splash1.wav", "ambient/water/water_splash2.wav", "ambient/water/water_splash3.wav"}
 BULLET.FireEffect = "MuzzleFlash"
 BULLET.ExplosionEffect = ""
 
@@ -51,15 +51,15 @@ BULLET.EnergyPerShot = 400
 -- Initialize ( Is called when the bullet initializes )
 function BULLET:CLInitialize()
 	pewpew:DefaultBulletInitialize( self )
-	self.Prop:SetColor( Color( math.random( 25,255 ), math.random( 25,255 ), math.random( 25,255 ), 255 ) )
+	self.Prop:SetColor( Color( math.random( 25, 255 ), math.random( 25, 255 ), math.random( 25, 255 ), 255 ) )
 end
 
 -- Explode ( Is called when the bullet explodes )
 function BULLET:CLExplode( trace )
 	
-	local vOffset = trace.HitPos+Vector( 0,0,2 )
+	local vOffset = trace.HitPos+Vector( 0, 0, 2 )
 	local Norm = trace.HitNormal
-	local splash = math.random( 13,16 )
+	local splash = math.random( 13, 16 )
 
 	self.Prop:EmitSound( "weapons/ar2/npc_ar2_altfire.wav", 80, 130 )
 

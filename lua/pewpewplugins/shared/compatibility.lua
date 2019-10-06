@@ -1,11 +1,11 @@
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- -
 -- Compatibility
 -- Since there may be code changes in later versions of PewPew,
 -- older weapons might break over time
 -- This file provides compatibility with previous versions,
 -- to make all weapons work, no matter how old.
 -- If a weapon's version is nil, it is version 1.0.
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- -
 
 pewpew.Compatibility = {}
 
@@ -137,7 +137,7 @@ end
 
 local function temp()
 	if ( pewpew.ServerTick and pewpew.ServerTick != 0 ) then
-		for k,v in ipairs( pewpew.Weapons ) do
+		for k, v in ipairs( pewpew.Weapons ) do
 			pewpew:MakeCompatible( v )
 		end
 	else
@@ -145,4 +145,4 @@ local function temp()
 	end
 end
 
-hook.Add( "Initialize","PewPew_Compatibility_Modifying",temp )
+hook.Add( "Initialize", "PewPew_Compatibility_Modifying", temp )

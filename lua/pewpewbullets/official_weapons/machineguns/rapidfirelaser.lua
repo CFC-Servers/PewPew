@@ -40,7 +40,7 @@ function BULLET:Fire()
 	
 	local num = self.Bullet.Spread
 	if ( num ) then
-		local spread = Angle( math.Rand( -num,num ),math.Rand( -num,num ),0 )
+		local spread = Angle( math.Rand( -num, num ), math.Rand( -num, num ), 0 )
 		direction:Rotate( spread )
 	end
 	
@@ -50,7 +50,7 @@ function BULLET:Fire()
 	if ( trace.Entity and trace.Entity:IsValid() ) then
 		-- Stargate shield damage
 		if ( trace.Entity:GetClass() == "shield" ) then
-			trace.Entity:Hit( nil,trace.HitPos,self.Bullet.Damage*pewpew:GetConVar( "StargateShield_DamageMul" ),trace.HitNormal )
+			trace.Entity:Hit( nil, trace.HitPos, self.Bullet.Damage*pewpew:GetConVar( "StargateShield_DamageMul" ), trace.HitNormal )
 		else
 			pewpew:PointDamage( trace.Entity, self.Bullet.Damage, self )
 		end

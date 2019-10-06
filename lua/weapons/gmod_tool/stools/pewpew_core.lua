@@ -43,7 +43,7 @@ if ( SERVER ) then
 		ent:SetOptions( ply )
 		ent:SetModel( model )
 		ent:SetPos( trace.HitPos - trace.HitNormal * ent:OBBMins().z )
-		ent:SetAngles( trace.HitNormal:Angle() + Angle( 90,0,0 ) )
+		ent:SetAngles( trace.HitNormal:Angle() + Angle( 90, 0, 0 ) )
 		ent:Spawn()
 		ent:Activate()
 		return ent
@@ -65,7 +65,7 @@ if ( SERVER ) then
 			local nocollide = constraint.NoCollide( ent, trace.Entity, 0, trace.PhysicsBone )
 		end
 			
-		ply:AddCount( "pewpew_cores",ent )
+		ply:AddCount( "pewpew_cores", ent )
 		ply:AddCleanup ( "pewpew_cores", ent )
 
 		undo.Create( "pewpew_core" )
@@ -86,7 +86,7 @@ if ( SERVER ) then
 		local ent = self:CreateCore( ply, trace, model )
 		if ( !ent ) then return end
 		
-		ply:AddCount( "pewpew_cores",ent )
+		ply:AddCount( "pewpew_cores", ent )
 		ply:AddCleanup ( "pewpew_cores", ent )
 
 		undo.Create( "pewpew_core" )
@@ -154,7 +154,7 @@ else
 			return
 		end
 		
-		ent:SetAngles( trace.HitNormal:Angle() + Angle( 90,0,0 ) )
+		ent:SetAngles( trace.HitNormal:Angle() + Angle( 90, 0, 0 ) )
 		ent:SetPos( trace.HitPos - trace.HitNormal * ent:OBBMins().z )
 		
 		ent:SetNoDraw( false )
@@ -164,7 +164,7 @@ else
 		local model = self:GetCoreModel()
 		if ( !self.GhostEntity or !self.GhostEntity:IsValid() or self.GhostEntity:GetModel() != model ) then
 			local trace = self:GetOwner():GetEyeTrace()
-			self:MakeGhostEntity( Model( model ), trace.HitPos, trace.HitNormal:Angle() + Angle( 90,0,0 ) )
+			self:MakeGhostEntity( Model( model ), trace.HitPos, trace.HitNormal:Angle() + Angle( 90, 0, 0 ) )
 		end
 		self:UpdateGhostCore( self.GhostEntity, self:GetOwner() )
 	end

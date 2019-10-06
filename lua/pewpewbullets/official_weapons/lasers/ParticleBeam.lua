@@ -41,7 +41,7 @@ function BULLET:Fire()
 	
 	local num = self.Bullet.Spread
 	if ( num ) then
-		local spread = Angle( math.Rand( -num,num ),math.Rand( -num,num ),0 )
+		local spread = Angle( math.Rand( -num, num ), math.Rand( -num, num ), 0 )
 		Dir:Rotate( spread )
 	end
 	
@@ -81,8 +81,8 @@ function BULLET:CannonThink()
 	if ( !self.FireNoise ) then self.FireNoise = CreateSound( self.Entity, "ambient/energy/force_field_loop1.wav" ) end
 	if ( !self.OverheatLevel ) then self.OverheatLevel = 0 end
 	if ( !self.OverheatLevelAlarm ) then self.OverheatLevelAlarm = 0 end
-	self.ChargeSound:ChangePitch( math.max( self.OverheatLevelAlarm,1 ),0 )
-	self.FireNoise:ChangePitch( math.max( 80,1 ),0 )
+	self.ChargeSound:ChangePitch( math.max( self.OverheatLevelAlarm, 1 ), 0 )
+	self.FireNoise:ChangePitch( math.max( 80, 1 ), 0 )
 	
 	if ( self.Firing and not self.Overheated ) then
 		self:FireBullet()

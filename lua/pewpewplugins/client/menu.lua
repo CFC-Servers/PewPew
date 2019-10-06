@@ -1,7 +1,7 @@
 -- Weapon Selection & Options Menu
 
 local frame
-local w,h = 600,600
+local w, h = 600, 600
 
 local function CreateMenu()
 	frame = vgui.Create( "DFrame" )
@@ -16,7 +16,7 @@ local function CreateMenu()
 	frame:MakePopup()
 	
 	-- [[
-	local psheet = vgui.Create( "DPropertySheet",frame )
+	local psheet = vgui.Create( "DPropertySheet", frame )
 	psheet:SetPos( 4, 24 )
 	psheet:SetSize( w - 8, h - 24 - 4 )
 	
@@ -56,8 +56,8 @@ local function CreateMenu()
 		
 		
 		local n = 0
-		for k,v in pairs( sliders ) do
-			local slider = vgui.Create( "PewPew_StatusBar",frame2 )
+		for k, v in pairs( sliders ) do
+			local slider = vgui.Create( "PewPew_StatusBar", frame2 )
 			sliders[k][5] = slider
 			slider:SetPos( 310, 5 + n * 30 )
 			slider:SetSize( 270, 25 )
@@ -71,13 +71,13 @@ local function CreateMenu()
 		local tree = vgui.Create( "DTree", frame )
 		tree:SetPadding( 5 )
 		tree:SetPos( 2, 2 )
-		tree:StretchToParent( 4,24,4,4 )
+		tree:StretchToParent( 4, 24, 4, 4 )
 		-- tree:SetSize( 300, frame:GetTall() - 4 )
 		
 	-- [[
 		local function UpdateSliders( wpn )
 			if ( !wpn ) then return end
-			for k,v in pairs( sliders ) do
+			for k, v in pairs( sliders ) do
 				v[5]:SetValue( v[4]( wpn[k] ) )
 			end
 		end
@@ -85,7 +85,7 @@ local function CreateMenu()
 		
 		local function AddNode( parent, folder, curtbl, curcat )
 			parent = folder
-			for k,v in pairs( curtbl ) do
+			for k, v in pairs( curtbl ) do
 				if ( type( v ) == "string" ) then
 					local wpn = folder:AddNode( string.gsub( v, "_", " " ) )
 					wpn.WeaponName = v
@@ -153,7 +153,7 @@ local pewpew_weaponframe
 local function CreateMenu2()
 	-- Main frame
 	pewpew_weaponframe = vgui.Create( "DFrame" )
-	pewpew_weaponframe:SetPos( ScrW()-300,ScrH()/2-450/2 )
+	pewpew_weaponframe:SetPos( ScrW()-300, ScrH()/2-450/2 )
 	pewpew_weaponframe:SetSize( 250, 450 )
 	pewpew_weaponframe:SetTitle( "PewPew Weapons" )
 	pewpew_weaponframe:SetVisible( false )
@@ -213,7 +213,7 @@ local function CreateMenu2()
 		
 		cat:SetContents( list )
 		function cat.Header:OnMousePressed()
-			for k,v in ipairs( pewpew.CategoryControls ) do
+			for k, v in ipairs( pewpew.CategoryControls ) do
 				if ( v:GetExpanded() and v.Header != self ) then v:Toggle() end
 				if ( !v:GetExpanded() and v.Header == self ) then v:Toggle() end
 			end

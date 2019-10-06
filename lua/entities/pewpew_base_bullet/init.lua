@@ -15,7 +15,7 @@ function ENT:DefaultInitialize()
 	if ( self.Bullet.Version >= 2 ) then
 		local n = self.Bullet.Spread
 		if ( n and n != 0 ) then
-			self.Vel = ( self.FlightDirection * self.Bullet.Speed * math.Rand( 1-n/100,1+n/100 ) * ( 1/tk ) ) * ( tk/( 1/66 ) )
+			self.Vel = ( self.FlightDirection * self.Bullet.Speed * math.Rand( 1-n/100, 1+n/100 ) * ( 1/tk ) ) * ( tk/( 1/66 ) )
 		else
 			self.Vel = ( self.FlightDirection * self.Bullet.Speed * ( 1/tk ) ) * ( tk/( 1/66 ) )
 		end
@@ -28,7 +28,7 @@ function ENT:DefaultInitialize()
 			if ( self.Bullet.Lifetime[1] == self.Bullet.Lifetime[2] ) then
 				self.Lifetime = CurTime() + self.Bullet.Lifetime[1]
 			else
-				self.Lifetime = CurTime() + math.Rand( self.Bullet.Lifetime[1],self.Bullet.Lifetime[2] )
+				self.Lifetime = CurTime() + math.Rand( self.Bullet.Lifetime[1], self.Bullet.Lifetime[2] )
 			end
 		end
 	end
@@ -97,7 +97,7 @@ function ENT:DefaultExplode( trace )
 		else
 			soundpath = self.Bullet.ExplosionSound[1]
 		end
-		sound.Play( soundpath, trace.HitPos+trace.HitNormal*5,100,100 )
+		sound.Play( soundpath, trace.HitPos+trace.HitNormal*5, 100, 100 )
 	end
 		
 	-- Damage
@@ -108,7 +108,7 @@ function ENT:DefaultExplode( trace )
 			if ( trace.Entity and trace.Entity:IsValid() ) then
 				-- Stargate shield damage
 				if ( trace.Entity:GetClass() == "shield" ) then
-					trace.Entity:Hit( nil,trace.HitPos,self.Bullet.Damage*pewpew:GetConVar( "StargateShield_DamageMul" ),trace.HitNormal )
+					trace.Entity:Hit( nil, trace.HitPos, self.Bullet.Damage*pewpew:GetConVar( "StargateShield_DamageMul" ), trace.HitNormal )
 					damaged = true
 				else
 					pewpew:PointDamage( trace.Entity, self.Bullet.Damage, self )
@@ -137,7 +137,7 @@ function ENT:DefaultExplode( trace )
 	
 	-- Stargate shield damage
 	if ( trace.Entity and trace.Entity:IsValid() and trace.Entity:GetClass() == "shield" and !damaged ) then
-		trace.Entity:Hit( self,trace.HitPos,self.Bullet.Damage*pewpew:GetConVar( "StargateShield_DamageMul" ),trace.HitNormal )
+		trace.Entity:Hit( self, trace.HitPos, self.Bullet.Damage*pewpew:GetConVar( "StargateShield_DamageMul" ), trace.HitNormal )
 	end
 	
 	-- Remove the bullet
@@ -174,23 +174,23 @@ function ENT:DefaultThink()
 	
 	
 		if ( grav and grav != 0 ) then -- Only pull it down if needed
-			self.FlightDirection = self.FlightDirection - Vector( 0,0,grav / ( self.Bullet.Speed or 1 ) )
+			self.FlightDirection = self.FlightDirection - Vector( 0, 0, grav / ( self.Bullet.Speed or 1 ) )
 			if ( self.Bullet.Version == 1 ) then self.FlightDirection:Normalize() end
 		end
 		
-		self.Entity:SetAngles( self.FlightDirection:Angle() + Angle( 90,0,0 ) )
+		self.Entity:SetAngles( self.FlightDirection:Angle() + Angle( 90, 0, 0 ) )
 	else	
 		local grav = 600
 		local tk = pewpew.ServerTick or ( 1/66.667 )
 		if ( self.Bullet.Gravity != nil ) then grav = self.Bullet.Gravity end
 		-- TODO: Spacebuild gravity
 		if ( grav and grav > 0 ) then
-			self.Vel = self.Vel - Vector( 0,0,grav ) * tk
+			self.Vel = self.Vel - Vector( 0, 0, grav ) * tk
 		end
 		self.Pos = self.Pos + self.Vel * tk
 		
 		self:SetPos( self.Pos )
-		self:SetAngles( self.Vel:Angle() + Angle( 90,0,0 ) + ( self.Bullet.AngleOffset or Angle( 0,0,0 ) ) )
+		self:SetAngles( self.Vel:Angle() + Angle( 90, 0, 0 ) + ( self.Bullet.AngleOffset or Angle( 0, 0, 0 ) ) )
 	end
 		
 

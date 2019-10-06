@@ -11,7 +11,7 @@ function pewpew:AddDamageLog( TargetEntity, Damage, DamageDealer )
 			DealerName = DamageDealer:Nick() or "-Error-"
 		elseif type( DamageDealer ) = ="number" then
 			DealerName = "-Error-"
-		elseif ( (DamageDealer:GetClass() == "pewpew_base_cannon" or DamageDealer:GetClass() == "pewpew_base_bullet" ) and DamageDealer.Owner and DamageDealer.Owner:IsValid() ) then
+		elseif ( ( DamageDealer:GetClass() == "pewpew_base_cannon" or DamageDealer:GetClass() == "pewpew_base_bullet" ) and DamageDealer.Owner and DamageDealer.Owner:IsValid() ) then
 			DealerName = DamageDealer.Owner:Nick() or "-Error-"
 			if ( DamageDealer.Bullet ) then
 				Weapon = DamageDealer.Bullet.Name
@@ -43,7 +43,7 @@ function pewpew:AddDamageLog( TargetEntity, Damage, DamageDealer )
 		table.insert( self.DamageLog, 1, { Time, DealerName, VicOwner, TargetEntity, Weapon, Damage, Died } )
 	end
 end
-hook.Add( "PewPew_Damage","PewPew_DamageLog",pewpew.AddDamageLog )
+hook.Add( "PewPew_Damage", "PewPew_DamageLog", pewpew.AddDamageLog )
 
 
 function pewpew:PopDamageLogStack()

@@ -7,17 +7,17 @@ tMats.Glow1 = Material( "sprites/light_glow02" )
 tMats.Glow2 = Material( "sprites/yellowflare" )
 tMats.Glow3 = Material( "sprites/redglow2" )
 
-for _,mat in pairs( tMats ) do
+for _, mat in pairs( tMats ) do
 
-	mat:SetInt( "$spriterendermode",9 )
-	mat:SetInt( "$ignorez",1 )
-	mat:SetInt( "$illumfactor",8 )
+	mat:SetInt( "$spriterendermode", 9 )
+	mat:SetInt( "$ignorez", 1 )
+	mat:SetInt( "$illumfactor", 8 )
 	
 end
 
-/*-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+/*-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
    Init( data table )
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -*/
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -*/
 function EFFECT:Init( data )
 
 	self.Position = data:GetOrigin()
@@ -39,7 +39,7 @@ function EFFECT:Init( data )
 	self.lastThink = 0
 	self.MinSplodeTime = CurTime() + self.CloudHeight/self.BlastSpeed
 	self.MaxSplodeTime = CurTime() + 6
-	self.GroundPos = self.Position - Vector( 0,0,self.CloudHeight )
+	self.GroundPos = self.Position - Vector( 0, 0, self.CloudHeight )
 	
 	local Pos = self.Position
 	
@@ -53,16 +53,16 @@ function EFFECT:Init( data )
 		local vecang = VectorRand()*8
 		local spawnpos = Pos + 64*vecang
 		
-			for k = 5,26 do
-			local particle = self.Emitter:Add( "particles/flamelet"..math.random( 1,5 ), spawnpos - vecang*9*k )
-			particle:SetVelocity( vecang*math.Rand( -80,-100 ) )
+			for k = 5, 26 do
+			local particle = self.Emitter:Add( "particles/flamelet" .. math.random( 1, 5 ), spawnpos - vecang*9*k )
+			particle:SetVelocity( vecang*math.Rand( -80, -100 ) )
 			particle:SetDieTime( math.Rand( 8, 16 ) )
 			particle:SetStartAlpha( math.Rand( 230, 250 ) )
 			particle:SetStartSize( k*math.Rand( 13, 15 ) )
 			particle:SetEndSize( k*math.Rand( 17, 19 ) )
 			particle:SetRoll( math.Rand( 20, 80 ) )
 			particle:SetRollDelta( math.random( -1, 1 ) )
-			particle:SetColor( 20, math.random( 20,60 ), math.random( 100,255 ) )
+			particle:SetColor( 20, math.random( 20, 60 ), math.random( 100, 255 ) )
 			end
 	
 	end
@@ -73,16 +73,16 @@ function EFFECT:Init( data )
 		local vecang = VectorRand()*8
 		local spawnpos = Pos + 256*vecang
 		
-			for k = 5,26 do
-			local particle = self.Emitter:Add( "particles/flamelet"..math.random( 1,5 ), spawnpos - vecang*9*k )
-			particle:SetVelocity( vecang*math.Rand( 2,3 ) )
+			for k = 5, 26 do
+			local particle = self.Emitter:Add( "particles/flamelet" .. math.random( 1, 5 ), spawnpos - vecang*9*k )
+			particle:SetVelocity( vecang*math.Rand( 2, 3 ) )
 			particle:SetDieTime( math.Rand( 4, 12 ) )
 			particle:SetStartAlpha( math.Rand( 230, 250 ) )
 			particle:SetStartSize( k*math.Rand( 13, 15 ) )
 			particle:SetEndSize( k*math.Rand( 17, 19 ) )
 			particle:SetRoll( math.Rand( 20, 80 ) )
 			particle:SetRollDelta( math.random( -1, 1 ) )
-			particle:SetColor( 100, math.random( 100,128 ), math.random( 230,255 ) )
+			particle:SetColor( 100, math.random( 100, 128 ), math.random( 230, 255 ) )
 			end
 	
 	end
@@ -92,9 +92,9 @@ function EFFECT:Init( data )
 	
 end
 
-/*-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+/*-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
    THINK
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -*/
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -*/
 function EFFECT:Think( )
 
 	
@@ -124,8 +124,8 @@ function EFFECT:Think( )
 					ang:RotateAroundAxis( ang:Up(), ( 360/NumPuffs ) )
 					local newang = ang:Forward()
 					local spawnpos = ( Pos + ( newang * spawndist ) )
-					local particle = self.Emitter:Add( "particles/flamelet"..math.random( 1,5 ), spawnpos )
-		-- 			particle:SetVelocity( vecang*math.Rand( 2,3 ) )
+					local particle = self.Emitter:Add( "particles/flamelet" .. math.random( 1, 5 ), spawnpos )
+		-- 			particle:SetVelocity( vecang*math.Rand( 2, 3 ) )
 					particle:SetVelocity( Vector( 0, 0, 0 ) )
 					particle:SetDieTime( 2 )
 					particle:SetStartAlpha( math.Rand( 230, 250 ) )
@@ -133,7 +133,7 @@ function EFFECT:Think( )
 					particle:SetEndSize( math.Rand( 17, 19 ) )
 					particle:SetRoll( math.Rand( 20, 80 ) )
 					particle:SetRollDelta( math.random( -1, 1 ) )
-					particle:SetColor( 20, math.random( 20,60 ), math.random( 100,255 ) )
+					particle:SetColor( 20, math.random( 20, 60 ), math.random( 100, 255 ) )
 			
 			end			
 		end
@@ -162,8 +162,8 @@ function EFFECT:Think( )
 					ang1:RotateAroundAxis( ang1:Right(), ( 360/NumPuffs1 ) )
 					local newang1 = ang1:Forward()
 					local spawnpos1 = ( Pos2 + ( newang1 * spawndist1 ) )
-					local particle1 = self.Emitter:Add( "particles/flamelet"..math.random( 1,5 ), spawnpos1 )
-		-- 			particle:SetVelocity( vecang*math.Rand( 2,3 ) )
+					local particle1 = self.Emitter:Add( "particles/flamelet" .. math.random( 1, 5 ), spawnpos1 )
+		-- 			particle:SetVelocity( vecang*math.Rand( 2, 3 ) )
 					particle1:SetVelocity( Vector( 0, 0, 0 ) )
 					particle1:SetDieTime( 2 )
 					particle1:SetStartAlpha( math.Rand( 230, 250 ) )
@@ -171,7 +171,7 @@ function EFFECT:Think( )
 					particle1:SetEndSize( math.Rand( 17, 19 ) )
 					particle1:SetRoll( math.Rand( 20, 80 ) )
 					particle1:SetRollDelta( math.random( -1, 1 ) )
-					particle1:SetColor( 20, math.random( 20,60 ), math.random( 100,255 ) )
+					particle1:SetColor( 20, math.random( 20, 60 ), math.random( 100, 255 ) )
 			
 			end			
 		end
@@ -184,17 +184,17 @@ function EFFECT:Think( )
 
 end
 
-/*-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+/*-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
    Draw the effect
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -*/
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -*/
 function EFFECT:Render( )
 
 local startpos = self.Position
 
 	-- Base glow
 	render.SetMaterial( tMats.Glow1 )
-	render.DrawSprite( startpos, 400*self.GSize,90*self.GSize,Color( 80, math.random( 80,90 ), math.random( 230,255 ),self.GAlpha ) )
-	render.DrawSprite( startpos, 70*self.GSize,280*self.GSize,Color( 80, math.random( 80,90 ), math.random( 240,255 ),0.7*self.GAlpha ) )
+	render.DrawSprite( startpos, 400*self.GSize, 90*self.GSize, Color( 80, math.random( 80, 90 ), math.random( 230, 255 ), self.GAlpha ) )
+	render.DrawSprite( startpos, 70*self.GSize, 280*self.GSize, Color( 80, math.random( 80, 90 ), math.random( 240, 255 ), 0.7*self.GAlpha ) )
 	-- shockwave
 	if self.Size < 32768 then
 

@@ -24,7 +24,7 @@ BULLET.Trail = { StartSize = 7,
 
 -- Effects / Sounds
 BULLET.FireSound = {"weapons/mortar/mortar_fire1.wav"}
-BULLET.ExplosionSound = {"weapons/explode1.wav","weapons/explode2.wav"} -- the sound is included in the effect
+BULLET.ExplosionSound = {"weapons/explode1.wav", "weapons/explode2.wav"} -- the sound is included in the effect
 BULLET.FireEffect = nil
 BULLET.ExplosionEffect = "HEATsplode"
 BULLET.EmptyMagSound = nil

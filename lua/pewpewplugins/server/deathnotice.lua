@@ -2,7 +2,7 @@
 -- Fixes the death notice so that it doesn't just say "pewpew_base_bullet"
 
 -- Wait 1 second to give the gamemode time to load
-timer.Simple( 1,function()
+timer.Simple( 1, function()
 	-- Save the PlayerDeath function
 	local OldFunc = GAMEMODE.PlayerDeath
 	-- Override the PlayerDeath function

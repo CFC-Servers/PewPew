@@ -5,10 +5,10 @@
    util.PrecacheSound( "weapons/explode4.wav" )
    util.PrecacheSound( "weapons/explode5.wav" )
 
- /*-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+ /*-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
     Initializes the effect. The data is a table of data
     which was passed from the server.
- -- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -*/
+ -- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -*/
  function EFFECT:Init( data )
  	 
  	// This is how long the spawn effect
@@ -24,15 +24,15 @@
 	
  	self.Entity:SetModel( "models/Combine_Helicopter/helicopter_bomb01.mdl" )
  	self.Entity:SetPos( self.vOffset )
-	sound.Play( self.expl[ math.random( 1,3 ) ], self.vOffset )
+	sound.Play( self.expl[ math.random( 1, 3 ) ], self.vOffset )
 	self.emitter = ParticleEmitter( self.vOffset ) 	
  end
 
 
- /*-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+ /*-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
     THINK
     Returning false makes the entity die
- -- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -*/
+ -- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -*/
  function EFFECT:Think( )
 
    local NumParticles = 4	 
@@ -94,9 +94,9 @@
 
 
 
- /*-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+ /*-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
     Draw the effect
- -- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -*/
+ -- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -*/
  function EFFECT:Render()
  	 
  	// What fraction towards finishing are we at

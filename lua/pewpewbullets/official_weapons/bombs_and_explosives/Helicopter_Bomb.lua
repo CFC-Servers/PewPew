@@ -20,7 +20,7 @@ BULLET.Trail = nil
 
 -- Effects / Sounds
 BULLET.FireSound = {"npc/attack_helicopter/aheli_mine_drop1.wav"}
-BULLET.ExplosionSound = {"weapons/explode3.wav","weapons/explode4.wav","weapons/explode5.wav"}
+BULLET.ExplosionSound = {"weapons/explode3.wav", "weapons/explode4.wav", "weapons/explode5.wav"}
 BULLET.FireEffect = nil
 BULLET.ExplosionEffect = "big_splosion"
 
@@ -63,7 +63,7 @@ function BULLET:Initialize()
 		phys:SetVelocity( self.Cannon:GetVelocity() )
 	end
 	
-	self.Entity.BombSound = CreateSound( self.Entity,Sound( "npc/attack_helicopter/aheli_mine_seek_loop1.wav" ) )
+	self.Entity.BombSound = CreateSound( self.Entity, Sound( "npc/attack_helicopter/aheli_mine_seek_loop1.wav" ) )
 	self.Entity.BombSound:Play()
 	self.Timer = CurTime() + 50
 	self.Collided = 0
@@ -93,7 +93,7 @@ function BULLET:Think()
 			else
 				soundpath = self.Bullet.ExplosionSound[1]
 			end
-			sound.Play( soundpath, self.Entity:GetPos(),100,100 )
+			sound.Play( soundpath, self.Entity:GetPos(), 100, 100 )
 		end
 		
 		self.Entity.BombSound:Stop()

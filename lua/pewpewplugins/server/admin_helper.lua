@@ -31,4 +31,4 @@ local function JoinCmds( ply )
 	ply:ConCommand( "pewpew_options_repairrate " .. pewpew:GetConVar( "RepairToolHeal" ) )
 	ply:ConCommand( "pewpew_options_repairrate_cores " .. pewpew:GetConVar( "RepairToolHealCores" ) )
 end
-hook.Add( "PlayerInitialSpawn","PewPew_Convars_at_spawn",JoinCmds )
+hook.Add( "PlayerInitialSpawn", "PewPew_Convars_at_spawn", JoinCmds )

@@ -91,7 +91,7 @@ function BULLET:Think()
 			util.Effect( self.Bullet.ExplosionEffect, effectdata )
 		end
 		
-		self.Entity:EmitSound( "ambient/explosions/explode_" .. math.random( 1,4 ) .. ".wav", 500, 100 )
+		self.Entity:EmitSound( "ambient/explosions/explode_" .. math.random( 1, 4 ) .. ".wav", 500, 100 )
 		
 		self:Remove()
 	end
@@ -114,10 +114,10 @@ function BULLET:PhysicsCollide( CollisionData, PhysObj )
 			pewpew:PlayerBlastDamage( self.Entity, self.Entity, CollisionData.HitPos, self.Bullet.Damage, self.Bullet.Radius )
 		end
 		if ( pewpew:CheckValid( CollisionData.HitEntity ) ) then
-			pewpew:PointDamage( CollisionData.HitEntity,self.Bullet.Damage,self )
-			pewpew:BlastDamage( CollisionData.HitPos, self.Bullet.Radius, self.Bullet.Damage, self.Bullet.RangeDamageMul,CollisionData.HitEntity,self )
+			pewpew:PointDamage( CollisionData.HitEntity, self.Bullet.Damage, self )
+			pewpew:BlastDamage( CollisionData.HitPos, self.Bullet.Radius, self.Bullet.Damage, self.Bullet.RangeDamageMul, CollisionData.HitEntity, self )
 		else
-			pewpew:BlastDamage( CollisionData.HitPos, self.Bullet.Radius, self.Bullet.Damage, self.Bullet.RangeDamageMul,nil,self )
+			pewpew:BlastDamage( CollisionData.HitPos, self.Bullet.Radius, self.Bullet.Damage, self.Bullet.RangeDamageMul, nil, self )
 		end
 		
 		
@@ -129,14 +129,14 @@ function BULLET:PhysicsCollide( CollisionData, PhysObj )
 			util.Effect( self.Bullet.ExplosionEffect, effectdata )
 		end
 		
-		self.Entity:EmitSound( "ambient/explosions/explode_" .. math.random( 1,4 ) .. ".wav", 500, 100 )
+		self.Entity:EmitSound( "ambient/explosions/explode_" .. math.random( 1, 4 ) .. ".wav", 500, 100 )
 		
 		self:Remove()
 	end
 end
 
 function BULLET:CLInitialize()
-	self.ParticleEmitter = ParticleEmitter( Vector( 0,0,0 ) )
+	self.ParticleEmitter = ParticleEmitter( Vector( 0, 0, 0 ) )
 end
 
 function BULLET:CLThink()
@@ -146,9 +146,9 @@ function BULLET:CLThink()
 	
 	if ( self.Burning ) then	
 		for i = 0, 8 do
-			local particle = self.ParticleEmitter:Add( "particles/flamelet" .. math.random( 1,5 ), Pos + ( self.Entity:GetUp() * -30 * i ) )
+			local particle = self.ParticleEmitter:Add( "particles/flamelet" .. math.random( 1, 5 ), Pos + ( self.Entity:GetUp() * -30 * i ) )
 			if ( particle ) then
-				particle:SetVelocity( (self.Entity:GetUp() * -30 ) )
+				particle:SetVelocity( ( self.Entity:GetUp() * -30 ) )
 				particle:SetLifeTime( 0 )
 				particle:SetDieTime( 0.2 )
 				particle:SetStartAlpha( math.random( 200, 255 ) )

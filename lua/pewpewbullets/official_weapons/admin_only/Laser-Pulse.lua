@@ -25,7 +25,7 @@ BULLET.Reloadtime = 0.5
 BULLET.Ammo = 0
 BULLET.AmmoReloadtime = 0
 
-BULLET.Lifetime = {0,0}
+BULLET.Lifetime = {0, 0}
 BULLET.ExplodeAfterDeath = false
 BULLET.EnergyPerShot = 600
 
@@ -42,7 +42,7 @@ function BULLET:Fire()
 	if ( trace.Entity and trace.Entity:IsValid() ) then
 		-- Stargate shield damage
 		if ( trace.Entity:GetClass() == "shield" ) then
-			trace.Entity:Hit( nil,trace.HitPos,self.Bullet.Damage*pewpew:GetConVar( "StargateShield_DamageMul" ),trace.HitNormal )
+			trace.Entity:Hit( nil, trace.HitPos, self.Bullet.Damage*pewpew:GetConVar( "StargateShield_DamageMul" ), trace.HitNormal )
 		else
 			pewpew:PointDamage( trace.Entity, self.Bullet.Damage, self )
 		end

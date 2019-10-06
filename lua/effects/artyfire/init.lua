@@ -2,10 +2,10 @@
 
 EFFECT.Mat = Material( "effects/select_ring" )
 
-/*-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+/*-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
    Initializes the effect. The data is a table of data
    which was passed from the server.
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -*/
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -*/
 function EFFECT:Init( data )
 	
 local vOffset = data:GetOrigin()
@@ -38,7 +38,7 @@ local vOffset = data:GetOrigin()
  			 
  			end
 			
-			local particle1 = emitter:Add( "particles/flamelet"..math.Rand( 1,5 ), vOffset )
+			local particle1 = emitter:Add( "particles/flamelet" .. math.Rand( 1, 5 ), vOffset )
  			if ( particle1 ) then
  				 
  				particle1:SetVelocity( VectorRand() * math.Rand( 30, 70 ) )
@@ -91,15 +91,15 @@ local vOffset = data:GetOrigin()
 end
 
 
-/*-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+/*-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
    THINK
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -*/
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -*/
 function EFFECT:Think( )
 	return false
 end
 
-/*-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+/*-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
    Draw the effect
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -*/
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -*/
 function EFFECT:Render()
 end

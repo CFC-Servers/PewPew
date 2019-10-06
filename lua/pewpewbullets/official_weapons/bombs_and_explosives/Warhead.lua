@@ -13,7 +13,7 @@ BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
 
 -- Effects / Sounds
-BULLET.FireSound = {"weapons/explode1.wav","weapons/explode2.wav"}
+BULLET.FireSound = {"weapons/explode1.wav", "weapons/explode2.wav"}
 BULLET.FireEffect = "gcombat_explosion"
 
 -- Damage

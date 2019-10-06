@@ -14,14 +14,14 @@ if SERVER then
 
 	-- Add Plugin files
 	local function AddFiles( folder, files, N )
-		for k,v in ipairs( files ) do
+		for k, v in ipairs( files ) do
 			if ( N == 1 ) then
-				AddCSLuaFile( folder..v )
+				AddCSLuaFile( folder .. v )
 			elseif ( N == 2 ) then
-				AddCSLuaFile( folder..v )
-				include( folder..v )
+				AddCSLuaFile( folder .. v )
+				include( folder .. v )
 			elseif ( N == 3 ) then
-				include( folder..v )
+				include( folder .. v )
 			end
 		end
 	end
@@ -50,7 +50,7 @@ elseif CLIENT then
 
 	-- Include Plugin files
 	local function AddFiles( folder, files )
-		for k,v in ipairs( files ) do
+		for k, v in ipairs( files ) do
 			include( folder .. v )
 		end
 	end

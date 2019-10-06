@@ -20,7 +20,7 @@ BULLET.Trail = nil
 
 -- Effects / Sounds
 BULLET.FireSound = {"weapons/grenade_launcher1.wav"}
-BULLET.ExplosionSound = {"weapons/explode3.wav", "weapons/explode4.wav","weapons/explode5.wav"}
+BULLET.ExplosionSound = {"weapons/explode3.wav", "weapons/explode4.wav", "weapons/explode5.wav"}
 BULLET.FireEffect = nil
 BULLET.ExplosionEffect = "big_splosion"
 BULLET.EmptyMagSound = nil
@@ -89,17 +89,17 @@ function BULLET:Think()
 	-- Make it fly
 	if ( self.Entity:WaterLevel() == 0 ) then
 		self.Entity:SetPos( self.Entity:GetPos() + self.FlightDirection * self.Bullet.Speed / 2 )
-		self.FlightDirection = self.FlightDirection - Vector( 0,0,self.Bullet.Gravity / self.Bullet.Speed )
+		self.FlightDirection = self.FlightDirection - Vector( 0, 0, self.Bullet.Gravity / self.Bullet.Speed )
 		self.FlightDirection.z = math.Clamp( self.FlightDirection.z, 0, self.FlightDirection.z )
-		self.Entity:SetPos( self.Entity:GetPos() - Vector( 0,0,self.Grav ) )
+		self.Entity:SetPos( self.Entity:GetPos() - Vector( 0, 0, self.Grav ) )
 		self.Grav = self.Grav + 0.3
 		
 		self.Delay = CurTime() + 0.5
 	elseif ( self.Entity:WaterLevel() > 0 and CurTime() < self.Delay and self.Delay > 0 ) then
 		self.Entity:SetPos( self.Entity:GetPos() + self.FlightDirection * self.Bullet.Speed / 2 )
-		self.FlightDirection = self.FlightDirection - Vector( 0,0,self.Bullet.Gravity / self.Bullet.Speed )
+		self.FlightDirection = self.FlightDirection - Vector( 0, 0, self.Bullet.Gravity / self.Bullet.Speed )
 		self.FlightDirection.z = math.Clamp( self.FlightDirection.z, 0, self.FlightDirection.z )
-		self.Entity:SetPos( self.Entity:GetPos() - Vector( 0,0,self.Grav ) )
+		self.Entity:SetPos( self.Entity:GetPos() - Vector( 0, 0, self.Grav ) )
 		self.Grav = self.Grav + 0.05
 	elseif ( self.Entity:WaterLevel() > 0 and CurTime() > self.Delay ) then
 		self.Grav = 0

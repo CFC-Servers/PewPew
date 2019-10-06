@@ -34,7 +34,7 @@ if ( SERVER ) then
 		if ( !ent:IsValid() ) then return end
 		ent:SetModel( model )
 		ent:SetPos( trace.HitPos - trace.HitNormal * ent:OBBMins().z )
-		ent:SetAngles( trace.HitNormal:Angle() + Angle( 90,0,0 ) )
+		ent:SetAngles( trace.HitNormal:Angle() + Angle( 90, 0, 0 ) )
 		ent:Spawn()
 		ent:Activate()
 		ent:SetRadius( self:GetClientInfo( "size" ) )
@@ -57,7 +57,7 @@ if ( SERVER ) then
 			local nocollide = constraint.NoCollide( ent, trace.Entity, 0, trace.PhysicsBone )
 		end
 			
-		ply:AddCount( "pewpew_safezones",ent )
+		ply:AddCount( "pewpew_safezones", ent )
 		ply:AddCleanup ( "pewpew_safezones", ent )
 
 		undo.Create( "pewpew_safezone" )
@@ -78,7 +78,7 @@ if ( SERVER ) then
 		local ent = self:CreateZone( ply, trace, model )
 		if ( !ent ) then return end
 		
-		ply:AddCount( "pewpew_safezones",ent )
+		ply:AddCount( "pewpew_safezones", ent )
 		ply:AddCleanup ( "pewpew_safezones", ent )
 
 		undo.Create( "pewpew_safezone" )
@@ -148,7 +148,7 @@ else
 			return
 		end
 		
-		ent:SetAngles( trace.HitNormal:Angle() + Angle( 90,0,0 ) )
+		ent:SetAngles( trace.HitNormal:Angle() + Angle( 90, 0, 0 ) )
 		ent:SetPos( trace.HitPos - trace.HitNormal * ent:OBBMins().z )
 		
 		ent:SetNoDraw( false )
@@ -158,7 +158,7 @@ else
 		local model = self:GetZoneModel()
 		if ( !self.GhostEntity or !self.GhostEntity:IsValid() or self.GhostEntity:GetModel() != model ) then
 			local trace = self:GetOwner():GetEyeTrace()
-			self:MakeGhostEntity( Model( model ), trace.HitPos, trace.HitNormal:Angle() + Angle( 90,0,0 ) )
+			self:MakeGhostEntity( Model( model ), trace.HitPos, trace.HitNormal:Angle() + Angle( 90, 0, 0 ) )
 		end
 		self:UpdateGhostZone( self.GhostEntity, self:GetOwner() )
 	end

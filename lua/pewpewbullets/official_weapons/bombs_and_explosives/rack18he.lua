@@ -20,7 +20,7 @@ BULLET.Trail = nil
 
 -- Effects / Sounds
 BULLET.FireSound = {"npc/attack_helicopter/aheli_mine_drop1.wav"}
-BULLET.ExplosionSound = {"weapons/explode3.wav","weapons/explode4.wav","weapons/explode5.wav"}
+BULLET.ExplosionSound = {"weapons/explode3.wav", "weapons/explode4.wav", "weapons/explode5.wav"}
 BULLET.FireEffect = nil
 BULLET.ExplosionEffect = "explosion"
 
@@ -95,7 +95,7 @@ function BULLET:Think()
 			else
 				soundpath = self.Bullet.ExplosionSound[1]
 			end
-			sound.Play( soundpath, self.Entity:GetPos(),100,100 )
+			sound.Play( soundpath, self.Entity:GetPos(), 100, 100 )
 		end
 		
 		self:Remove()

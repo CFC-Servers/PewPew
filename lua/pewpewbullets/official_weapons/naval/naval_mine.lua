@@ -19,7 +19,7 @@ BULLET.Color = nil
 BULLET.Trail = nil
 
 -- Effects / Sounds
-BULLET.FireSound = {"weapons/explode1.wav","weapons/explode2.wav"}
+BULLET.FireSound = {"weapons/explode1.wav", "weapons/explode2.wav"}
 BULLET.ExplosionSound = nil
 BULLET.FireEffect = "enersplosion"
 BULLET.ExplosionEffect = nil
@@ -57,7 +57,7 @@ function BULLET:CannonThink()
 	if ( !self.TraceDist or CurTime() > self.NextTrace ) then
 		local tr = {}
 		tr.start = self:GetPos()
-		tr.endpos = self:GetPos() - Vector( 0,0,99999999 )
+		tr.endpos = self:GetPos() - Vector( 0, 0, 99999999 )
 		tr.filter = self.Entity
 		local trace = util.TraceLine( tr )
 		self.TraceDist = trace.HitPos:Distance( self:GetPos() )
@@ -68,11 +68,11 @@ function BULLET:CannonThink()
 	if ( self.TraceDist and ( self:WaterLevel() > 0 ) ) then -- Make sure it has a trace distance, and make sure it's below the water level
 		-- Apply force to make it hover
 		local diff = self.TargetHeight - self.TraceDist
-		phys:ApplyForceCenter( ( Vector( 0,0,diff*0.5-0.35 ) - self.Entity:GetVelocity() * Vector( 0.2,0.2,0.8 ) ) * 35 )
+		phys:ApplyForceCenter( ( Vector( 0, 0, diff*0.5-0.35 ) - self.Entity:GetVelocity() * Vector( 0.2, 0.2, 0.8 ) ) * 35 )
 	elseif ( !( self:WaterLevel() > 0 ) ) then -- If it jumps above the water, set the distance again
 		local tr = {}
 		tr.start = self:GetPos()
-		tr.endpos = self:GetPos() - Vector( 0,0,99999999 )
+		tr.endpos = self:GetPos() - Vector( 0, 0, 99999999 )
 		tr.filter = self.Entity
 		local trace = util.TraceLine( tr )
 		self.TraceDist = trace.HitPos:Distance( self:GetPos() ) - 30

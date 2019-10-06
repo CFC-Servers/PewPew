@@ -52,7 +52,7 @@ function BULLET:Fire()
 				local hp = e.Core.pewpew.CoreHealth
 				local maxhp = e.Core.pewpew.CoreMaxHealth
 				if ( hp and maxhp and hp < maxhp ) then
-					pewpew:RepairCoreHealth( e.Core,self.Bullet.Damage )
+					pewpew:RepairCoreHealth( e.Core, self.Bullet.Damage )
 					local effectdata = EffectData()
 					effectdata:SetOrigin( e:GetPos() )
 					effectdata:SetStart( startpos )

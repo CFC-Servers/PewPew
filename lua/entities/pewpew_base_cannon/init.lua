@@ -2,9 +2,9 @@ AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "shared.lua" )
 include( 'shared.lua' )
 
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - --
 -- Initialize
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - --
 function ENT:Initialize()
 	if ( CAF and CAF.GetAddon( "Resource Distribution" ) and CAF.GetAddon( "Life Support" ) ) then
 		self.BaseClass.Initialize( self )
@@ -57,9 +57,9 @@ function ENT:Initialize()
 	if ( !self.Direction ) then self.Direction = 1 end
 end
 
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - --
 -- Set Options
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - --
 
 function ENT:SetOptions( BULLET, ply, firekey, reloadkey, FireDirection )
  	self.Bullet = table.Copy( BULLET )
@@ -132,9 +132,9 @@ function ENT:SetOptions( BULLET, ply, firekey, reloadkey, FireDirection )
 	self:SetNWString( "PewPew_OwnerName", ply:Nick() )
 end
 
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - --
 -- Default Old System FireBullet
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - --
 function ENT:OldSystem_FireBullet()
 	-- Create Bullet
 	local ent = ents.Create( "pewpew_base_bullet" )
@@ -151,12 +151,12 @@ function ENT:OldSystem_FireBullet()
 	ent:SetPos( Pos )
 	-- Add random angle offset
 	local num = self.Bullet.Spread or 0
-	local randomang = Angle( 0,0,0 )
+	local randomang = Angle( 0, 0, 0 )
 	if ( num ) then
-		randomang = Angle( math.Rand( -num,num ), math.Rand( -num,num ), math.Rand( -num,num ) )
+		randomang = Angle( math.Rand( -num, num ), math.Rand( -num, num ), math.Rand( -num, num ) )
 		Dir:Rotate( randomang )
 	end	
-	ent:SetAngles( Dir:Angle() + Angle( 90,0,0 ) )
+	ent:SetAngles( Dir:Angle() + Angle( 90, 0, 0 ) )
 	-- Spawn
 	ent:Spawn()
 	ent:Activate()
@@ -199,14 +199,14 @@ function ENT:OldSystem_FireBullet()
 	
 	return ent
 end
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - --
 -- Default New System FireBullet
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - --
 function ENT:NewSystem_FireBullet()
 	local Dir, Pos = pewpew:GetFireDirection( self.Direction, self, ent )
 	local num = self.Bullet.Spread or 0
 	if ( num and num != 0 ) then
-		local randomang = Angle( math.Rand( -num,num ), math.Rand( -num,num ), math.Rand( -num,num ) )
+		local randomang = Angle( math.Rand( -num, num ), math.Rand( -num, num ), math.Rand( -num, num ) )
 		Dir:Rotate( randomang )
 	end
 	pewpew:FireBullet( Pos, Dir, self.Owner, self.Bullet, self, self.Direction )
@@ -252,7 +252,7 @@ function ENT:FireBullet()
 		local amount = self:GetResourceAmount( "energy" )
 		local req = self.Bullet.EnergyPerShot or 0
 		if ( amount < req and req > 0 ) then return end
-		self:ConsumeResource( "energy",req )
+		self:ConsumeResource( "energy", req )
 	end
 	
 	if ( self.Bullet.Fire ) then
@@ -267,9 +267,9 @@ function ENT:FireBullet()
 	end	
 end
 
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - --
 -- Think
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - --
 function ENT:Think()
 	if ( !self.Bullet ) then return end
 	if ( self.Bullet.CannonThink ) then
@@ -325,9 +325,9 @@ function ENT:Think()
 	end
 end
 
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - --
 -- Other
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - --
 function ENT:PhysicsCollide( data, physobj )
 	if ( self.Bullet.CannonPhysicsCollide ) then
 		self.Bullet.CannonPhysicsCollide( self, data, physobj )
@@ -346,9 +346,9 @@ function ENT:OnRemove()
 	end
 end
 
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - --
 -- Input
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - --
 function ENT:InputChange( name, value )
 	if ( name == "Fire" ) then
 		if ( value != 0 ) then
@@ -436,23 +436,23 @@ numpad.Register( "PewPew_Cannon_Fire_Off", NumpadOff )
 numpad.Register( "PewPew_Cannon_Reload_On", NumpadReloadOn )
 numpad.Register( "PewPew_Cannon_Reload_Off", NumpadReloadOff )
 
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - --
 -- Use
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - --
 
 -- Open the use menu
 function ENT:Use( User, caller )
 	User:ChatPrint( "[PewPew] Hold down your use key for 2 seconds to see info about this PewPew Weapon." )
-	timer.Simple( 2,function( ply )
+	timer.Simple( 2, function( ply )
 		if ( User:KeyDown( IN_USE ) ) then
 			User:ConCommand( "PewPew_UseMenu " .. self.Bullet.Name )
 		end
-	end,User )
+	end, User )
 end
 
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - --
 -- Duplication
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - --
 function ENT:DupeInfoTable()
 	local ret = {}
 	ret.BulletName = self.Bullet.Name
@@ -496,7 +496,7 @@ function ENT:DupeSpawn( ply, ent, info )
 				self.Owner:ChatPrint( "You may also leave it like this, and it might work on other servers ( which have this bullet ) after adv duplicating and uploading it to that server." )
 			end
 			ply:ChatPrint( "[Pewpew] This server does not have a bullet named '" .. info.pewpewInfo.BulletName .. "'.\nIn order to fire, you must update this cannon with a valid bullet." )
-			ply:ChatPrint( "You may also leave it like this, and it might work on other servers ( which have this bullet ) after adv duplicating and uploading it to that server.\n-- --- --- --- --- --- --- " )
+			ply:ChatPrint( "You may also leave it like this, and it might work on other servers ( which have this bullet ) after adv duplicating and uploading it to that server.\n-- -- - -- - -- - -- - -- - -- - " )
 			bullet = blt
 		end
 		self:SetOptions( bullet, ply, info.pewpewInfo.FireKey or "1", info.pewpewInfo.ReloadKey or "2", info.pewpewInfo.Direction )
@@ -508,10 +508,10 @@ function ENT:DupeSpawn( ply, ent, info )
 			phys:SetMass( info.pewpewInfo.Mass )
 		end
 	end
-	ply:AddCount( "pewpew",ent )
+	ply:AddCount( "pewpew", ent )
 end
 
--- --- --- --- --- --- --- --- --
+-- -- - -- - -- - -- - -- - -- - -- - --
 -- Regular dupe functions
 function ENT:BuildDupeInfo()
 	local info = self.BaseClass.BuildDupeInfo( self ) or {}
@@ -524,7 +524,7 @@ function ENT:ApplyDupeInfo( ply, ent, info, GetEntByID )
 	self.BaseClass.ApplyDupeInfo( self, ply, ent, info, GetEntByID )
 end
 
--- --- --- --- --- --- --- --- --
+-- -- - -- - -- - -- - -- - -- - -- - --
 -- SB3 dupe functions
 if ( CAF and CAF.GetAddon( "Resource Distribution" ) and CAF.GetAddon( "Life Support" ) ) then
 	function ENT:PreEntityCopy()

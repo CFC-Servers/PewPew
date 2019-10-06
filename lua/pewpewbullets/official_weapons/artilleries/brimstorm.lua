@@ -12,7 +12,7 @@ BULLET.SuperAdminOnly = false
 
 -- Appearance
 BULLET.Model = "models/combatmodels/tankshell.mdl"
-BULLET.Color = Color( 255,150,0 )
+BULLET.Color = Color( 255, 150, 0 )
 
 -- Effects / Sounds
 BULLET.FireSound = {"arty/mg42.wav"}
@@ -124,7 +124,7 @@ function BULLET:CannonThink()
 				if ( !self.ChargeSound:IsPlaying() ) then
 					self.ChargeSound:Play()
 				end
-				self.ChargeSound:ChangePitch( math.max( self.ChargeUpTime,1 ),0 )
+				self.ChargeSound:ChangePitch( math.max( self.ChargeUpTime, 1 ), 0 )
 			elseif WireLib then
 				WireLib.TriggerOutput( self.Entity, "Can Fire", 1 )
 			end
@@ -133,7 +133,7 @@ function BULLET:CannonThink()
 	if ( !self.Firing or self.Ammo == 0 ) then
 		if ( self.ChargeUpTime > 0 ) then
 			self.ChargeUpTime = self.ChargeUpTime - 2
-			self.ChargeSound:ChangePitch( math.max( self.ChargeUpTime,1 ),0 )
+			self.ChargeSound:ChangePitch( math.max( self.ChargeUpTime, 1 ), 0 )
 		else
 			self.ChargeSound:Stop()
 		end

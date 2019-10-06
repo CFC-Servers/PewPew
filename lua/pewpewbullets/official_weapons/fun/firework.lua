@@ -16,12 +16,12 @@ BULLET.UseOldSystem = true
 -- Appearance
 BULLET.Model = "models/combatmodels/tankshell.mdl"
 BULLET.Material = "phoenix_storms/gear"
-BULLET.Color = Color( math.random( 50,255 ),math.random( 50,255 ),math.random( 50,255 ) )
-BULLET.Trail = {StartSize = 30, EndSize = 0, Length = 0.75, Texture = "trails/smoke.vmt", Color = Color( 255,255,255 )}
+BULLET.Color = Color( math.random( 50, 255 ), math.random( 50, 255 ), math.random( 50, 255 ) )
+BULLET.Trail = {StartSize = 30, EndSize = 0, Length = 0.75, Texture = "trails/smoke.vmt", Color = Color( 255, 255, 255 )}
 
 -- Effects / Sounds
 BULLET.FireSound = {"weapons/flaregun_shoot.wav"}
-BULLET.ExplosionSound = {"ambient/explosions/explode_8.wav","ambient/explosions/explode_9.wav"}
+BULLET.ExplosionSound = {"ambient/explosions/explode_8.wav", "ambient/explosions/explode_9.wav"}
 BULLET.FireEffect = nil
 BULLET.ExplosionEffect = "confetti"
 
@@ -47,7 +47,7 @@ BULLET.Ammo = 6
 BULLET.AmmoReloadtime = 8
 
 -- Other
-BULLET.Lifetime = {2,3}
+BULLET.Lifetime = {2, 3}
 BULLET.ExplodeAfterDeath = true
 BULLET.EnergyPerShot = 650
 

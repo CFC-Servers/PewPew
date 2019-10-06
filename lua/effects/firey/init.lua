@@ -4,10 +4,10 @@
  local matLight2= Material( "sprites/splodesprite" )
 
 
- /*-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+ /*-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
     Initializes the effect. The data is a table of data
     which was passed from the server.
- -- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -*/
+ -- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -*/
  function EFFECT:Init( data )
  	 
  	// This is how long the spawn effect
@@ -25,7 +25,7 @@
 			local vec = VectorRand()
 			
 			//Really needs some work to look more impressive...
-			local particle1 = self.emitter:Add( "particles/flamelet"..math.random( 1,5 ), self.vOffset + vec * math.Rand( 75,125 ) )
+			local particle1 = self.emitter:Add( "particles/flamelet" .. math.random( 1, 5 ), self.vOffset + vec * math.Rand( 75, 125 ) )
 			if ( particle1 ) then
 				particle1:SetVelocity( vec * -700 )
 				particle1:SetLifeTime( 0 )
@@ -34,7 +34,7 @@
 				particle1:SetEndAlpha( 0 )
 				particle1:SetStartSize( 75 )
 				particle1:SetEndSize( 15 )
-				particle1:SetGravity( Vector( 0,0,-600 ) )
+				particle1:SetGravity( Vector( 0, 0, -600 ) )
 				particle1:SetRoll( math.Rand( 0, 360 ) )
 				particle1:SetRollDelta( math.Rand( -10, 10 ) )
 				particle1:SetColor( 255 , 255 , 255 )
@@ -49,10 +49,10 @@
  end
 
 
- /*-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+ /*-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
     THINK
     Returning false makes the entity die
- -- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -*/
+ -- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -*/
  function EFFECT:Think( )
 
  	return ( self.LifeTime > CurTime() )
@@ -61,8 +61,8 @@
 
 
 
- /*-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+ /*-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
     Draw the effect
- -- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -*/
+ -- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -*/
  function EFFECT:Render()
  end

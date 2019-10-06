@@ -52,7 +52,7 @@ local function getClosestInCone( Entities, Pos, Dir, Degrees )
 	local closestDist = 0
 	local closestPos
 	if Entities[1].GetPos then -- It's an array of entities
-		for i = 1,#Entities do
+		for i = 1, #Entities do
 			local ent = Entities[i]
 			local vPos = ent:GetPos()
 			if isInCone( vPos, Pos, Dir, cosDegrees ) then
@@ -65,7 +65,7 @@ local function getClosestInCone( Entities, Pos, Dir, Degrees )
 			end
 		end
 	else -- It's an array of pewpew bullets
-		for i = 1,#Entities do
+		for i = 1, #Entities do
 			local ent = Entities[i]
 			local vPos = ent.Pos
 			if isInCone( vPos, Pos, Dir, cosDegrees ) then
@@ -89,7 +89,7 @@ function BULLET:Fire()
 	
 	local temp1 = {}
 	local temp2 = ents.FindInSphere( startpos, self.Bullet.Radius )
-	for i = 1,#temp2 do
+	for i = 1, #temp2 do
 		if temp2[i]:GetClass() == "pewpew_base_bullet" then temp1[#temp1+1] = temp2[i] end
 	end
 

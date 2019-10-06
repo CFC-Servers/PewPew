@@ -25,7 +25,7 @@ BULLET.Ammo = 0
 BULLET.AmmoReloadtime = 0
 
 -- Other
-BULLET.Lifetime = {0,0}
+BULLET.Lifetime = {0, 0}
 BULLET.ExplodeAfterDeath = true
 BULLET.EnergyPerShot = 10000
 
@@ -77,7 +77,7 @@ function BULLET:Fire()
 	phys:AddVelocity( Dir * 500 )
 	self.Entity:GetPhysicsObject():ApplyForceCenter( Dir * -500 )
 	
-	ply:AddCount( "pewpew",ent )
+	ply:AddCount( "pewpew", ent )
 	ply:AddCleanup ( "pewpew", ent )
 
 	undo.Create( "pewpew" )

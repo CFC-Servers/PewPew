@@ -4,10 +4,10 @@
    local matLight2			= Material( "sprites/splodesprite" )
 
 
- /*-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+ /*-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
     Initializes the effect. The data is a table of data
     which was passed from the server.
- -- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -*/
+ -- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -*/
  function EFFECT:Init( data )
  	 
  	// This is how long the spawn effect
@@ -39,7 +39,7 @@
 			
 			local vec = VectorRand()
 			
-			local particle1 = self.emitter:Add( "particles/flamelet"..math.random( 1,5 ), self.vOffset + vec * math.Rand( 75,125 ) )
+			local particle1 = self.emitter:Add( "particles/flamelet" .. math.random( 1, 5 ), self.vOffset + vec * math.Rand( 75, 125 ) )
 			if ( particle1 ) then
 				particle1:SetVelocity( vec * -400 )
 				particle1:SetLifeTime( 0 )
@@ -62,10 +62,10 @@
  end
 
 
- /*-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+ /*-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
     THINK
     Returning false makes the entity die
- -- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -*/
+ -- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -*/
  function EFFECT:Think( )
 
  	return ( self.LifeTime > CurTime() )
@@ -74,9 +74,9 @@
 
 
 
- /*-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+ /*-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
     Draw the effect
- -- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -*/
+ -- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -*/
  function EFFECT:Render()
  	 
  	// What fraction towards finishing are we at

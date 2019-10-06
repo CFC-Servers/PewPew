@@ -1,9 +1,9 @@
 
 
- /*-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+ /*-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
     Initializes the effect. The data is a table of data
     which was passed from the server.
- -- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -*/
+ -- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -*/
  function EFFECT:Init( data )
 	
  	
@@ -11,9 +11,9 @@
 	local dir = data:GetNormal()
 	local emitter = ParticleEmitter( self.vOffset )
 		for i = 0, ( 8 ) do
-			local particle = emitter:Add( "particles/flamelet"..math.random( 1,5 ), self.vOffset + ( dir * 30 * i ) )
+			local particle = emitter:Add( "particles/flamelet" .. math.random( 1, 5 ), self.vOffset + ( dir * 30 * i ) )
 			if ( particle ) then
-				particle:SetVelocity( (dir * 60 * i ) )
+				particle:SetVelocity( ( dir * 60 * i ) )
 				particle:SetLifeTime( 0 )
 				particle:SetDieTime( 0.2 )
 				particle:SetStartAlpha( math.Rand( 200, 255 ) )
@@ -28,11 +28,11 @@
 		
 		for i = 0, 2 do
 		
-			local Pos = Vector( math.Rand( -1,1 ), math.Rand( -1,1 ), math.Rand( -1,1 ) ):GetNormalized()
+			local Pos = Vector( math.Rand( -1, 1 ), math.Rand( -1, 1 ), math.Rand( -1, 1 ) ):GetNormalized()
 		
 			local particle = emitter:Add( "particles/smokey", self.vOffset + dir * math.Rand( 10, 40 ) )
 			if ( particle ) then
-				particle:SetVelocity( VectorRand() * 20 + dir * math.Rand( 60,100 ) )
+				particle:SetVelocity( VectorRand() * 20 + dir * math.Rand( 60, 100 ) )
 				particle:SetLifeTime( 0 )
 				particle:SetDieTime( math.Rand( 1, 3 ) )
 				particle:SetStartAlpha( math.Rand( 200, 255 ) )
@@ -54,16 +54,16 @@
  end
 
 
-/*-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+/*-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
    THINK
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -*/
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -*/
 function EFFECT:Think( )
 	return false
 end
 
-/*-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -
+/*-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -
    Draw the effect
--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -*/
+-- -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -- - -*/
 function EFFECT:Render()
 end
 

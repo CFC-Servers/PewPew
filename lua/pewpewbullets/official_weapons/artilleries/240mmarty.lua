@@ -20,7 +20,7 @@ BULLET.Trail = nil
 
 -- Effects / Sounds
 BULLET.FireSound = {"arty/40mm.wav"}
-BULLET.ExplosionSound = {"weapons/explode3.wav","weapons/explode4.wav", "weapons/explode5.wav"}
+BULLET.ExplosionSound = {"weapons/explode3.wav", "weapons/explode4.wav", "weapons/explode5.wav"}
 BULLET.FireEffect = "cannon_flare"
 BULLET.ExplosionEffect = "HEATsplode"
 BULLET.EmptyMagSound = nil
@@ -63,7 +63,7 @@ BULLET.UseOldSystem = true
 -- Wire Input ( This is called whenever a wire input is changed )
 function BULLET:WireInput( inputname, value )
 	if ( inputname == "Speed" ) then
-		self.CustomSpeed = math.Clamp( value,10,60 )
+		self.CustomSpeed = math.Clamp( value, 10, 60 )
 	else
 		self:InputChange( inputname, value )
 	end

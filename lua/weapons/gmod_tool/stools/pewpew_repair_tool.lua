@@ -75,7 +75,7 @@ else
 		You can also toggle the
 		health icons using Reload.]] )
 		label:SizeToContents()
-		label:SetColor( Color( 0,0,0 ) )
+		label:SetColor( Color( 0, 0, 0 ) )
 		
 		CPanel:AddItem( label )
 	end
@@ -109,7 +109,7 @@ else
 				surface.SetFont( "DermaDefault" )
 				local length = surface.GetTextSize( txt )
 				-- Draw string
-				draw.WordBox( 6, pos.x - length / 2, pos.y + 20, txt, "DermaDefault", Color( 255 * ( 1-percent/100 ), 255 * ( percent/100 ), 0, math.Clamp( 2040-dist,0,255 ) ), Color( 50, 50, 50, math.Clamp( 2040-dist,0,255 ) ) )
+				draw.WordBox( 6, pos.x - length / 2, pos.y + 20, txt, "DermaDefault", Color( 255 * ( 1-percent/100 ), 255 * ( percent/100 ), 0, math.Clamp( 2040-dist, 0, 255 ) ), Color( 50, 50, 50, math.Clamp( 2040-dist, 0, 255 ) ) )
 			end
 		end
 	end
