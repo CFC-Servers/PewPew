@@ -16,8 +16,8 @@ BULLET.UseOldSystem = true
 -- Appearance
 BULLET.Model = "models/combatmodels/tankshell.mdl"
 BULLET.Material = "phoenix_storms/gear"
-BULLET.Color = Color(math.random(50,255),math.random(50,255),math.random(50,255))
-BULLET.Trail = {StartSize=30, EndSize=0, Length=0.75, Texture="trails/smoke.vmt", Color=Color(255,255,255)}
+BULLET.Color = Color( math.random( 50,255 ),math.random( 50,255 ),math.random( 50,255 ) )
+BULLET.Trail = {StartSize = 30, EndSize = 0, Length = 0.75, Texture = "trails/smoke.vmt", Color = Color( 255,255,255 )}
 
 -- Effects / Sounds
 BULLET.FireSound = {"weapons/flaregun_shoot.wav"}
@@ -51,7 +51,7 @@ BULLET.Lifetime = {2,3}
 BULLET.ExplodeAfterDeath = true
 BULLET.EnergyPerShot = 650
 
--- Custom Functions 
--- (If you set the override var to true, the cannon/bullet will run these instead. Use these functions to do stuff which is not possible with the above variables)
+-- Custom Functions
+-- ( If you set the override var to true, the cannon/bullet will run these instead. Use these functions to do stuff which is not possible with the above variables )
 
 pewpew:AddWeapon( BULLET )

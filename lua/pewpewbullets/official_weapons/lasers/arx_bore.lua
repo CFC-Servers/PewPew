@@ -7,7 +7,7 @@ BULLET.Version = 2
 
 -- General Information
 BULLET.Name = "Arx Bore"
-BULLET.Author = "Hexwolf (Base by Divran)"
+BULLET.Author = "Hexwolf ( Base by Divran )"
 BULLET.Description = "A short range cutting tool"
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
@@ -31,10 +31,10 @@ BULLET.EnergyPerShot = 75
 
 BULLET.Gravity = 0
 
--- Custom Functions 
--- (If you set the override var to true, the cannon/bullet will run these instead. Use these functions to do stuff which is not possible with the above variables)
+-- Custom Functions
+-- ( If you set the override var to true, the cannon/bullet will run these instead. Use these functions to do stuff which is not possible with the above variables )
 
--- Fire (Is called before the cannon is about to fire)
+-- Fire ( Is called before the cannon is about to fire )
 function BULLET:Fire()
 	local Dir, startpos = pewpew:GetFireDirection( self.Direction, self )
 	
@@ -43,7 +43,7 @@ function BULLET:Fire()
 	
 	local effectdata = EffectData()
 	effectdata:SetStart( startpos )
-	effectdata:SetOrigin( HitPos or (startpos + Dir * self.Bullet.SliceDistance) )
+	effectdata:SetOrigin( HitPos or ( startpos + Dir * self.Bullet.SliceDistance ) )
 	effectdata:SetEntity( self.Entity )
 	util.Effect( self.Bullet.FireEffect, effectdata )
 end

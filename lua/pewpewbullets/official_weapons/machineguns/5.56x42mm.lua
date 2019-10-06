@@ -5,7 +5,7 @@ BULLET.Version = 2
 
 -- General Information
 BULLET.Name = "5.56x42mm Machinegun"
-BULLET.Author = "Hexwolf (Base by Divran)"
+BULLET.Author = "Hexwolf ( Base by Divran )"
 BULLET.Description = "Rapid fire 5.56x42mm machine gun."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false

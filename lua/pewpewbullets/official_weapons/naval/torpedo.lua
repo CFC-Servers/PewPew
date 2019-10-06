@@ -53,32 +53,32 @@ BULLET.EnergyPerShot = 5000
 BULLET.UseOldSystem = true -- because I'm too lazy to convert it :/
 
 
--- Custom Functions 
--- (If you set the override var to true, the cannon/bullet will run these instead. Use these functions to do stuff which is not possible with the above variables)
+-- Custom Functions
+-- ( If you set the override var to true, the cannon/bullet will run these instead. Use these functions to do stuff which is not possible with the above variables )
 
--- Initialize (Is called when the bullet initializes)
-function BULLET:Initialize()   
+-- Initialize ( Is called when the bullet initializes )
+function BULLET:Initialize()
 	self.Entity:PhysicsInit( SOLID_VPHYSICS ) 	
 	self.Entity:SetMoveType( MOVETYPE_NONE )
-	self.Entity:SetSolid( SOLID_NONE )    
+	self.Entity:SetSolid( SOLID_NONE )
 	self.FlightDirection = self.Entity:GetUp()
 	self.Exploded = false
 	self.Delay = 0
 	self.Grav = 0
 	
 	-- Trail
-	if (self.Bullet.Trail) then
+	if ( self.Bullet.Trail ) then
 		local trail = self.Bullet.Trail
-		util.SpriteTrail( self.Entity, 0, trail.Color, false, trail.StartSize, trail.EndSize, trail.Length, 1/(trail.StartSize+trail.EndSize)*0.5, trail.Texture )
+		util.SpriteTrail( self.Entity, 0, trail.Color, false, trail.StartSize, trail.EndSize, trail.Length, 1/( trail.StartSize+trail.EndSize )*0.5, trail.Texture )
 	end
 	
 	-- Material
-	if (self.Bullet.Material) then
+	if ( self.Bullet.Material ) then
 		self.Entity:SetMaterial( self.Bullet.Material )
 	end
 	
 	-- Color
-	if (self.Bullet.Color) then
+	if ( self.Bullet.Color ) then
 		local C = self.Bullet.Color
 		self.Entity:SetColor( C.r, C.g, C.b, C.a or 255 )
 	end
@@ -87,21 +87,21 @@ end
 -- Think
 function BULLET:Think()
 	-- Make it fly
-	if (self.Entity:WaterLevel() == 0) then
+	if ( self.Entity:WaterLevel() == 0 ) then
 		self.Entity:SetPos( self.Entity:GetPos() + self.FlightDirection * self.Bullet.Speed / 2 )
-		self.FlightDirection = self.FlightDirection - Vector(0,0,self.Bullet.Gravity / self.Bullet.Speed)
+		self.FlightDirection = self.FlightDirection - Vector( 0,0,self.Bullet.Gravity / self.Bullet.Speed )
 		self.FlightDirection.z = math.Clamp( self.FlightDirection.z, 0, self.FlightDirection.z )
-		self.Entity:SetPos( self.Entity:GetPos() - Vector(0,0,self.Grav) )
+		self.Entity:SetPos( self.Entity:GetPos() - Vector( 0,0,self.Grav ) )
 		self.Grav = self.Grav + 0.3
 		
 		self.Delay = CurTime() + 0.5
-	elseif (self.Entity:WaterLevel() > 0 and CurTime() < self.Delay and self.Delay > 0) then
+	elseif ( self.Entity:WaterLevel() > 0 and CurTime() < self.Delay and self.Delay > 0 ) then
 		self.Entity:SetPos( self.Entity:GetPos() + self.FlightDirection * self.Bullet.Speed / 2 )
-		self.FlightDirection = self.FlightDirection - Vector(0,0,self.Bullet.Gravity / self.Bullet.Speed)
+		self.FlightDirection = self.FlightDirection - Vector( 0,0,self.Bullet.Gravity / self.Bullet.Speed )
 		self.FlightDirection.z = math.Clamp( self.FlightDirection.z, 0, self.FlightDirection.z )
-		self.Entity:SetPos( self.Entity:GetPos() - Vector(0,0,self.Grav) )
+		self.Entity:SetPos( self.Entity:GetPos() - Vector( 0,0,self.Grav ) )
 		self.Grav = self.Grav + 0.05
-	elseif (self.Entity:WaterLevel() > 0 and CurTime() > self.Delay) then
+	elseif ( self.Entity:WaterLevel() > 0 and CurTime() > self.Delay ) then
 		self.Grav = 0
 		self.Delay = 0
 		self.Entity:SetPos( self.Entity:GetPos() + self.FlightDirection * self.Bullet.Speed )
@@ -109,28 +109,28 @@ function BULLET:Think()
 	self.Entity:SetAngles( self.FlightDirection:Angle() )
 	
 	-- Check if it hit something
-	local trace = pewpew:Trace(self:GetPos() - self.FlightDirection * self.Bullet.Speed, self.FlightDirection * self.Bullet.Speed, self)
+	local trace = pewpew:Trace( self:GetPos() - self.FlightDirection * self.Bullet.Speed, self.FlightDirection * self.Bullet.Speed, self )
 	
-	if (trace.Hit) then
-		if (pewpew:GetConVar( "Damage" )) then
-			pewpew:PlayerBlastDamage(self.Entity, self.Entity, self.Entity:GetPos(), self.Bullet.Damage, self.Bullet.Radius)
+	if ( trace.Hit ) then
+		if ( pewpew:GetConVar( "Damage" ) ) then
+			pewpew:PlayerBlastDamage( self.Entity, self.Entity, self.Entity:GetPos(), self.Bullet.Damage, self.Bullet.Radius )
 		end
-		pewpew:BlastDamage(self:GetPos(), self.Bullet.Radius, self.Bullet.Damage, self.Bullet.RangeDamageMul, self.Entity, self )
+		pewpew:BlastDamage( self:GetPos(), self.Bullet.Radius, self.Bullet.Damage, self.Bullet.RangeDamageMul, self.Entity, self )
 		
-		if (self.Bullet.ExplosionEffect) then
+		if ( self.Bullet.ExplosionEffect ) then
 			local effectdata = EffectData()
-			effectdata:SetOrigin(self:GetPos())
-			effectdata:SetStart(self:GetPos())
-			effectdata:SetNormal(self.Entity:GetUp())
-			util.Effect(self.Bullet.ExplosionEffect, effectdata)
+			effectdata:SetOrigin( self:GetPos() )
+			effectdata:SetStart( self:GetPos() )
+			effectdata:SetNormal( self.Entity:GetUp() )
+			util.Effect( self.Bullet.ExplosionEffect, effectdata )
 		end
 		
-		self.Entity:EmitSound(table.Random(self.Bullet.ExplosionSound), 500, 100)
+		self.Entity:EmitSound( table.Random( self.Bullet.ExplosionSound ), 500, 100 )
 		
 		self:Remove()
 	end
 	
-	self.Entity:NextThink(CurTime())
+	self.Entity:NextThink( CurTime() )
 	return true
 end
 

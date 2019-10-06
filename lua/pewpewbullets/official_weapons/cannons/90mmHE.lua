@@ -6,7 +6,7 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "90mm Cannon (HE)"
+BULLET.Name = "90mm Cannon ( HE )"
 BULLET.Author = "Divran"
 BULLET.Description = "Aim away from face."
 BULLET.AdminOnly = false
@@ -26,7 +26,7 @@ BULLET.ExplosionEffect = "big_splosion"
 
 -- Movement
 BULLET.Speed = 100
---BULLET.Gravity = 0.5
+-- BULLET.Gravity = 0.5
 BULLET.RecoilForce = 500
 BULLET.Spread = 0
 BULLET.AffectedBySBGravity = true

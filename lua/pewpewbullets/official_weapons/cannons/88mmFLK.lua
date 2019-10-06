@@ -1,6 +1,6 @@
 -- Basic Cannon
 
-if SERVER then util.AddNetworkString("PewPew-FlakLifetime") end
+if SERVER then util.AddNetworkString( "PewPew-FlakLifetime" ) end
 
 local BULLET = {}
 
@@ -9,7 +9,7 @@ BULLET.Version = 2
 
 -- General Information
 BULLET.Name = "[Modifiable] 88mm Flak Cannon"
-BULLET.Author = "Hexwolf (Base by Divran)"
+BULLET.Author = "Hexwolf ( Base by Divran )"
 BULLET.Description = "Shoots bullets which explode in midair, making it easier to shoot down airplanes."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
@@ -28,7 +28,7 @@ BULLET.ExplosionEffect = "pewpew_smokepuff"
 
 -- Movement
 BULLET.Speed = 135
---BULLET.Gravity = 0.06
+-- BULLET.Gravity = 0.06
 BULLET.RecoilForce = 400
 BULLET.Spread = 1
 BULLET.AffectedBySBGravity = true
@@ -56,27 +56,27 @@ BULLET.EnergyPerShot = 2000
 BULLET.CustomInputs = { "Fire", "Lifetime" }
 
 if CLIENT then
-	net.Receive("PewPew-FlakLifetime", function() local n=net.ReadFloat() BULLET.Lifetime={n,n} end)
+	net.Receive( "PewPew-FlakLifetime", function() local n = net.ReadFloat() BULLET.Lifetime = {n,n} end )
 end
 
--- Wire Input (This is called whenever a wire input is changed)
+-- Wire Input ( This is called whenever a wire input is changed )
 BULLET.WireInputOverride = true
 function BULLET:WireInput( inputname, value )
-	if (inputname == "Lifetime") then
+	if ( inputname == "Lifetime" ) then
 		self.Lifetime = value
-		net.Start("PewPew-FlakLifetime")
-			net.WriteFloat(value)
+		net.Start( "PewPew-FlakLifetime" )
+			net.WriteFloat( value )
 		net.Broadcast()
 	else
 		self:InputChange( inputname, value )
 	end
 end
 
--- Initialize (Is called when the bullet initializes)
+-- Initialize ( Is called when the bullet initializes )
 function BULLET:Initialize()
 	pewpew:DefaultBulletInitialize( self )
 	-- Lifetime
-	if (self.Cannon.Lifetime) then
+	if ( self.Cannon.Lifetime ) then
 		self.Lifetime = CurTime() + self.Cannon.Lifetime
 	end
 end

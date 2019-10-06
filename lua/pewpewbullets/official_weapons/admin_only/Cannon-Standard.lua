@@ -7,7 +7,7 @@ BULLET.Version = 2
 
 -- General Information
 BULLET.Name = "Cannon-Standard [Debug]"
-BULLET.Author = "Hexwolf (Base by Divran)"
+BULLET.Author = "Hexwolf ( Base by Divran )"
 BULLET.Description = "Rapid fire, low damage."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false

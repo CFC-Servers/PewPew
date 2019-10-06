@@ -6,8 +6,8 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "40mm Auto Cannon (HE)"
-BULLET.Author = "Hexwolf (Base by Divran)"
+BULLET.Name = "40mm Auto Cannon ( HE )"
+BULLET.Author = "Hexwolf ( Base by Divran )"
 BULLET.Description = "Rapid fire, low damage."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false

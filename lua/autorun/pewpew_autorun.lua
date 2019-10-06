@@ -4,34 +4,34 @@ if SERVER then
 	-- Initialize variables
 	pewpew = {}
 	
-	// sending files to client (not many because massive loading times)
-	resource.AddFile("materials/refract_ring.vmt")
+	// sending files to client ( not many because massive loading times )
+	resource.AddFile( "materials/refract_ring.vmt" )
 
 	-- Include files
-	include("pewpew_weaponhandler.lua")
-	include("pewpew_damagecontrol.lua")
-	include("pewpew_bulletcontrol.lua")
+	include( "pewpew_weaponhandler.lua" )
+	include( "pewpew_damagecontrol.lua" )
+	include( "pewpew_bulletcontrol.lua" )
 
 	-- Add Plugin files
 	local function AddFiles( folder, files, N )
 		for k,v in ipairs( files ) do
-			if (N == 1) then
-				AddCSLuaFile(folder..v)
-			elseif (N == 2) then
-				AddCSLuaFile(folder..v)
-				include(folder..v)
-			elseif (N == 3) then
-				include(folder..v)
+			if ( N == 1 ) then
+				AddCSLuaFile( folder..v )
+			elseif ( N == 2 ) then
+				AddCSLuaFile( folder..v )
+				include( folder..v )
+			elseif ( N == 3 ) then
+				include( folder..v )
 			end
 		end
 	end
-	AddFiles( "pewpewplugins/server/", file.Find("pewpewplugins/server/*.lua", "LUA"), 3 )
-	AddFiles( "pewpewplugins/shared/", file.Find("pewpewplugins/shared/*.lua", "LUA"), 2 )
-	AddFiles( "pewpewplugins/client/", file.Find("pewpewplugins/client/*.lua", "LUA"), 1 )
+	AddFiles( "pewpewplugins/server/", file.Find( "pewpewplugins/server/*.lua", "LUA" ), 3 )
+	AddFiles( "pewpewplugins/shared/", file.Find( "pewpewplugins/shared/*.lua", "LUA" ), 2 )
+	AddFiles( "pewpewplugins/client/", file.Find( "pewpewplugins/client/*.lua", "LUA" ), 1 )
 
 	-- Add files
-	AddCSLuaFile("pewpew_weaponhandler.lua")
-	AddCSLuaFile("pewpew_bulletcontrol.lua")
+	AddCSLuaFile( "pewpew_weaponhandler.lua" )
+	AddCSLuaFile( "pewpew_bulletcontrol.lua" )
 	AddCSLuaFile()
 
 	-- Run functions
@@ -45,17 +45,17 @@ elseif CLIENT then
 	pewpew = {}
 
 	-- Include files
-	include("pewpew_weaponhandler.lua")
-	include("pewpew_bulletcontrol.lua")
+	include( "pewpew_weaponhandler.lua" )
+	include( "pewpew_bulletcontrol.lua" )
 
 	-- Include Plugin files
 	local function AddFiles( folder, files )
 		for k,v in ipairs( files ) do
-			include(folder .. v)
+			include( folder .. v )
 		end
 	end
-	AddFiles( "pewpewplugins/client/", file.Find("pewpewplugins/client/*.lua", "LUA") )
-	AddFiles( "pewpewplugins/shared/", file.Find("pewpewplugins/shared/*.lua", "LUA") )
+	AddFiles( "pewpewplugins/client/", file.Find( "pewpewplugins/client/*.lua", "LUA" ) )
+	AddFiles( "pewpewplugins/shared/", file.Find( "pewpewplugins/shared/*.lua", "LUA" ) )
 
 
 	-- Run functions
@@ -74,4 +74,4 @@ sound.Add(
 	channel = CHAN_WEAPON,
 	soundlevel = 20,
 	sound = "^arty/rocket.wav"
-})
+} )

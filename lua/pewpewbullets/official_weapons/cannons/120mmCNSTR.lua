@@ -6,9 +6,9 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "120mm Cannon (Canister)"
+BULLET.Name = "120mm Cannon ( Canister )"
 BULLET.Author = "Chippy"
-BULLET.Description = "120mm cannon firing canister shells. (Hold fire until completion)."
+BULLET.Description = "120mm cannon firing canister shells. ( Hold fire until completion )."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
 

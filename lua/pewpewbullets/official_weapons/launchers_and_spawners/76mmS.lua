@@ -7,7 +7,7 @@ BULLET.Version = 2
 
 -- General Information
 BULLET.Name = "76mm Smoke Grenade Launcher"
-BULLET.Author = "Hexwolf (Base by Divran)"
+BULLET.Author = "Hexwolf ( Base by Divran )"
 BULLET.Description = "Fires a timed smoke grenade in a short range."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
@@ -50,49 +50,49 @@ BULLET.UseOldSystem = true
 
 function BULLET:Initialize()
 	self:DefaultInitialize()
-	self.Entity:PhysicsInit(SOLID_VPHYSICS)
-	self.Entity:SetMoveType(MOVETYPE_VPHYSICS)
-	self.Entity:SetSolid(SOLID_VPHYSICS)
+	self.Entity:PhysicsInit( SOLID_VPHYSICS )
+	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )
+	self.Entity:SetSolid( SOLID_VPHYSICS )
 	
 	-- Lifetime
 	self.Lifetime = false
-	if (self.Bullet.Lifetime) then
-		if (self.Bullet.Lifetime[1] > 0 and self.Bullet.Lifetime[2] > 0) then
-			if (self.Bullet.Lifetime[1] == self.Bullet.Lifetime[2]) then
+	if ( self.Bullet.Lifetime ) then
+		if ( self.Bullet.Lifetime[1] > 0 and self.Bullet.Lifetime[2] > 0 ) then
+			if ( self.Bullet.Lifetime[1] == self.Bullet.Lifetime[2] ) then
 				self.Lifetime = CurTime() + self.Bullet.Lifetime[1]
 			else
-				self.Lifetime = CurTime() + math.Rand(self.Bullet.Lifetime[1],self.Bullet.Lifetime[2])
+				self.Lifetime = CurTime() + math.Rand( self.Bullet.Lifetime[1],self.Bullet.Lifetime[2] )
 			end
 		end
 	end
 	
 	-- Trail
-	if (self.Bullet.Trail) then
+	if ( self.Bullet.Trail ) then
 		local trail = self.Bullet.Trail
-		util.SpriteTrail( self.Entity, 0, trail.Color, false, trail.StartSize, trail.EndSize, trail.Length, 1/(trail.StartSize+trail.EndSize)*0.5, trail.Texture )
+		util.SpriteTrail( self.Entity, 0, trail.Color, false, trail.StartSize, trail.EndSize, trail.Length, 1/( trail.StartSize+trail.EndSize )*0.5, trail.Texture )
 	end
 	
 	-- Material
-	if (self.Bullet.Material) then
+	if ( self.Bullet.Material ) then
 		self.Entity:SetMaterial( self.Bullet.Material )
 	end
 	
-	constraint.NoCollide(self.Entity, self.Cannon.Entity, 0, 0)
+	constraint.NoCollide( self.Entity, self.Cannon.Entity, 0, 0 )
 	
 	self.Entity:SetAngles( self.Entity:GetUp():Angle() )
 	local phys = self.Entity:GetPhysicsObject()
-	phys:SetMass(5)
+	phys:SetMass( 5 )
 	phys:ApplyForceCenter( self.Entity:GetForward() * phys:GetMass() * self.Bullet.Speed * 35 )
 end
 
 function BULLET:Think()
 	-- Lifetime
-	if (self.Lifetime) then
-		if (CurTime() > self.Lifetime) then
-			if (self.Bullet.ExplodeAfterDeath) then
+	if ( self.Lifetime ) then
+		if ( CurTime() > self.Lifetime ) then
+			if ( self.Bullet.ExplodeAfterDeath ) then
 				local tr = {}
 				tr.start = self.Entity:GetPos()
-				tr.endpos = self.Entity:GetPos()-Vector(0,0,10)
+				tr.endpos = self.Entity:GetPos()-Vector( 0,0,10 )
 				tr.filter = self.Entity
 				local trace = util.TraceLine( tr )
 				self:Explode( trace )
@@ -102,7 +102,7 @@ function BULLET:Think()
 		end
 	end
 	
-	self.Entity:NextThink(CurTime() + 1)
+	self.Entity:NextThink( CurTime() + 1 )
 	return true
 end
 

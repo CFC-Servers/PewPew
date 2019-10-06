@@ -6,7 +6,7 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Rocket Barrage (HE)"
+BULLET.Name = "Rocket Barrage ( HE )"
 BULLET.Author = "Divran"
 BULLET.Description = "Fires a dozen rockets in an arc which cover a large area."
 BULLET.AdminOnly = false

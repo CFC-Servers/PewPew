@@ -18,7 +18,7 @@ BULLET.Ammo = 0
 BULLET.AmmoReloadtime = 0
 
 
--- Fire (Is called before the cannon is about to fire)
+-- Fire ( Is called before the cannon is about to fire )
 function BULLET:Fire()
 	self:EmitSound( "weapons/smokegrenade/sg_explode.wav" )
 

@@ -6,8 +6,8 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "250lb bombs [1s] (HE)"
-BULLET.Author = "Hexwolf (Base by Divran)"
+BULLET.Name = "250lb bombs [1s] ( HE )"
+BULLET.Author = "Hexwolf ( Base by Divran )"
 BULLET.Description = "Drops 4 250lb bombs with a 1 second fuse."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
@@ -59,25 +59,25 @@ BULLET.UseOldSystem = true
 
 function BULLET:Initialize()
 	self:DefaultInitialize()
-	self.Entity:PhysicsInit(SOLID_VPHYSICS)
-	self.Entity:SetMoveType(MOVETYPE_VPHYSICS)
-	self.Entity:SetSolid(SOLID_VPHYSICS)
+	self.Entity:PhysicsInit( SOLID_VPHYSICS )
+	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )
+	self.Entity:SetSolid( SOLID_VPHYSICS )
 
-	constraint.NoCollide(self.Entity, self.Cannon.Entity, 0, 0)
+	constraint.NoCollide( self.Entity, self.Cannon.Entity, 0, 0 )
 		
 	self.Entity:SetAngles( self.Entity:GetUp():Angle() )
 	local phys = self.Entity:GetPhysicsObject()
-	phys:SetMass(2500)
+	phys:SetMass( 2500 )
 end
 
 function BULLET:Think()
 	-- Lifetime
-	if (self.Lifetime) then
-		if (CurTime() > self.Lifetime) then
-			if (self.Bullet.ExplodeAfterDeath) then
+	if ( self.Lifetime ) then
+		if ( CurTime() > self.Lifetime ) then
+			if ( self.Bullet.ExplodeAfterDeath ) then
 				local tr = {}
 				tr.start = self.Entity:GetPos()
-				tr.endpos = self.Entity:GetPos()-Vector(0,0,10)
+				tr.endpos = self.Entity:GetPos()-Vector( 0,0,10 )
 				tr.filter = self.Entity
 				local trace = util.TraceLine( tr )
 				self:Explode( trace )
@@ -87,7 +87,7 @@ function BULLET:Think()
 		end
 	end
 	
-	self.Entity:NextThink(CurTime() + 1)
+	self.Entity:NextThink( CurTime() + 1 )
 	return true
 end
 

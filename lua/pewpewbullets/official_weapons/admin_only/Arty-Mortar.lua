@@ -7,7 +7,7 @@ BULLET.Version = 2
 
 -- General Information
 BULLET.Name = "Artillery-Mortar [Debug]"
-BULLET.Author = "Hexwolf (Base by Divran)"
+BULLET.Author = "Hexwolf ( Base by Divran )"
 BULLET.Description = "A 60mm mortar which fires in a heavy arch."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false

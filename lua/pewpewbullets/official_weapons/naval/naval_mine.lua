@@ -51,31 +51,31 @@ BULLET.CustomOutputs = {}
 
 function BULLET:CannonThink()
 	local phys = self.Entity:GetPhysicsObject()
-	if (!phys) then return end
+	if ( !phys ) then return end
 	
 	-- Check the height from the water floor every few seconds
-	if (!self.TraceDist or CurTime() > self.NextTrace) then
+	if ( !self.TraceDist or CurTime() > self.NextTrace ) then
 		local tr = {}
 		tr.start = self:GetPos()
-		tr.endpos = self:GetPos() - Vector(0,0,99999999)
+		tr.endpos = self:GetPos() - Vector( 0,0,99999999 )
 		tr.filter = self.Entity
 		local trace = util.TraceLine( tr )
-		self.TraceDist = trace.HitPos:Distance(self:GetPos())
-		if (!self.TargetHeight) then self.TargetHeight = self.TraceDist end
+		self.TraceDist = trace.HitPos:Distance( self:GetPos() )
+		if ( !self.TargetHeight ) then self.TargetHeight = self.TraceDist end
 		self.NextTrace = CurTime() + 2
 	end
 	
-	if (self.TraceDist and (self:WaterLevel() > 0)) then -- Make sure it has a trace distance, and make sure it's below the water level
+	if ( self.TraceDist and ( self:WaterLevel() > 0 ) ) then -- Make sure it has a trace distance, and make sure it's below the water level
 		-- Apply force to make it hover
 		local diff = self.TargetHeight - self.TraceDist
-		phys:ApplyForceCenter( ( Vector(0,0,diff*0.5-0.35) - self.Entity:GetVelocity() * Vector(0.2,0.2,0.8) ) * 35 )
-	elseif (!(self:WaterLevel() > 0)) then -- If it jumps above the water, set the distance again
+		phys:ApplyForceCenter( ( Vector( 0,0,diff*0.5-0.35 ) - self.Entity:GetVelocity() * Vector( 0.2,0.2,0.8 ) ) * 35 )
+	elseif ( !( self:WaterLevel() > 0 ) ) then -- If it jumps above the water, set the distance again
 		local tr = {}
 		tr.start = self:GetPos()
-		tr.endpos = self:GetPos() - Vector(0,0,99999999)
+		tr.endpos = self:GetPos() - Vector( 0,0,99999999 )
 		tr.filter = self.Entity
 		local trace = util.TraceLine( tr )
-		self.TraceDist = trace.HitPos:Distance(self:GetPos()) - 30
+		self.TraceDist = trace.HitPos:Distance( self:GetPos() ) - 30
 		self.TargetHeight = self.TraceDist
 		self.NextTrace = CurTime() + 2
 	end
@@ -89,7 +89,7 @@ function BULLET:CannonPhysicsCollide( Data, PhysObj )
 	local Norm = self.Entity:GetUp()
 	
 	-- Sound
-	soundpath = table.Random(self.Bullet.FireSound)
+	soundpath = table.Random( self.Bullet.FireSound )
 	self:EmitSound( soundpath )
 		
 	-- Effect
@@ -99,13 +99,13 @@ function BULLET:CannonPhysicsCollide( Data, PhysObj )
 	util.Effect( self.Bullet.FireEffect, effectdata )
 	
 	-- Damage
-	if (pewpew:GetConVar( "Damage" )) then
+	if ( pewpew:GetConVar( "Damage" ) ) then
 		pewpew:PlayerBlastDamage( self.Entity, self.Entity, Pos + Norm * 10, self.Bullet.PlayerDamageRadius, self.Bullet.PlayerDamage )
 	end
 	pewpew:BlastDamage( Pos, self.Bullet.Radius, self.Bullet.Damage, self.Bullet.RangeDamageMul, self.Entity, self )
 	
 	-- Still here?
-	if (self.Entity:IsValid()) then
+	if ( self.Entity:IsValid() ) then
 		self.Entity:Remove()
 	end
 	

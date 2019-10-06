@@ -1,11 +1,11 @@
-E2Lib.RegisterExtension("pewpew", true)
+E2Lib.RegisterExtension( "pewpew", true )
 
 __e2setcost( 5 )
 
 -- Returns 1 if the entity is a PewPew Cannon
 e2function number entity:pewIsCannon()
-	if (!validPhysics(this)) then return 0 end
-	if (this:GetClass() == "pewpew_base_cannon") then return 1 end
+	if ( !validPhysics( this ) ) then return 0 end
+	if ( this:GetClass() == "pewpew_base_cannon" ) then return 1 end
 	return 0
 end
 
@@ -13,13 +13,13 @@ __e2setcost( 10 )
 
 -- Returns the health of the entity
 e2function number entity:pewHealth()
-	if (!validPhysics(this)) then return 0 end
+	if ( !validPhysics( this ) ) then return 0 end
 	return pewpew:GetHealth( this ) or 0
 end
 
 -- Returns the max health of the entity
 e2function number entity:pewMaxHealth()
-	if (!validPhysics(this)) then return 0 end
+	if ( !validPhysics( this ) ) then return 0 end
 	return pewpew:GetMaxHealth( this ) or 0
 end
 
@@ -27,10 +27,10 @@ __e2setcost( 15 )
 
 -- Returns the health of the core or the entity's core
 e2function number entity:pewCoreHealth()
-	if (!validPhysics(this)) then return 0 end
-	if (this:GetClass() == "pewpew_core" and this.pewpew and this.pewpew.CoreHealth) then 
-		return this.pewpew.CoreHealth 
-	elseif (this.Core and validPhysics(this.Core) and this.Core.pewpew and this.Core.pewpew.CoreHealth) then
+	if ( !validPhysics( this ) ) then return 0 end
+	if ( this:GetClass() == "pewpew_core" and this.pewpew and this.pewpew.CoreHealth ) then
+		return this.pewpew.CoreHealth
+	elseif ( this.Core and validPhysics( this.Core ) and this.Core.pewpew and this.Core.pewpew.CoreHealth ) then
 		return this.Core.pewpewCoreHealth
 	end
 	return 0
@@ -38,10 +38,10 @@ end
 
 -- Returns the maximum health of the core or the entity's core
 e2function number entity:pewCoreMaxHealth()
-	if (!validPhysics(this)) then return 0 end
-	if (this:GetClass() == "pewpew_core" and this.pewpew and this.pewpew.CoreMaxHealth) then 
-		return this.pewpewCoreMaxHealth 
-	elseif (this.Core and validPhysics(this.Core) and this.Core.pewpew and this.Core.pewpew.CoreMaxHealth) then
+	if ( !validPhysics( this ) ) then return 0 end
+	if ( this:GetClass() == "pewpew_core" and this.pewpew and this.pewpew.CoreMaxHealth ) then
+		return this.pewpewCoreMaxHealth
+	elseif ( this.Core and validPhysics( this.Core ) and this.Core.pewpew and this.Core.pewpew.CoreMaxHealth ) then
 		return this.Core.pewpew.CoreMaxHealth
 	end
 	return 0
@@ -51,150 +51,150 @@ __e2setcost( 10 )
 
 -- Returns the name of the bullet of the cannon
 e2function string entity:pewBulletName()
-	if (!validPhysics(this)) then return "" end
-	if (this:GetClass() != "pewpew_base_cannon") then return "" end
+	if ( !validPhysics( this ) ) then return "" end
+	if ( this:GetClass() != "pewpew_base_cannon" ) then return "" end
 	return this.Bullet.Name or ""
 end
 
 -- Returns the damage
 e2function number entity:pewDamage()
-	if (!validPhysics(this)) then return 0 end
-	if (this:GetClass() != "pewpew_base_cannon") then return 0 end
+	if ( !validPhysics( this ) ) then return 0 end
+	if ( this:GetClass() != "pewpew_base_cannon" ) then return 0 end
 	return this.Bullet.Damage or 0
 end
 
 e2function number entity:pewDPS()
-	if (!validPhysics(this)) then return 0 end
-	if (this:GetClass() != "pewpew_base_cannon") then return 0 end
-	local dmg = this.Bullet.Damage * (1/this.Bullet.Reloadtime)
+	if ( !validPhysics( this ) ) then return 0 end
+	if ( this:GetClass() != "pewpew_base_cannon" ) then return 0 end
+	local dmg = this.Bullet.Damage * ( 1/this.Bullet.Reloadtime )
 	return dmg or 0
 end
 
 -- Returns the amount of ammo
 e2function number entity:pewAmmo()
-	if (!validPhysics(this)) then return 0 end
-	if (this:GetClass() != "pewpew_base_cannon") then return 0 end
+	if ( !validPhysics( this ) ) then return 0 end
+	if ( this:GetClass() != "pewpew_base_cannon" ) then return 0 end
 	return this.Ammo or 0
 end
 
 -- Returns the max ammo
 e2function number entity:pewMaxAmmo()
-	if (!validPhysics(this)) then return 0 end
-	if (this:GetClass() != "pewpew_base_cannon") then return 0 end
+	if ( !validPhysics( this ) ) then return 0 end
+	if ( this:GetClass() != "pewpew_base_cannon" ) then return 0 end
 	return this.Bullet.Ammo or 0
 end
 
 -- Returns the damage radius
 e2function number entity:pewDamageRadius()
-	if (!validPhysics(this)) then return 0 end
-	if (this:GetClass() != "pewpew_base_cannon") then return 0 end
+	if ( !validPhysics( this ) ) then return 0 end
+	if ( this:GetClass() != "pewpew_base_cannon" ) then return 0 end
 	return this.Bullet.Radius or 0
 end
 
 -- Returns the number of slices
 e2function number entity:pewNumberOfSlices()
-	if (!validPhysics(this)) then return 0 end
-	if (this:GetClass() != "pewpew_base_cannon") then return 0 end
+	if ( !validPhysics( this ) ) then return 0 end
+	if ( this:GetClass() != "pewpew_base_cannon" ) then return 0 end
 	return this.Bullet.NumberOfSlices or 0
 end
 
 -- Returns the max slice distance
 e2function number entity:pewSliceDistance()
-	if (!validPhysics(this)) then return 0 end
-	if (this:GetClass() != "pewpew_base_cannon") then return 0 end
+	if ( !validPhysics( this ) ) then return 0 end
+	if ( this:GetClass() != "pewpew_base_cannon" ) then return 0 end
 	return this.Bullet.SliceDistance or 0
 end
 
 -- Returns the reload time
 e2function number entity:pewReloadTime()
-	if (!validPhysics(this)) then return 0 end
-	if (this:GetClass() != "pewpew_base_cannon") then return 0 end
+	if ( !validPhysics( this ) ) then return 0 end
+	if ( this:GetClass() != "pewpew_base_cannon" ) then return 0 end
 	return this.Bullet.Reloadtime or 0
 end
 
 -- Returns the ammo reload time
 e2function number entity:pewAmmoReloadTime()
-	if (!validPhysics(this)) then return 0 end
-	if (this:GetClass() != "pewpew_base_cannon") then return 0 end
+	if ( !validPhysics( this ) ) then return 0 end
+	if ( this:GetClass() != "pewpew_base_cannon" ) then return 0 end
 	return this.Bullet.AmmoReloadtime or 0
 end
 
 -- Returns the spread
 e2function number entity:pewSpread()
-	if (!validPhysics(this)) then return 0 end
-	if (this:GetClass() != "pewpew_base_cannon") then return 0 end
+	if ( !validPhysics( this ) ) then return 0 end
+	if ( this:GetClass() != "pewpew_base_cannon" ) then return 0 end
 	return this.Bullet.Spread or 0
 end
 
 -- Returns the damage vs players
 e2function number entity:pewPlayerDamage()
-	if (!validPhysics(this)) then return 0 end
-	if (this:GetClass() != "pewpew_base_cannon") then return 0 end
+	if ( !validPhysics( this ) ) then return 0 end
+	if ( this:GetClass() != "pewpew_base_cannon" ) then return 0 end
 	return this.Bullet.PlayerDamage or 0
 end
 
 -- Returns the radius vs players
 e2function number entity:pewPlayerDamageRadius()
-	if (!validPhysics(this)) then return 0 end
-	if (this:GetClass() != "pewpew_base_cannon") then return 0 end
+	if ( !validPhysics( this ) ) then return 0 end
+	if ( this:GetClass() != "pewpew_base_cannon" ) then return 0 end
 	return this.Bullet.PlayerDamageRadius or 0
 end
 
 -- Returns the speed of the bullet
 e2function number entity:pewSpeed()
-	if (!validPhysics(this)) then return 0 end
-	if (this:GetClass() != "pewpew_base_cannon") then return 0 end
+	if ( !validPhysics( this ) ) then return 0 end
+	if ( this:GetClass() != "pewpew_base_cannon" ) then return 0 end
 	return this.Bullet.Speed or 0
 end
 
 -- Returns the gravity per second
 e2function number entity:pewGravity()
-	if (!validPhysics(this)) then return 0 end
-	if (this:GetClass() != "pewpew_base_cannon") then return 0 end
+	if ( !validPhysics( this ) ) then return 0 end
+	if ( this:GetClass() != "pewpew_base_cannon" ) then return 0 end
 	return this.Bullet._Gravity or 0
 end
 
 -- Returns the gravity per tick
 e2function number entity:pewGravitySec()
-	if (!validPhysics(this)) then return 0 end
-	if (this:GetClass() != "pewpew_base_cannon") then return 0 end
+	if ( !validPhysics( this ) ) then return 0 end
+	if ( this:GetClass() != "pewpew_base_cannon" ) then return 0 end
 	return this.Bullet.Gravity or 600
 end
 
 -- Returns the recoil force
 e2function number entity:pewRecoilForce()
-	if (!validPhysics(this)) then return 0 end
-	if (this:GetClass() != "pewpew_base_cannon") then return 0 end
+	if ( !validPhysics( this ) ) then return 0 end
+	if ( this:GetClass() != "pewpew_base_cannon" ) then return 0 end
 	return this.Bullet.RecoilForce or 0
 end
 
 -- Returns the damage type
 e2function string entity:pewDamageType()
-	if (!validPhysics(this)) then return "" end
-	if (this:GetClass() != "pewpew_base_cannon") then return "" end
+	if ( !validPhysics( this ) ) then return "" end
+	if ( this:GetClass() != "pewpew_base_cannon" ) then return "" end
 	return this.Bullet.DamageType or ""
 end
 
 -- Returns the author of the bullet
 e2function string entity:pewAuthor()
-	if (!validPhysics(this)) then return "" end
-	if (this:GetClass() != "pewpew_base_cannon") then return "" end
+	if ( !validPhysics( this ) ) then return "" end
+	if ( this:GetClass() != "pewpew_base_cannon" ) then return "" end
 	return this.Bullet.Author or ""
 end
 
 -- Returns the description of the bullet
 e2function string entity:pewDescription()
-	if (!validPhysics(this)) then return "" end
-	if (this:GetClass() != "pewpew_base_cannon") then return "" end
+	if ( !validPhysics( this ) ) then return "" end
+	if ( this:GetClass() != "pewpew_base_cannon" ) then return "" end
 	return this.Bullet.Description or ""
 end
 
 -- Returns 1 if the cannon can fire and 0 if not
 e2function number entity:pewCanFire()
-	if (!validPhysics(this)) then return 0 end
-	if (this:GetClass() != "pewpew_base_cannon") then return 0 end
+	if ( !validPhysics( this ) ) then return 0 end
+	if ( this:GetClass() != "pewpew_base_cannon" ) then return 0 end
 	local ret = 0
-	if (this.CanFire) then
+	if ( this.CanFire ) then
 		ret = 1
 	end
 	return ret
@@ -203,18 +203,18 @@ end
 __e2setcost( 20 )
 
 e2function void entity:pewFire( number fire )
-	if (!validPhysics(this)) then return end
-	if (this:GetClass() != "pewpew_base_cannon") then return end
+	if ( !validPhysics( this ) ) then return end
+	if ( this:GetClass() != "pewpew_base_cannon" ) then return end
 	this:InputChange( "Fire", fire )	
 end
 
-__e2setcost(1)
+__e2setcost( 1 )
 e2function number pewBullets()
 	return #pewpew.Bullets
 end
 
 local function getByUniqueID( id )
-	for i=1,#pewpew.Bullets do
+	for i = 1,#pewpew.Bullets do
 		if pewpew.Bullets[i].RemoveTimer == id then return pewpew.Bullets[i] end
 	end
 end
@@ -242,10 +242,10 @@ local BulletInfo = { -- Only strings or numbers
 	EnergyPerShot = "n",
 }
 
-__e2setcost(10)
+__e2setcost( 10 )
 
 e2function table pewBulletInfo( id )
-	local t = {n={},ntypes={},s={},stypes={},size=0}
+	local t = {n = {},ntypes = {},s = {},stypes = {},size = 0}
 	
 	local bullet = getByUniqueID( id )
 	if not bullet then return t end
@@ -268,7 +268,7 @@ e2function table pewBulletInfo( id )
 end
 
 e2function table pewBulletInfo( string name )
-	local t = {n={},ntypes={},s={},stypes={},size=0}
+	local t = {n = {},ntypes = {},s = {},stypes = {},size = 0}
 	
 	local WeaponData = pewpew:GetWeapon( name )
 	if not WeaponData then return t end
@@ -289,7 +289,7 @@ e2function table pewBulletInfo( string name )
 end
 
 
-__e2setcost(1)
+__e2setcost( 1 )
 -- Positions & stuff
 e2function vector pewBulletPos( id )
 	local bullet = getByUniqueID( id )
@@ -315,11 +315,11 @@ e2function entity pewBulletCannon( id )
 	return bullet.Cannon
 end
 
-__e2setcost(5)
+__e2setcost( 5 )
 e2function array pewFindByOwner( entity owner )
 	if not IsValid( owner ) or not owner:IsPlayer() then return {} end
 	local r = {}
-	for i=1,#pewpew.Bullets do
+	for i = 1,#pewpew.Bullets do
 		self.prf = self.prf + 0.1
 		local bullet = pewpew.Bullets[i]
 		if bullet.Owner == owner then
@@ -333,7 +333,7 @@ end
 e2function array pewFindByCannon( entity cannon )
 	if not IsValid( cannon ) or cannon:GetClass() ~= "pewpew_base_cannon" then return {} end
 	local r = {}
-	for i=1,#pewpew.Bullets do
+	for i = 1,#pewpew.Bullets do
 		self.prf = self.prf + 0.1
 		local bullet = pewpew.Bullets[i]
 		if bullet.Cannon == cannon then
@@ -346,9 +346,9 @@ end
 
 
 e2function array pewFindInSphere( vector pos, radius )
-	local pos = Vector(pos[1],pos[2],pos[3])
+	local pos = Vector( pos[1],pos[2],pos[3] )
 	local r = {}
-	for i=1,#pewpew.Bullets do
+	for i = 1,#pewpew.Bullets do
 		self.prf = self.prf + 0.1
 		local bullet = pewpew.Bullets[i]
 		if bullet.Pos:Distance( pos ) <= radius then
@@ -373,13 +373,13 @@ local function inrange( pos, minpos, maxpos )
 end
 
 e2function array pewFindInBox( vector minpos, vector maxpos )
-	local minpos = Vector(minpos[1],minpos[2],minpos[3])
-	local maxpos = Vector(maxpos[1],maxpos[2],maxpos[3])
+	local minpos = Vector( minpos[1],minpos[2],minpos[3] )
+	local maxpos = Vector( maxpos[1],maxpos[2],maxpos[3] )
 	local r = {}
-	for i=1,#pewpew.Bullets do
+	for i = 1,#pewpew.Bullets do
 		self.prf = self.prf + 0.1
 		local bullet = pewpew.Bullets[i]
-		if inrange(bullet.Pos,minpos,maxpos) then
+		if inrange( bullet.Pos,minpos,maxpos ) then
 			r[#r+1] = bullet.RemoveTimer
 		end
 	end
@@ -387,9 +387,9 @@ e2function array pewFindInBox( vector minpos, vector maxpos )
 	return r
 end
 
-__e2setcost(20)
+__e2setcost( 20 )
 
-pewpew:CreateConVar("AllowE2Create", "int", "1")
+pewpew:CreateConVar( "AllowE2Create", "int", "1" )
 
 local dirMap = {}
 dirMap.up      = 1
@@ -399,60 +399,60 @@ dirMap.left    = 4
 dirMap.forward = 5
 dirMap.back    = 6
 
-local function create(ply, bullet, model, pos, ang, dir, fire, reload)
+local function create( ply, bullet, model, pos, ang, dir, fire, reload )
 	local plyIsAdmin = ply:IsAdmin()
 	local plyIsSuperAdmin = ply:IsSuperAdmin()
-	local allowCreate = pewpew:GetConVar("AllowE2Create")
+	local allowCreate = pewpew:GetConVar( "AllowE2Create" )
 	local allowAdminCreate = allowCreate == 2
 
 	if allowCreate == 0 then return end
 	if allowAdminCreate and not plyIsAdmin then return end
-	if not ply:CheckLimit("pewpew") then return end
-	if not util.IsValidProp(model) then return end
-	local Bullet = pewpew:GetWeapon(bullet)
+	if not ply:CheckLimit( "pewpew" ) then return end
+	if not util.IsValidProp( model ) then return end
+	local Bullet = pewpew:GetWeapon( bullet )
 	if not bullet then return end
 	if Bullet.AdminOnly and not plyIsAdmin then return end
 	if Bullet.SuperAdminOnly and not plyIsSuperAdmin then return end
 
-	local ent = ents.Create("pewpew_base_cannon")
-	if not IsValid(ent) then return end
-	ply:AddCount("pewpew", ent)
-	ply:AddCleanup("pewpew", ent)
+	local ent = ents.Create( "pewpew_base_cannon" )
+	if not IsValid( ent ) then return end
+	ply:AddCount( "pewpew", ent )
+	ply:AddCleanup( "pewpew", ent )
 
 	local Dir = dirMap[dir] or dirMap.up
 	
-	ent:SetModel(model)
+	ent:SetModel( model )
 
-	E2Lib.setPos(ent, Vector(pos[1],pos[2],pos[3]))
-	E2Lib.setAng(ent, Angle(ang[1],ang[2],ang[3]))
+	E2Lib.setPos( ent, Vector( pos[1],pos[2],pos[3] ) )
+	E2Lib.setAng( ent, Angle( ang[1],ang[2],ang[3] ) )
 
-	ent:SetOptions(Bullet, ply, fire, reload, Dir)
+	ent:SetOptions( Bullet, ply, fire, reload, Dir )
 
 	ent:Spawn()
 	ent:Activate()
 
-	undo.Create("pewpew")
-	undo.AddEntity(ent)
-	undo.SetPlayer(ply)
+	undo.Create( "pewpew" )
+	undo.AddEntity( ent )
+	undo.SetPlayer( ply )
 	undo.Finish()
 
 	return ent
 end
 
 e2function entity pewCreate( string bullet, string model, vector pos, angle ang, string dir, number fire, number reload )
-	return create(self.player, bullet, model, pos, ang, dir, fire, reload)
+	return create( self.player, bullet, model, pos, ang, dir, fire, reload )
 end
 
 e2function entity pewCreate( string bullet, string model, vector pos, angle ang, number fire, number reload )
-	return create(self.player, bullet, model, pos, ang, nil, fire, reload)
+	return create( self.player, bullet, model, pos, ang, nil, fire, reload )
 end
 
 e2function entity pewCreate( string bullet, string model, vector pos, angle ang, string dir )
-	return create(self.player, bullet, model, pos, ang, dir)
+	return create( self.player, bullet, model, pos, ang, dir )
 end
 
 e2function entity pewCreate( string bullet, string model, vector pos, angle ang )
-	return create(self.player, bullet, model, pos, ang)
+	return create( self.player, bullet, model, pos, ang )
 end
 
-__e2setcost(nil)
+__e2setcost( nil )

@@ -6,8 +6,8 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Warhead [Impact] (HE)"
-BULLET.Author = "Hexwolf (Base by Divran)"
+BULLET.Name = "Warhead [Impact] ( HE )"
+BULLET.Author = "Hexwolf ( Base by Divran )"
 BULLET.Description = "Activate and impact whatever you want to explode."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
@@ -30,16 +30,16 @@ BULLET.Ammo = 0
 
 BULLET.EnergyPerShot = 10000
 
--- Custom Functions 
--- (If you set the override var to true, the cannon/bullet will run these instead. Use these functions to do stuff which is not possible with the above variables)
+-- Custom Functions
+-- ( If you set the override var to true, the cannon/bullet will run these instead. Use these functions to do stuff which is not possible with the above variables )
 
--- Fire (Is called before the cannon is about to fire)
+-- Fire ( Is called before the cannon is about to fire )
 function BULLET:Fire()
 	local Pos = self.Entity:GetPos()
 	local Norm = self.Entity:GetUp()
 	
 	-- Sound
-	soundpath = table.Random(self.Bullet.FireSound)
+	soundpath = table.Random( self.Bullet.FireSound )
 	self:EmitSound( soundpath )
 		
 	-- Effect
@@ -49,13 +49,13 @@ function BULLET:Fire()
 	util.Effect( self.Bullet.FireEffect, effectdata )
 	
 	-- Damage
-	if (pewpew:GetConVar( "Damage" )) then
+	if ( pewpew:GetConVar( "Damage" ) ) then
 		pewpew:PlayerBlastDamage( self.Entity, self.Entity, Pos + Norm * 10, self.Bullet.PlayerDamageRadius, self.Bullet.PlayerDamage )
 	end
 	pewpew:BlastDamage( Pos, self.Bullet.Radius, self.Bullet.Damage, self.Bullet.RangeDamageMul, self.Entity, self )
 	
 	-- Still here?
-	if (self.Entity:IsValid()) then
+	if ( self.Entity:IsValid() ) then
 		self.Entity:Remove()
 	end
 end

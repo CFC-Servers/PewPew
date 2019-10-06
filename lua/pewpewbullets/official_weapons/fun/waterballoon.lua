@@ -26,7 +26,7 @@ BULLET.ExplosionEffect = ""
 
 -- Movement
 BULLET.Speed = 25
---BULLET.Gravity = 0.25
+-- BULLET.Gravity = 0.25
 BULLET.RecoilForce = 0
 BULLET.Spread = 1.5
 BULLET.AffectedBySBGravity = true
@@ -48,27 +48,27 @@ BULLET.AmmoReloadtime = 5
 
 BULLET.EnergyPerShot = 400
 
--- Initialize (Is called when the bullet initializes)
-function BULLET:CLInitialize()   
+-- Initialize ( Is called when the bullet initializes )
+function BULLET:CLInitialize()
 	pewpew:DefaultBulletInitialize( self )
-	self.Prop:SetColor(Color(math.random(25,255), math.random(25,255), math.random(25,255), 255))
+	self.Prop:SetColor( Color( math.random( 25,255 ), math.random( 25,255 ), math.random( 25,255 ), 255 ) )
 end
 
--- Explode (Is called when the bullet explodes)
-function BULLET:CLExplode(trace)
+-- Explode ( Is called when the bullet explodes )
+function BULLET:CLExplode( trace )
 	
-	local vOffset = trace.HitPos+Vector(0,0,2)
+	local vOffset = trace.HitPos+Vector( 0,0,2 )
 	local Norm = trace.HitNormal
-	local splash = math.random(13,16)
+	local splash = math.random( 13,16 )
 
-	self.Prop:EmitSound("weapons/ar2/npc_ar2_altfire.wav", 80, 130)
+	self.Prop:EmitSound( "weapons/ar2/npc_ar2_altfire.wav", 80, 130 )
 
 	local effectdata = EffectData()
-		effectdata:SetOrigin(vOffset)
-		effectdata:SetStart(vOffset)
-		effectdata:SetNormal(Norm)
-		effectdata:SetRadius(splash)
-		effectdata:SetScale(splash)
+		effectdata:SetOrigin( vOffset )
+		effectdata:SetStart( vOffset )
+		effectdata:SetNormal( Norm )
+		effectdata:SetRadius( splash )
+		effectdata:SetScale( splash )
 
 	util.Effect( "watersplash", effectdata )
 end

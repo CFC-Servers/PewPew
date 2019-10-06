@@ -6,7 +6,7 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "105mm Cannon (HE)"
+BULLET.Name = "105mm Cannon ( HE )"
 BULLET.Author = "Divran"
 BULLET.Description = "Slow rate of fire, high damage."
 BULLET.AdminOnly = false
@@ -26,7 +26,7 @@ BULLET.ExplosionEffect = "big_splosion"
 
 -- Movement
 BULLET.Speed = 95
---BULLET.Gravity = 0.1
+-- BULLET.Gravity = 0.1
 BULLET.RecoilForce = 500
 BULLET.Spread = 0
 BULLET.AffectedBySBGravity = true

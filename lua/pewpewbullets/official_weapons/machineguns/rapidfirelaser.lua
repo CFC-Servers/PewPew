@@ -33,24 +33,24 @@ BULLET.EnergyPerShot = 200
 
 BULLET.Gravity = 0
 
--- Fire (Is called before the cannon is about to fire)
+-- Fire ( Is called before the cannon is about to fire )
 function BULLET:Fire()
 	-- Calculate initial position of bullet
 	local direction, startpos = pewpew:GetFireDirection( self.Direction, self )
 	
 	local num = self.Bullet.Spread
-	if (num) then
-		local spread = Angle(math.Rand(-num,num),math.Rand(-num,num),0)
-		direction:Rotate(spread)
+	if ( num ) then
+		local spread = Angle( math.Rand( -num,num ),math.Rand( -num,num ),0 )
+		direction:Rotate( spread )
 	end
 	
 	-- Deal damage
 	local trace = pewpew:Trace( startpos, direction * 100000 )
 	local HitPos = trace.HitPos or StartPos + direction * 100000
-	if (trace.Entity and trace.Entity:IsValid()) then
+	if ( trace.Entity and trace.Entity:IsValid() ) then
 		-- Stargate shield damage
-		if (trace.Entity:GetClass() == "shield") then
-			trace.Entity:Hit(nil,trace.HitPos,self.Bullet.Damage*pewpew:GetConVar("StargateShield_DamageMul"),trace.HitNormal)
+		if ( trace.Entity:GetClass() == "shield" ) then
+			trace.Entity:Hit( nil,trace.HitPos,self.Bullet.Damage*pewpew:GetConVar( "StargateShield_DamageMul" ),trace.HitNormal )
 		else
 			pewpew:PointDamage( trace.Entity, self.Bullet.Damage, self )
 		end

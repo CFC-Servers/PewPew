@@ -7,7 +7,7 @@ BULLET.Version = 2
 
 -- General Information
 BULLET.Name = "Heavy Particle Projection Cannon "
-BULLET.Author = "Hexwolf (Base by Colonel Thirty Two)"
+BULLET.Author = "Hexwolf ( Base by Colonel Thirty Two )"
 BULLET.Description = "Fires a condensed ball of superheated particles."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false

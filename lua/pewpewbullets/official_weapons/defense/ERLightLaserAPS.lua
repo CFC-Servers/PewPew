@@ -7,7 +7,7 @@ BULLET.Version = 2
 
 -- General Information
 BULLET.Name = "Extended Range Light Laser A.P.S."
-BULLET.Author = "Hexwolf (Base by Divran)"
+BULLET.Author = "Hexwolf ( Base by Divran )"
 BULLET.Description = "The Extended Range Light Laser A.P.S will target PewPew bullets in a 75 degree cone and destroy them after hitting them 5 times, has reduced coverage but improved RPM. Has unlimited ammo."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
@@ -36,23 +36,23 @@ BULLET.Gravity = 0
 BULLET.CustomInputs = { "Fire" }
 BULLET.CustomOutputs = { }
 
--- Custom Functions (Only for adv users)
--- (If you set the override var to true, the cannon/bullet will run these instead. Use these functions to do stuff which is not possible with the above variables)
+-- Custom Functions ( Only for adv users )
+-- ( If you set the override var to true, the cannon/bullet will run these instead. Use these functions to do stuff which is not possible with the above variables )
 
 local function isInCone( vPos, Pos, Dir, cosDegrees )
-	return Dir:Dot( (vPos - Pos):GetNormalized() ) > cosDegrees
+	return Dir:Dot( ( vPos - Pos ):GetNormalized() ) > cosDegrees
 end
 
--- FindInCone (Note: copied from E2 then edited)
+-- FindInCone ( Note: copied from E2 then edited )
 local function getClosestInCone( Entities, Pos, Dir, Degrees )
 	if #Entities == 0 then return end
-	local cosDegrees = math.cos(math.rad(Degrees))
+	local cosDegrees = math.cos( math.rad( Degrees ) )
 	
 	local closest
 	local closestDist = 0
 	local closestPos
 	if Entities[1].GetPos then -- It's an array of entities
-		for i=1,#Entities do
+		for i = 1,#Entities do
 			local ent = Entities[i]
 			local vPos = ent:GetPos()
 			if isInCone( vPos, Pos, Dir, cosDegrees ) then
@@ -65,7 +65,7 @@ local function getClosestInCone( Entities, Pos, Dir, Degrees )
 			end
 		end
 	else -- It's an array of pewpew bullets
-		for i=1,#Entities do
+		for i = 1,#Entities do
 			local ent = Entities[i]
 			local vPos = ent.Pos
 			if isInCone( vPos, Pos, Dir, cosDegrees ) then
@@ -82,14 +82,14 @@ local function getClosestInCone( Entities, Pos, Dir, Degrees )
 	return closest, closestDist, closestPos
 end
 
--- Fire (Is called before the cannon is about to fire)
+-- Fire ( Is called before the cannon is about to fire )
 function BULLET:Fire()
 	local dir, startpos = pewpew:GetFireDirection( self.Direction, self )
 	
 	
 	local temp1 = {}
 	local temp2 = ents.FindInSphere( startpos, self.Bullet.Radius )
-	for i=1,#temp2 do
+	for i = 1,#temp2 do
 		if temp2[i]:GetClass() == "pewpew_base_bullet" then temp1[#temp1+1] = temp2[i] end
 	end
 
@@ -98,11 +98,11 @@ function BULLET:Fire()
 	
 	local finalFound, finalPos
 	if found1 and found2 then
-		finalFound = (distance1 < distance2) and found1 or found2
-		finalPos = (distance1 < distance2) and pos1 or pos2
+		finalFound = ( distance1 < distance2 ) and found1 or found2
+		finalPos = ( distance1 < distance2 ) and pos1 or pos2
 	else
 		finalFound = found1 or found2
-		finalPos = (finalFound == found1) and pos1 or pos2
+		finalPos = ( finalFound == found1 ) and pos1 or pos2
 	end
 	
 	if finalFound ~= nil then

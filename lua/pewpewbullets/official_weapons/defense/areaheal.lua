@@ -33,26 +33,26 @@ BULLET.Gravity = 0
 BULLET.CustomInputs = { "Fire" }
 BULLET.CustomOutputs = { }
 
--- Custom Functions (Only for adv users)
--- (If you set the override var to true, the cannon/bullet will run these instead. Use these functions to do stuff which is not possible with the above variables)
+-- Custom Functions ( Only for adv users )
+-- ( If you set the override var to true, the cannon/bullet will run these instead. Use these functions to do stuff which is not possible with the above variables )
 
--- Fire (Is called before the cannon is about to fire)
+-- Fire ( Is called before the cannon is about to fire )
 function BULLET:Fire()
 	-- Find all entities
 	local entities = ents.FindInSphere( self.Entity:GetPos(), 700 )
 	
 	-- Effect start position
 	local boxsize = self.Entity:OBBMaxs() - self.Entity:OBBMins()
-	local startpos = self.Entity:LocalToWorld(self.Entity:OBBCenter()) + self.Entity:GetUp() * (boxsize.z / 2 + 10)
+	local startpos = self.Entity:LocalToWorld( self.Entity:OBBCenter() ) + self.Entity:GetUp() * ( boxsize.z / 2 + 10 )
 	
 	-- Loop through all entities and heal them
 	for _, e in pairs( entities ) do
-		if (pewpew:CheckValid( e )) then
-			if (e.Core and e.Core:IsValid()) then
+		if ( pewpew:CheckValid( e ) ) then
+			if ( e.Core and e.Core:IsValid() ) then
 				local hp = e.Core.pewpew.CoreHealth
 				local maxhp = e.Core.pewpew.CoreMaxHealth
-				if (hp and maxhp and hp < maxhp) then
-					pewpew:RepairCoreHealth(e.Core,self.Bullet.Damage)
+				if ( hp and maxhp and hp < maxhp ) then
+					pewpew:RepairCoreHealth( e.Core,self.Bullet.Damage )
 					local effectdata = EffectData()
 					effectdata:SetOrigin( e:GetPos() )
 					effectdata:SetStart( startpos )
@@ -61,7 +61,7 @@ function BULLET:Fire()
 			else
 				local hp = pewpew:GetHealth( e )
 				local maxhp = pewpew:GetMaxHealth( e )
-				if (hp and maxhp and hp < maxhp) then
+				if ( hp and maxhp and hp < maxhp ) then
 					pewpew:RepairHealth( e, self.Bullet.Damage )
 					local effectdata = EffectData()
 					effectdata:SetOrigin( e:GetPos() )

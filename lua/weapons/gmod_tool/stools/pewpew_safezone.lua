@@ -7,7 +7,7 @@ TOOL.Name = "PewPew Safe Zone"
 TOOL.ClientConVar[ "model" ] = "models/Combine_Helicopter/helicopter_bomb01.mdl"
 TOOL.ClientConVar[ "size" ] = "1000"
 
-cleanup.Register("pewpew_safezones")
+cleanup.Register( "pewpew_safezones" )
 
 local PewPewModels = {
 	["models/Combine_Helicopter/helicopter_bomb01.mdl"] = {},
@@ -21,43 +21,43 @@ local PewPewModels = {
 
 -- This needs to be shared...
 function TOOL:GetZoneModel()
-	local mdl = self:GetClientInfo("model")
-	if (!util.IsValidModel(mdl) or !util.IsValidProp(mdl)) then return "models/Combine_Helicopter/helicopter_bomb01.mdl" end
+	local mdl = self:GetClientInfo( "model" )
+	if ( !util.IsValidModel( mdl ) or !util.IsValidProp( mdl ) ) then return "models/Combine_Helicopter/helicopter_bomb01.mdl" end
 	return mdl
 end
 						
-if (SERVER) then
-	CreateConVar("sbox_maxpewpew_safezones", 2)
+if ( SERVER ) then
+	CreateConVar( "sbox_maxpewpew_safezones", 2 )
 
 	function TOOL:CreateZone( ply, trace, model )
 		local ent = ents.Create( "pewpew_safezone" )
-		if (!ent:IsValid()) then return end
+		if ( !ent:IsValid() ) then return end
 		ent:SetModel( model )
 		ent:SetPos( trace.HitPos - trace.HitNormal * ent:OBBMins().z )
-		ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0) )
+		ent:SetAngles( trace.HitNormal:Angle() + Angle( 90,0,0 ) )
 		ent:Spawn()
 		ent:Activate()
-		ent:SetRadius(self:GetClientInfo("size"))
+		ent:SetRadius( self:GetClientInfo( "size" ) )
 		return ent
 	end
 	
 	function TOOL:LeftClick( trace )
-		if (!trace) then return end
+		if ( !trace ) then return end
 		local ply = self:GetOwner()
-		if (!ply:CheckLimit("pewpew_safezones")) then return end
+		if ( !ply:CheckLimit( "pewpew_safezones" ) ) then return end
 		local model = self:GetZoneModel()
-		if (!model) then return end
+		if ( !model ) then return end
 		local ent = self:CreateZone( ply, trace, model )
-		if (!ent) then return end
+		if ( !ent ) then return end
 		
 		local traceent = trace.Entity
 					
-		if (!traceent:IsWorld() and !traceent:IsPlayer()) then
+		if ( !traceent:IsWorld() and !traceent:IsPlayer() ) then
 			local weld = constraint.Weld( ent, trace.Entity, 0, trace.PhysicsBone, 0 )
 			local nocollide = constraint.NoCollide( ent, trace.Entity, 0, trace.PhysicsBone )
 		end
 			
-		ply:AddCount("pewpew_safezones",ent)
+		ply:AddCount( "pewpew_safezones",ent )
 		ply:AddCleanup ( "pewpew_safezones", ent )
 
 		undo.Create( "pewpew_safezone" )
@@ -69,16 +69,16 @@ if (SERVER) then
 	end
 	
 	function TOOL:RightClick( trace )
-		if (!trace) then return end
+		if ( !trace ) then return end
 		local ply = self:GetOwner()
 
-		if (!ply:CheckLimit("pewpew_safezones")) then return end
+		if ( !ply:CheckLimit( "pewpew_safezones" ) ) then return end
 		local model = self:GetZoneModel()
-		if (!model) then return end
+		if ( !model ) then return end
 		local ent = self:CreateZone( ply, trace, model )
-		if (!ent) then return end
+		if ( !ent ) then return end
 		
-		ply:AddCount("pewpew_safezones",ent)
+		ply:AddCount( "pewpew_safezones",ent )
 		ply:AddCleanup ( "pewpew_safezones", ent )
 
 		undo.Create( "pewpew_safezone" )
@@ -89,10 +89,10 @@ if (SERVER) then
 
 	
 	function TOOL:Reload( trace )
-		if (trace.Hit) then
-			if (trace.Entity and IsValid(trace.Entity)) then
-				self:GetOwner():ConCommand("pewpew_safezone_model " .. trace.Entity:GetModel())
-				self:GetOwner():ChatPrint("PewPew Safe Zone model set to: " .. trace.Entity:GetModel())
+		if ( trace.Hit ) then
+			if ( trace.Entity and IsValid( trace.Entity ) ) then
+				self:GetOwner():ConCommand( "pewpew_safezone_model " .. trace.Entity:GetModel() )
+				self:GetOwner():ChatPrint( "PewPew Safe Zone model set to: " .. trace.Entity:GetModel() )
 			end
 		end
 	end	
@@ -108,10 +108,10 @@ else
 	
 	function TOOL.BuildCPanel( CPanel )
 		-- Header stuff
-		CPanel:AddControl("Header", { Text = "#Tool.pewpew_safezone.name", Description = "#Tool.pewpew_safezone.desc" })
+		CPanel:AddControl( "Header", { Text = "#Tool.pewpew_safezone.name", Description = "#Tool.pewpew_safezone.desc" } )
 		
 		-- Models
-		CPanel:AddControl("ComboBox", {
+		CPanel:AddControl( "ComboBox", {
 			Label = "#Presets",
 			MenuButton = "1",
 			Folder = "pewpew",
@@ -125,30 +125,30 @@ else
 			CVars = {
 				[0] = "pewpew_model"
 			}
-		})
+		} )
 		
-		-- (Thanks to Grocel for making this selectable icon thingy)
+		-- ( Thanks to Grocel for making this selectable icon thingy )
 		CPanel:AddControl( "PropSelect", {
-			Label = "#Models (Or click Reload to select a model)",
+			Label = "#Models ( Or click Reload to select a model )",
 			ConVar = "pewpew_safezone_model",
 			Category = "PewPew",
 			Models = PewPewModels
-		})
+		} )
 		
 		CPanel:AddControl( "Slider", { Label = "Radius", Command = "pewpew_safezone_size", Type = "Integer", Min = "50", Max = "2000" }  )
 	end
 
 	-- Ghost functions
 	function TOOL:UpdateGhostZone( ent, player )
-		if (!ent or !ent:IsValid()) then return end
+		if ( !ent or !ent:IsValid() ) then return end
 		local trace = player:GetEyeTrace()
 		
-		if (!trace.Hit or trace.Entity:IsPlayer()) then
+		if ( !trace.Hit or trace.Entity:IsPlayer() ) then
 			ent:SetNoDraw( true )
 			return
 		end
 		
-		ent:SetAngles( trace.HitNormal:Angle() + Angle(90,0,0) )
+		ent:SetAngles( trace.HitNormal:Angle() + Angle( 90,0,0 ) )
 		ent:SetPos( trace.HitPos - trace.HitNormal * ent:OBBMins().z )
 		
 		ent:SetNoDraw( false )
@@ -156,9 +156,9 @@ else
 	
 	function TOOL:Think()
 		local model = self:GetZoneModel()
-		if (!self.GhostEntity or !self.GhostEntity:IsValid() or self.GhostEntity:GetModel() != model) then
+		if ( !self.GhostEntity or !self.GhostEntity:IsValid() or self.GhostEntity:GetModel() != model ) then
 			local trace = self:GetOwner():GetEyeTrace()
-			self:MakeGhostEntity( Model(model), trace.HitPos, trace.HitNormal:Angle() + Angle(90,0,0) )
+			self:MakeGhostEntity( Model( model ), trace.HitPos, trace.HitNormal:Angle() + Angle( 90,0,0 ) )
 		end
 		self:UpdateGhostZone( self.GhostEntity, self:GetOwner() )
 	end

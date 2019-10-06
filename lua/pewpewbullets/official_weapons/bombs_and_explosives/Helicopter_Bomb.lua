@@ -6,7 +6,7 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Helicopter Bomb [Contact] (HE)"
+BULLET.Name = "Helicopter Bomb [Contact] ( HE )"
 BULLET.Author = "Divran"
 BULLET.Description = "Drops a bomb very much like the one the attack helicopter drops in HL2."
 BULLET.AdminOnly = false
@@ -44,56 +44,56 @@ BULLET.EnergyPerShot = 3800
 
 BULLET.UseOldSystem = true
 
--- Custom Functions 
--- (If you set the override var to true, the cannon/bullet will run these instead. Use these functions to do stuff which is not possible with the above variables)
+-- Custom Functions
+-- ( If you set the override var to true, the cannon/bullet will run these instead. Use these functions to do stuff which is not possible with the above variables )
 
--- Initialize (Is called when the entity initializes)
+-- Initialize ( Is called when the entity initializes )
 function BULLET:Initialize()
-	self.Entity:PhysicsInit(SOLID_VPHYSICS)
-	self.Entity:SetMoveType(MOVETYPE_VPHYSICS)
-	self.Entity:SetSolid(SOLID_VPHYSICS)
+	self.Entity:PhysicsInit( SOLID_VPHYSICS )
+	self.Entity:SetMoveType( MOVETYPE_VPHYSICS )
+	self.Entity:SetSolid( SOLID_VPHYSICS )
 	
 	
-	constraint.NoCollide(self.Entity, self.Cannon.Entity, 0, 0)
+	constraint.NoCollide( self.Entity, self.Cannon.Entity, 0, 0 )
 	
-	self.Entity:NextThink(CurTime())
+	self.Entity:NextThink( CurTime() )
 	
 	local phys = self.Entity:GetPhysicsObject()
-	if (phys:IsValid()) then
-		phys:SetVelocity(self.Cannon:GetVelocity())
+	if ( phys:IsValid() ) then
+		phys:SetVelocity( self.Cannon:GetVelocity() )
 	end
 	
-	self.Entity.BombSound = CreateSound(self.Entity,Sound("npc/attack_helicopter/aheli_mine_seek_loop1.wav"))
+	self.Entity.BombSound = CreateSound( self.Entity,Sound( "npc/attack_helicopter/aheli_mine_seek_loop1.wav" ) )
 	self.Entity.BombSound:Play()
 	self.Timer = CurTime() + 50
 	self.Collided = 0
 end
 
--- Think (Is called a lot of times :p)
+-- Think ( Is called a lot of times :p )
 function BULLET:Think()
-	if (CurTime() > self.Timer) then
-		if (pewpew:GetConVar( "Damage" )) then
-			pewpew:PlayerBlastDamage(self.Entity, self.Entity, self.Entity:GetPos(), self.Bullet.Damage, self.Bullet.Radius)
+	if ( CurTime() > self.Timer ) then
+		if ( pewpew:GetConVar( "Damage" ) ) then
+			pewpew:PlayerBlastDamage( self.Entity, self.Entity, self.Entity:GetPos(), self.Bullet.Damage, self.Bullet.Radius )
 		end
-		pewpew:BlastDamage(self:GetPos(), self.Bullet.Radius, self.Bullet.Damage, self.Bullet.RangeDamageMul, self.Entity, self )
+		pewpew:BlastDamage( self:GetPos(), self.Bullet.Radius, self.Bullet.Damage, self.Bullet.RangeDamageMul, self.Entity, self )
 		
-		if (self.Bullet.ExplosionEffect) then
+		if ( self.Bullet.ExplosionEffect ) then
 			local effectdata = EffectData()
-			effectdata:SetOrigin(self:GetPos())
-			effectdata:SetStart(self:GetPos())
-			effectdata:SetNormal(self.Entity:GetUp())
-			util.Effect(self.Bullet.ExplosionEffect, effectdata)
+			effectdata:SetOrigin( self:GetPos() )
+			effectdata:SetStart( self:GetPos() )
+			effectdata:SetNormal( self.Entity:GetUp() )
+			util.Effect( self.Bullet.ExplosionEffect, effectdata )
 		end
 		
 		-- Sounds
-		if (self.Bullet.ExplosionSound) then
+		if ( self.Bullet.ExplosionSound ) then
 			local soundpath = ""
-			if (table.Count(self.Bullet.ExplosionSound) > 1) then
-				soundpath = table.Random(self.Bullet.ExplosionSound)
+			if ( table.Count( self.Bullet.ExplosionSound ) > 1 ) then
+				soundpath = table.Random( self.Bullet.ExplosionSound )
 			else
 				soundpath = self.Bullet.ExplosionSound[1]
 			end
-			sound.Play( soundpath, self.Entity:GetPos(),100,100)
+			sound.Play( soundpath, self.Entity:GetPos(),100,100 )
 		end
 		
 		self.Entity.BombSound:Stop()
@@ -101,13 +101,13 @@ function BULLET:Think()
 	end
 end
 
--- This is called when the bullet collides (Advanced users only. It only works if you first override initialize and change it to vphysics)
-function BULLET:PhysicsCollide(CollisionData, PhysObj)
-	if (CollisionData.HitEntity:IsWorld() and self.Collided == 0) then
+-- This is called when the bullet collides ( Advanced users only. It only works if you first override initialize and change it to vphysics )
+function BULLET:PhysicsCollide( CollisionData, PhysObj )
+	if ( CollisionData.HitEntity:IsWorld() and self.Collided == 0 ) then
 		self.Timer = CurTime() + 8
 		self.Collided = 1
 	end
-	if (!CollisionData.HitEntity:IsWorld() and (self.Collided == 0 or self.Collided == 1)) then
+	if ( !CollisionData.HitEntity:IsWorld() and ( self.Collided == 0 or self.Collided == 1 ) ) then
 		self.Timer = CurTime() + 0.1
 		self.Collided = 2
 	end

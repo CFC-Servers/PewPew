@@ -6,8 +6,8 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "[Modifiable] 240mm Artillery (HE)"
-BULLET.Author = "Hexwolf (Base by Divran)"
+BULLET.Name = "[Modifiable] 240mm Artillery ( HE )"
+BULLET.Author = "Hexwolf ( Base by Divran )"
 BULLET.Description = "An 240mm piece artillery with a modifiable speed."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
@@ -57,19 +57,19 @@ BULLET.CustomOutputs = nil
 
 BULLET.UseOldSystem = true
 
--- Custom Functions (Only for adv users)
--- (If you set the override var to true, the cannon/bullet will run these instead. Use these functions to do stuff which is not possible with the above variables)
+-- Custom Functions ( Only for adv users )
+-- ( If you set the override var to true, the cannon/bullet will run these instead. Use these functions to do stuff which is not possible with the above variables )
 
--- Wire Input (This is called whenever a wire input is changed)
+-- Wire Input ( This is called whenever a wire input is changed )
 function BULLET:WireInput( inputname, value )
-	if (inputname == "Speed") then
-		self.CustomSpeed = math.Clamp(value,10,60)
+	if ( inputname == "Speed" ) then
+		self.CustomSpeed = math.Clamp( value,10,60 )
 	else
 		self:InputChange( inputname, value )
 	end
 end
 
--- Initialize (Is called when the bullet initializes)
+-- Initialize ( Is called when the bullet initializes )
 function BULLET:Fire()
 	self.Bullet.Speed = self.CustomSpeed or 40
 	self:OldSystem_FireBullet()

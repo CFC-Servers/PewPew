@@ -5,7 +5,7 @@ local pewpew_list
 
 -- Use Menu
 local function CreateMenu()
-	pewpew_frame = vgui.Create("DFrame")
+	pewpew_frame = vgui.Create( "DFrame" )
 	pewpew_frame:SetPos( ScrW()/2+100,ScrH()/2-420/2 )
 	pewpew_frame:SetSize( 600, 420 )
 	pewpew_frame:SetTitle( "PewPew Cannon Information" )
@@ -27,19 +27,19 @@ timer.Simple( 2, CreateMenu )
 local list = {}		
 local function SetTable( Bullet )
 	local rld = Bullet.Reloadtime
-	if (!rld or rld == 0) then rld = 1 end
+	if ( !rld or rld == 0 ) then rld = 1 end
 	list[1] = 	{"Name", 				Bullet.Name}
 	list[2] = 	{"Author", 				Bullet.Author}
 	list[3] = 	{"Description", 		Bullet.Description}
 	list[4] = 	{"Category", 			Bullet.Category }
 	list[5] = 	{"Damage Type",			Bullet.DamageType}
 	list[6] = 	{"Damage",	 			Bullet.Damage}
-	list[7] = 	{"DPS",					(Bullet.Damage or 0) * (1/rld)}
+	list[7] = 	{"DPS",					( Bullet.Damage or 0 ) * ( 1/rld )}
 	list[8] = 	{"Radius", 				Bullet.Radius}
 	list[9] = 	{"PlayerDamage", 		Bullet.PlayerDamage}
 	list[10] = 	{"PlayerDamageRadius", 	Bullet.PlayerDamageRadius}
 	list[11] = 	{"Speed", 				Bullet.Speed}
-	list[12] = 	{"Gravity", 			tostring(Bullet._Gravity) .. " units per second, or " .. tostring(Bullet.Gravity or 600) .. " units per tick"}
+	list[12] = 	{"Gravity", 			tostring( Bullet._Gravity ) .. " units per second, or " .. tostring( Bullet.Gravity or 600 ) .. " units per tick"}
 	list[13] =	{"RecoilForce", 		Bullet.RecoilForce}
 	list[14] = 	{"Spread",				Bullet.Spread}
 	list[15] = 	{"Reloadtime", 			Bullet.Reloadtime}
@@ -50,23 +50,23 @@ end
 
 local function OpenUseMenu( bulletname )
 	local Bullet = pewpew:GetWeapon( bulletname )
-	if (Bullet) then
+	if ( Bullet ) then
 		pewpew_list:Clear()
 		SetTable( Bullet )
 		for _, value in ipairs( list ) do
-			local pnl = vgui.Create("DPanel")
+			local pnl = vgui.Create( "DPanel" )
 			pnl:SetSize( 594, 20 )
-			--function pnl:Paint() return true end
+			-- function pnl:Paint() return true end
 		
-			local label = vgui.Create("DLabel",pnl)
+			local label = vgui.Create( "DLabel",pnl )
 			label:SetPos( 4, 4 )
 			label:SetText( value[1] )
-			label:SetColor(Color(0,0,0))
+			label:SetColor( Color( 0,0,0 ) )
 			label:SizeToContents()
 			
-			local box = vgui.Create("DTextEntry",pnl)
+			local box = vgui.Create( "DTextEntry",pnl )
 			box:SetPos( 135, 0 )
-			box:SetText( tostring(value[2] or "- none -") or "- none -" )
+			box:SetText( tostring( value[2] or "- none -" ) or "- none -" )
 			box:SetWidth( 592 )
 			box:SetMultiline( false )
 			//box:SetEditable( false ) -- cannot select text with this off
@@ -75,14 +75,14 @@ local function OpenUseMenu( bulletname )
 		end
 		pewpew_frame:SetVisible( true )
 	else
-		LocalPlayer():ChatPrint("Bullet not found!")
+		LocalPlayer():ChatPrint( "Bullet not found!" )
 	end
 end
 
-concommand.Add("PewPew_UseMenu", function( ply, cmd, arg )
-	OpenUseMenu( table.concat(arg, " ") )
-end)
+concommand.Add( "PewPew_UseMenu", function( ply, cmd, arg )
+	OpenUseMenu( table.concat( arg, " " ) )
+end )
 
-concommand.Add("PewPew_CloseUseMenu", function( ply,cmd,arg )
+concommand.Add( "PewPew_CloseUseMenu", function( ply,cmd,arg )
 	pewpew_frame:SetVisible( false )
-end)
+end )

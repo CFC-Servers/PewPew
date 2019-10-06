@@ -6,8 +6,8 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "75mm Cannon (HE)"
-BULLET.Author = "Hexwolf (Base by Divran)"
+BULLET.Name = "75mm Cannon ( HE )"
+BULLET.Author = "Hexwolf ( Base by Divran )"
 BULLET.Description = "Moderate rate of fire, moderate damage."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
@@ -26,7 +26,7 @@ BULLET.ExplosionEffect = "HEATsplode"
 
 -- Movement
 BULLET.Speed = 130
---BULLET.Gravity = 0.1
+-- BULLET.Gravity = 0.1
 BULLET.RecoilForce = 500
 BULLET.Spread = 0
 BULLET.AffectedBySBGravity = true

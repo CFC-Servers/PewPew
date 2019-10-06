@@ -6,7 +6,7 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "120mm Cannon (AP)"
+BULLET.Name = "120mm Cannon ( AP )"
 BULLET.Author = "Chippy"
 BULLET.Description = "120mm Armor Piercing tank cannon."
 BULLET.AdminOnly = false
@@ -26,7 +26,7 @@ BULLET.ExplosionEffect = "gcombat_explosion"
 
 -- Movement
 BULLET.Speed = 140
---BULLET.Gravity = 0.056
+-- BULLET.Gravity = 0.056
 BULLET.RecoilForce = 800
 BULLET.Spread = 0
 BULLET.AffectedBySBGravity = true

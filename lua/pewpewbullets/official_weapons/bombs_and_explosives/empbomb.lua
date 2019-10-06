@@ -6,7 +6,7 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "EMP Bomb [Impact] (EMP)"
+BULLET.Name = "EMP Bomb [Impact] ( EMP )"
 BULLET.Author = "Divran"
 BULLET.Description = "EMP Bomb. No damage, but disables wiring for 15 seconds."
 BULLET.AdminOnly = false
@@ -28,10 +28,10 @@ BULLET.AmmoReloadtime = nil
 
 BULLET.EnergyPerShot = 15500
 
--- Custom Functions 
--- (If you set the override var to true, the cannon/bullet will run these instead. Use these functions to do stuff which is not possible with the above variables)
+-- Custom Functions
+-- ( If you set the override var to true, the cannon/bullet will run these instead. Use these functions to do stuff which is not possible with the above variables )
 
--- Fire (Is called before the cannon is about to fire)
+-- Fire ( Is called before the cannon is about to fire )
 function BULLET:Fire()
 	local Pos = self.Entity:GetPos()
 		
@@ -44,7 +44,7 @@ function BULLET:Fire()
 	pewpew:EMPDamage( Pos, self.Bullet.Radius, self.Bullet.Duration, self )
 	
 	-- Still here?
-	if (self.Entity:IsValid()) then
+	if ( self.Entity:IsValid() ) then
 		self.Entity:Remove()
 	end
 end

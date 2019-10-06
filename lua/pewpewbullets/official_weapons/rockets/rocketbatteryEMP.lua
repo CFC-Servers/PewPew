@@ -6,8 +6,8 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Rocket Battery (EMP)"
-BULLET.Author = "Hexwolf (Base by Divran)"
+BULLET.Name = "Rocket Battery ( EMP )"
+BULLET.Author = "Hexwolf ( Base by Divran )"
 BULLET.Description = "Rapid fire rocket battery with 6 dumb rockets. Equipped with an EMP warhead."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
@@ -34,7 +34,7 @@ BULLET.Speed = 80
 BULLET.Gravity = 0
 BULLET.RecoilForce = 200
 BULLET.Spread = 0.4
-BULLET.AngleOffset = Angle(-90,0,0)
+BULLET.AngleOffset = Angle( -90,0,0 )
 
 -- Damage
 BULLET.DamageType = "EMPDamage"

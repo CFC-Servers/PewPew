@@ -6,7 +6,7 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "120mm Cannon (HE)"
+BULLET.Name = "120mm Cannon ( HE )"
 BULLET.Author = "Chippy"
 BULLET.Description = "120mm High Explosive tank cannon."
 BULLET.AdminOnly = false
@@ -26,7 +26,7 @@ BULLET.ExplosionEffect = "big_splosion"
 
 -- Movement
 BULLET.Speed = 90
---BULLET.Gravity = 0.056
+-- BULLET.Gravity = 0.056
 BULLET.RecoilForce = 800
 BULLET.Spread = 0
 BULLET.AffectedBySBGravity = true

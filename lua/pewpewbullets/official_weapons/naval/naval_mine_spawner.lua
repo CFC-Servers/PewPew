@@ -32,10 +32,10 @@ BULLET.EnergyPerShot = 10000
 BULLET.CustomInputs = { "Fire", "Height" }
 
 function BULLET:WireInput( inputname, value )
-	if (inputname == "Height") then
+	if ( inputname == "Height" ) then
 		self.TargetHeight = math.max( value, 0 )
-		if (self.TargetHeight == 0) then self.TargetHeight = nil end
-	elseif (inputname == "Fire") then
+		if ( self.TargetHeight == 0 ) then self.TargetHeight = nil end
+	elseif ( inputname == "Fire" ) then
 		self:InputChange( "Fire", value )
 	end		
 end
@@ -43,23 +43,23 @@ end
 function BULLET:Fire()
 	local Dir, Pos = pewpew:GetFireDirection( self.Direction, self )
 	
-	local Bullet = pewpew:GetWeapon("Naval Mine")
+	local Bullet = pewpew:GetWeapon( "Naval Mine" )
 	
 	ply = self.Owner
 	
-	if (!Bullet) then 
-		ply:ChatPrint("This server does not have Naval Mines.") 
-		return 
+	if ( !Bullet ) then
+		ply:ChatPrint( "This server does not have Naval Mines." )
+		return
 	end
 	
-	if (!ply:CheckLimit("pewpew")) then return end
+	if ( !ply:CheckLimit( "pewpew" ) ) then return end
 	local ent = ents.Create( "pewpew_base_cannon" )
-	if (!ent:IsValid()) then return end
+	if ( !ent:IsValid() ) then return end
 	
 	-- Pos/Model/Angle
 	ent:SetModel( self.Bullet.Model )
 	
-	if (!util.IsInWorld(Pos)) then return end
+	if ( !util.IsInWorld( Pos ) ) then return end
 	
 	ent:SetPos( Pos )
 	ent:SetAngles( self.Entity:GetAngles() )
@@ -77,7 +77,7 @@ function BULLET:Fire()
 	phys:AddVelocity( Dir * 500 )
 	self.Entity:GetPhysicsObject():ApplyForceCenter( Dir * -500 )
 	
-	ply:AddCount("pewpew",ent)
+	ply:AddCount( "pewpew",ent )
 	ply:AddCleanup ( "pewpew", ent )
 
 	undo.Create( "pewpew" )
