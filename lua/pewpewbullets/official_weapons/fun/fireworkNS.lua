@@ -6,9 +6,9 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Firework"
-BULLET.Author = "Kouta"
-BULLET.Description = "Dazzle enemies with random colours!"
+BULLET.Name = "Firework (No Spread)"
+BULLET.Author = "Hexwolf (Base by Kouta)"
+BULLET.Description = "Launch a single firework exactly where the cannon is pointed."
 BULLET.AdminOnly = false
 BULLET.SuperAdminOnly = false
 BULLET.UseOldSystem = true
@@ -29,22 +29,22 @@ BULLET.ExplosionEffect = "confetti"
 BULLET.Speed = 30
 BULLET.Gravity = 0
 BULLET.RecoilForce = 0
-BULLET.Spread = 5
+BULLET.Spread = 0
 
 -- Damage
 BULLET.DamageType = "BlastDamage"
-BULLET.Damage = 150
-BULLET.Radius = 300
+BULLET.Damage = 10
+BULLET.Radius = 150
 BULLET.RangeDamageMul = 2
 BULLET.NumberOfSlices = nil
 BULLET.SliceDistance = nil
-BULLET.PlayerDamage = 100
-BULLET.PlayerDamageRadius = 400
+BULLET.PlayerDamage = 20
+BULLET.PlayerDamageRadius = 150
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 0.3
-BULLET.Ammo = 6
-BULLET.AmmoReloadtime = 8
+BULLET.Reloadtime = 0.6
+BULLET.Ammo = 0
+BULLET.AmmoReloadtime = 0
 
 -- Other
 BULLET.Lifetime = {2,3}
