@@ -29,7 +29,7 @@ BULLET.ExplosionEffect = "confetti"
 BULLET.Speed = 30
 BULLET.Gravity = 0
 BULLET.RecoilForce = 0
-BULLET.Spread = 3
+BULLET.Spread = 20
 
 -- Damage
 BULLET.DamageType = "BlastDamage"
@@ -47,7 +47,7 @@ BULLET.Ammo = 24
 BULLET.AmmoReloadtime = 20
 
 -- Other
-BULLET.Lifetime = {0.5,20}
+BULLET.Lifetime = {0.5,10}
 BULLET.ExplodeAfterDeath = true
 BULLET.EnergyPerShot = 650
 

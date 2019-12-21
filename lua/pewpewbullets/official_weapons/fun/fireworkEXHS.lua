@@ -6,7 +6,7 @@ local BULLET = {}
 BULLET.Version = 2
 
 -- General Information
-BULLET.Name = "Firework (Heavy Spread)"
+BULLET.Name = "Firework Extended(Heavy Spread)"
 BULLET.Author = "Hexwolf (Base by Kouta)"
 BULLET.Description = "Launch a single firework vaguely where your cannon is pointed, greater life span."
 BULLET.AdminOnly = false
