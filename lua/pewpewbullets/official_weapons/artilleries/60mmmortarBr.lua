@@ -31,7 +31,7 @@ BULLET.EmptyMagSound = nil
 
 -- Movement
 BULLET.Speed = 35
-BULLET.Gravity = 0.1
+--BULLET.Gravity = 0.1
 BULLET.RecoilForce = 500
 BULLET.Spread = 1
 BULLET.AffectedBySBGravity = true

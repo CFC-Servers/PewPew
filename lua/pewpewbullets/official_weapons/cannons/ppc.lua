@@ -29,8 +29,8 @@ BULLET.FireEffect = "muzzleflash"
 BULLET.ExplosionEffect = "HEATsplode"
 
 -- Movement
-BULLET.Speed = 150
-BULLET.Gravity = 0.01
+BULLET.Speed = 135 --150 reduced slightly to make more room for light ppc
+--BULLET.Gravity = 0.01
 BULLET.RecoilForce = 500
 BULLET.Spread = 0
 BULLET.AffectedBySBGravity = true

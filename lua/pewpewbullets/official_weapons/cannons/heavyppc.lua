@@ -29,8 +29,8 @@ BULLET.FireEffect = "muzzleflash"
 BULLET.ExplosionEffect = "HEATsplode"
 
 -- Movement
-BULLET.Speed = 125
-BULLET.Gravity = 0.01
+BULLET.Speed = 95 -- 125 reduced due to the probable want to make it have higher arcs
+--BULLET.Gravity = 0.01
 BULLET.RecoilForce = 500
 BULLET.Spread = 0
 BULLET.AffectedBySBGravity = true

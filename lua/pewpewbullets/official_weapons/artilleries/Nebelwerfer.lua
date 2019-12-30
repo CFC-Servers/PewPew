@@ -26,7 +26,7 @@ BULLET.ExplosionEffect = "big_splosion"
 
 -- Movement
 BULLET.Speed = 50
-BULLET.Gravity = nil
+--BULLET.Gravity = nil -- test, rocketbarrage doesnt have this, although nebel is a prop not a pewpew thingy i think
 BULLET.RecoilForce = 500
 BULLET.Spread = 2
 

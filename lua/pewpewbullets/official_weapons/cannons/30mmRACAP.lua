@@ -21,7 +21,7 @@ BULLET.ExplosionEffect = "gcombat_explosion"
 
 -- Movement
 BULLET.Speed = 130
-BULLET.Gravity = 0.1
+--BULLET.Gravity = 0.1
 BULLET.RecoilForce = 35
 BULLET.Spread = 0.3
 BULLET.AffectedBySBGravity = true

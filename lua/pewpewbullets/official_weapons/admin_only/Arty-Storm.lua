@@ -22,7 +22,7 @@ BULLET.ExplosionEffect = "mghit"
 
 -- Movement
 BULLET.Speed = 30
---BULLET.Gravity = 7
+--BULLET.Gravity = 7 <- looks like someone figured out that 600 gravity is good for mortars.
 BULLET.RecoilForce = 35
 BULLET.Spread = 3
 BULLET.AffectedBySBGravity = true
