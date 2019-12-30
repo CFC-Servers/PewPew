@@ -455,4 +455,17 @@ e2function entity pewCreate( string bullet, string model, vector pos, angle ang 
 	return create(self.player, bullet, model, pos, ang)
 end
 
+
+__e2setcost(0)
+
+e2function number timeSinceLastFired( entity cannon )
+    if not IsValid(cannon) then return 0 end
+	return CurTime() - cannon.LastFired
+end
+
+e2function number timeTillCanFire( entity cannon )
+    if not IsValid(cannon) then return 0 end
+	return  ( cannon.Bullet.Reloadtime + cannon.LastFired ) - CurTime() 
+end
+
 __e2setcost(nil)
