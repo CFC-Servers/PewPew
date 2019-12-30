@@ -67,13 +67,9 @@ function ENT:SetOptions( BULLET, ply, firekey, reloadkey, FireDirection )
 	self.Direction = tonumber(FireDirection) or 1
 	
 	-- No ammo at all?
-	if (!self.Ammo) then
-		self.Ammo = self.Bullet.Ammo
-	end
+	self.Ammo = self.Ammo or self.Bullet.Ammo or 1
 
-	if (!self.ShotCount) then
-		self.ShotCount = self.Bullet.ShotCount or 1
-	end
+	self.ShotCount = self.ShotCount or self.Bullet.ShotCount or 1
   
 	-- Too much ammo?
 	if (self.Ammo) then
