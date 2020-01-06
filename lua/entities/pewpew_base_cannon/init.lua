@@ -208,7 +208,7 @@ function ENT:NewSystem_FireBullet()
 	if self.ShotCount then
 		for i=1, self.ShotCount do
 			if (num and num != 0) then
-				local randomang = Angle( math.Rand(-num,num), math.Rand(-num,num), 0)
+				local randomang = Angle( math.Rand(-num,num), math.Rand(-num,num), math.Rand(-num,num))
 				Dir:Rotate(randomang)
 			end
 			pewpew:FireBullet( Pos, Dir, self.Owner, self.Bullet, self, self.Direction )
