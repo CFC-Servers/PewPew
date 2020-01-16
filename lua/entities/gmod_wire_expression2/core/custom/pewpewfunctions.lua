@@ -458,14 +458,14 @@ end
 
 __e2setcost(0)
 
-e2function number timeSinceLastFired( entity cannon )
+e2function number pewTimeLastFired( entity cannon )
     if not IsValid(cannon) then return -1 end
     return CurTime() - cannon.LastFired
 end
 
-e2function number timeTillCanFire( entity cannon )
+e2function number pewTimeCanFire( entity cannon )
     if not IsValid(cannon) then return 0 end
-        return  ( cannon.Bullet.Reloadtime + cannon.LastFired ) - CurTime() 
+    return  ( cannon.Bullet.Reloadtime + cannon.LastFired ) - CurTime() 
 end
 
 __e2setcost(nil)
