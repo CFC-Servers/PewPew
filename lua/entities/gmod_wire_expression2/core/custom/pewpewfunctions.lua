@@ -459,7 +459,7 @@ end
 __e2setcost(0)
 
 e2function number timeSinceLastFired( entity cannon )
-    if not IsValid(cannon) then return 0 end
+    if not IsValid(cannon) then return -1 end
     return CurTime() - cannon.LastFired
 end
 
