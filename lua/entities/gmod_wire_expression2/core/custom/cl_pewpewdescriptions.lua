@@ -35,5 +35,5 @@ E2Helper.Descriptions["pewFindByCannon"] = "Returns an array of identifiers for 
 E2Helper.Descriptions["pewFindInSphere"] = "Returns an array of identifiers for all bullets located inside the specified sphere."
 E2Helper.Descriptions["pewFindInBox"] = "Returns an array of identifiers for all bullets located inside the specified box."
 E2Helper.Descriptions["pewCreate"] = "Creates and returns a PewPew cannon."
-E2Helper.Descriptions["timeSinceLastFired"] = "Returns a number that is the time since the cannon last fired."
-E2Helper.Descriptions["timeTillCanFire"] = "Returns a number that is the time till the cannon can fire."
+E2Helper.Descriptions["pewTimeLastFired"] = "Returns a number that is the time since the cannon last fired."
+E2Helper.Descriptions["pewTimeCanFire"] = "Returns a number that is the time till the cannon can fire."
