@@ -464,8 +464,8 @@ e2function number pewTimeLastFired( entity cannon )
 end
 
 e2function number pewTimeCanFire( entity cannon )
-    if not IsValid(cannon) then return 0 end
-    return  ( cannon.Bullet.Reloadtime + cannon.LastFired ) - CurTime() 
+    if not IsValid(cannon) then return -1 end
+    return math.max(0, ( cannon.Bullet.Reloadtime + cannon.LastFired ) - CurTime()) -- i was thinking that it would be better to use clamp instead of @samuelWilliams99 math.max, but i then realised, what would the max be?
 end
 
 __e2setcost(nil)
