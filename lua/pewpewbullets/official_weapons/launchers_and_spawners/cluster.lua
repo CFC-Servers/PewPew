@@ -34,6 +34,8 @@ BULLET.Speed = 75
 BULLET.RecoilForce = 100
 BULLET.Spread = 10
 
+BULLET.ShotCount = 5
+
 -- Damage
 BULLET.DamageType = "BlastDamage"
 BULLET.Damage = 300
@@ -43,9 +45,9 @@ BULLET.PlayerDamage = 100
 BULLET.PlayerDamageRadius = 425
 
 -- Reloading/Ammo
-BULLET.Reloadtime = 0.1
-BULLET.Ammo = 5
-BULLET.AmmoReloadtime = 8
+BULLET.Reloadtime = 8
+BULLET.Ammo = 0
+BULLET.AmmoReloadtime = 0
 
 -- Other
 BULLET.Lifetime = {0.95,1}
